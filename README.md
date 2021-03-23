@@ -45,3 +45,42 @@ It can be active (directly engaging with the target system) or passive (Gaining 
 - NAT
 - Media access control (MAC) is the physical address of a device and is in layer 2/ and with switches. 
 - The IP addresses are in layer 3. Anythig using a network interface will have a MAC address
+
+## Installations
+
+- Kali linux : 
+- VM ware for windows
+- 7 zip
+
+- configure virtual machine- VM ware, assign 4GB ram and then select NAT as the network adapter
+
+shortcuts, double tab, ~/
+ls -la will reveal hidden folders
+ls -la /tmp/  for checking the permissions of the file inside the temp folder
+`chmod 777 filename.txt` or chmod +x filename.txt giving full read wrtie access
+- `cat /etc/passwd
+to change password I can type passwd in the terminal
+adding a user to sudoers
+
+ifconfig -linux
+iwconfig-wireless
+ipconfig-windows
+
+- Network commands
+ping
+arp -a associating the ip addresses with mac addresses
+netstat -ano list all the active connections running on the machine- Is the machine talking to someone else and which ports
+- route tells were the traffic exit
+ifconfig alternative is ip:
+- ip a
+- ip n
+- ipr
+
+- Updating softwares
+-apt update && apt updrage
+-apt install python3-pip
+
+- install pimp upgrate from cloning a github repository in the 
+- cd /opt
+- git clone https://github.com/Dewalt-arch/pimpmykali.git
+- ./pimpmykali.sh
