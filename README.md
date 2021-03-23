@@ -84,3 +84,7 @@ ifconfig alternative is ip:
 - cd /opt
 - git clone https://github.com/Dewalt-arch/pimpmykali.git
 - ./pimpmykali.sh
+
+ig gedit gives an error then use 
+`xhost local:` or `xhost +SI:localuser:root` , the later only fixes the issue for a root user
+
