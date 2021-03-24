@@ -85,7 +85,7 @@ ifconfig alternative is ip:
 - git clone https://github.com/Dewalt-arch/pimpmykali.git
 - ./pimpmykali.sh
 
-ig gedit gives an error then use 
+ig gedit gives an error then use.
 `xhost local:` or `xhost +SI:localuser:root` , the later only fixes the issue for a root user
 
 `ping 192.168.13.2 -c 1 > ip.txt ` - pings one time and then stores in a file
