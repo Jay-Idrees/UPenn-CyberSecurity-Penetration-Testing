@@ -88,3 +88,7 @@ ifconfig alternative is ip:
 ig gedit gives an error then use 
 `xhost local:` or `xhost +SI:localuser:root` , the later only fixes the issue for a root user
 
+`ping 192.168.13.2 -c 1 > ip.txt ` - pings one time and then stores in a file
+`cat ip.txt | grep "64 bytes"` - This will tell me that the data is being able to be received after ping- so those ip addresses maybe active or accible. 
+`cat ip.txt | grep "64 bytes" | cut -d " " -f 4 | tr -d ":"` here tr trauncates at the level of first :, d is delimiter whch in this case is the space and then we are selecting the 4th time his delimiter is used
+nmap
