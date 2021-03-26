@@ -99,4 +99,31 @@ ig gedit gives an error then use.
 
 
 ```
-.
+## Information gathering
+
+www.bugcrowd.com - finding websites to hack who would pay you
+hunter.io gives insights regarding the email password
+Heath adams searching the company for datadump from dark web of usernames
+The harvester - its built into the Kali linux - It searches information in google
+sublist3r app that can be installed: Aids with Searching the subdomains: It is similar to the harvester, but more comprehensive and it is not a built in program. It has to be harvested, for example if i type `sublist3r -d tesla.com -t 100` threadng
+Certificate fingerprinting - This also provides information regaring the domains- It can also provide information regaring the sub-sub-domains
+owasp amass - can be downloaded using a github repository
+tomnomnom httpprobe
+biltwith.com info regarding the web technoligies related to the website 
+wapalyzer very neat tool gives a nice overview about a website
+whatweb - built in Kali linux tools. www.tesla.com
+Burp suite - has capability of intercepting web traffic anoher tool foxy proxy, we can change the request parameters and then examin the response
+goole fu, site:tesla.com -www filetype:pdf
+Utilizing social media
+
+## Scanning and enumeration
+
+www.vulnhub.com. VULNHUB - you can download a vulnerable virtual machine and then load it into VMware and then practice attacking - has various levels of vulnerable machines
+kioptrix- level 1 This is a first level machine, login john and pw TwoCows2
+- Finding actively running machines and their ip addresses. `ifconfig`  then `netdiscover -r <ip address with subnet>`
+`SYN SYNACK ACK nmap sS` - stelth scanning (used to be undectable, but these days the scanning is detectable)
+- Modification: SYN SYNACK RST - this specification is a trick to reveal port, but not establishing a connection. 
+`nmap -T4 -p- -A <ipaddress>` T4 is speed -p- means scanning all ports, but if you leave this out then it means that it will scan top 1000 ports I can also specify certain ports if I like for example -p 80,443. -A tell me everything. 
+
+
+
