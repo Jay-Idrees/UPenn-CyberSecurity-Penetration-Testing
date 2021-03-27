@@ -124,6 +124,16 @@ kioptrix- level 1 This is a first level machine, login john and pw TwoCows2
 `SYN SYNACK ACK nmap sS` - stelth scanning (used to be undectable, but these days the scanning is detectable)
 - Modification: SYN SYNACK RST - this specification is a trick to reveal port, but not establishing a connection. 
 `nmap -T4 -p- -A <ipaddress>` T4 is speed -p- means scanning all ports, but if you leave this out then it means that it will scan top 1000 ports I can also specify certain ports if I like for example -p 80,443. -A tell me everything. 
+`nmap -sU -T4 -p- -A <ipaddress>`  - sU is for scanning UDP
+nmap can be used for script scaning, OS detection - other options: version detection, script scanning and trace route if I select -A - it will do all these functions, but is slow. We can also specify the ports. 
+- We want to look at what ports are open and whats running on these open ports
+
+
+**Enumerating ports**
+- Can start with investigating on ports 80, 443, 139
+- A tool nikto - It is a web vulnerability scanner - It can also backfire sometimes because if the company's website uses advance security features, it can autoblock
+- `nikto -h http://192.168.57.134`. When this scan is run, it will list out a bunch of vulnerabilities. Save the scan findings into a text file
+- dirbuster, gobuster - this has a list of directories and will scan to detect them. Some of these softwares are built in Kali linux
 
 
 
