@@ -156,3 +156,5 @@ Response codes: 200 ok, 400 error, 500 server error, 300 is redirect
 **Additional scanning tools**
 - Masscan - scan theentire internet quickly. It is built in. We can also scan specific ports: `massscan -p1-65535 <ip address>`
 
+## Exploitation
+
