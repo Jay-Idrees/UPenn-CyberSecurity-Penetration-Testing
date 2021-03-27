@@ -1,6 +1,10 @@
 # Penetration Testing /Ethical Hacking
 
 
+
+## Pentesting Tools and Softwares
+
+
  **Engagement**
 - It is the act of hacking into a company's netework after obtaining permission. It has 5 stages
 
@@ -124,6 +128,33 @@ kioptrix- level 1 This is a first level machine, login john and pw TwoCows2
 `SYN SYNACK ACK nmap sS` - stelth scanning (used to be undectable, but these days the scanning is detectable)
 - Modification: SYN SYNACK RST - this specification is a trick to reveal port, but not establishing a connection. 
 `nmap -T4 -p- -A <ipaddress>` T4 is speed -p- means scanning all ports, but if you leave this out then it means that it will scan top 1000 ports I can also specify certain ports if I like for example -p 80,443. -A tell me everything. 
+`nmap -sU -T4 -p- -A <ipaddress>`  - sU is for scanning UDP
+nmap can be used for script scaning, OS detection - other options: version detection, script scanning and trace route if I select -A - it will do all these functions, but is slow. We can also specify the ports. 
+- We want to look at what ports are open and whats running on these open ports
 
 
+**Enumerating ports**
+- Can start with investigating on ports 80, 443, 139
+- A tool nikto - It is a web vulnerability scanner - It can also backfire sometimes because if the company's website uses advance security features, it can autoblock
+- `nikto -h http://192.168.57.134`. When this scan is run, it will list out a bunch of vulnerabilities. Save the scan findings into a text file
+- dirbuster, gobuster - this has a list of directories and will scan to detect them. Some of these softwares are built in Kali linux. It can also scan the files. I can use this in conjunction with burp suite to intercept traffic. We are looking for what services are being run and what are the versions of the softwares installed. 
+
+Response codes: 200 ok, 400 error, 500 server error, 300 is redirect
+
+- SMB. SMB is a file share. Manages uploading, DL files or sharing files with co-workers. It is important to know what type of SMB version is 
+- Metasploit- run `msfconsole` in terminal- exploitation framework. Does exploits, auxillary stuff(exploitation and enumeration) - It is built into Kali linux
+    Rhosts - target address, `set RHOSTS 192.168.57.139`and then `run` This refers fo remote hosts
+    Lhosts
+- Smbclient - it attempts to connect with file sharing using anonymous access `smbclient -L \\\\<ip address>\\` Once it shows the folders that can be connected to then you can connect to them, and it will be like connecting using anomalous ip and then using terminal
+
+- connecting to ssh `ssh <ipaddress> -oKexAlgorithms. We will attempt to connect- goal is to see if there is a banner that can have some information
+
+- Once you identify the vulnerabilities then you should who it can be exploited by searching in google. Basically what you will find is the code
+
+- Another terminal command `searchsploit` What this does is search for the scripts and then downloads. It should not be very specific. This is an additional tool in addition to google
+
+**Additional scanning tools**
+- Masscan - scan theentire internet quickly. It is built in. We can also scan specific ports: `massscan -p1-65535 <ip address>`
+
+## Exploitation
 
