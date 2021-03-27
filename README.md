@@ -133,7 +133,9 @@ nmap can be used for script scaning, OS detection - other options: version detec
 - Can start with investigating on ports 80, 443, 139
 - A tool nikto - It is a web vulnerability scanner - It can also backfire sometimes because if the company's website uses advance security features, it can autoblock
 - `nikto -h http://192.168.57.134`. When this scan is run, it will list out a bunch of vulnerabilities. Save the scan findings into a text file
-- dirbuster, gobuster - this has a list of directories and will scan to detect them. Some of these softwares are built in Kali linux
+- dirbuster, gobuster - this has a list of directories and will scan to detect them. Some of these softwares are built in Kali linux. It can also scan the files. I can use this in conjunction with burp suite to intercept traffic
+
+Response codes: 200 ok, 400 error, 500 server error
 
 
 
