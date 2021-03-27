@@ -1,6 +1,10 @@
 # Penetration Testing /Ethical Hacking
 
 
+
+## Pentesting Tools and Softwares
+
+
  **Engagement**
 - It is the act of hacking into a company's netework after obtaining permission. It has 5 stages
 
@@ -143,5 +147,12 @@ Response codes: 200 ok, 400 error, 500 server error, 300 is redirect
     Lhosts
 - Smbclient - it attempts to connect with file sharing using anonymous access `smbclient -L \\\\<ip address>\\` Once it shows the folders that can be connected to then you can connect to them, and it will be like connecting using anomalous ip and then using terminal
 
+- connecting to ssh `ssh <ipaddress> -oKexAlgorithms. We will attempt to connect- goal is to see if there is a banner that can have some information
 
+- Once you identify the vulnerabilities then you should who it can be exploited by searching in google. Basically what you will find is the code
+
+- Another terminal command `searchsploit` What this does is search for the scripts and then downloads. It should not be very specific. This is an additional tool in addition to google
+
+**Additional scanning tools**
+- Masscan - scan theentire internet quickly. It is built in. We can also scan specific ports: `massscan -p1-65535 <ip address>`
 
