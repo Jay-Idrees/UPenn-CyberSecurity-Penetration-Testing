@@ -133,9 +133,15 @@ nmap can be used for script scaning, OS detection - other options: version detec
 - Can start with investigating on ports 80, 443, 139
 - A tool nikto - It is a web vulnerability scanner - It can also backfire sometimes because if the company's website uses advance security features, it can autoblock
 - `nikto -h http://192.168.57.134`. When this scan is run, it will list out a bunch of vulnerabilities. Save the scan findings into a text file
-- dirbuster, gobuster - this has a list of directories and will scan to detect them. Some of these softwares are built in Kali linux. It can also scan the files. I can use this in conjunction with burp suite to intercept traffic
+- dirbuster, gobuster - this has a list of directories and will scan to detect them. Some of these softwares are built in Kali linux. It can also scan the files. I can use this in conjunction with burp suite to intercept traffic. We are looking for what services are being run and what are the versions of the softwares installed. 
 
-Response codes: 200 ok, 400 error, 500 server error
+Response codes: 200 ok, 400 error, 500 server error, 300 is redirect
+
+- SMB. SMB is a file share. Manages uploading, DL files or sharing files with co-workers. It is important to know what type of SMB version is 
+- Metasploit- run `msfconsole` in terminal- exploitation framework. Does exploits, auxillary stuff(exploitation and enumeration) - It is built into Kali linux
+    Rhosts - target address, `set RHOSTS 192.168.57.139`and then `run` This refers fo remote hosts
+    Lhosts
+- Smbclient - it attempts to connect with file sharing using anonymous access `smbclient -L \\\\<ip address>\\` Once it shows the folders that can be connected to then you can connect to them, and it will be like connecting using anomalous ip and then using terminal
 
 
 
