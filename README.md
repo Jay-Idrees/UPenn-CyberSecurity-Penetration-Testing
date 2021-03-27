@@ -182,3 +182,5 @@ Response codes: 200 ok, 400 error, 500 server error, 300 is redirect
 
 - we can use metasploit or also send exploits manually. One option is openfuck https://github.com/heltonWernik/OpenLuck
 
+**Brute force attack**
+- using metasploit : `set pass_file /usr/share/wordlists/metasploit/unix_passwords.txt` and then `set rhosts <ip address>` - this is for setting up rhost we can also `set threads 10` `set verbose true` 
