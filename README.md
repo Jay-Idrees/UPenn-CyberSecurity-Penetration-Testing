@@ -67,9 +67,9 @@ shortcuts, double tab, ~/
 to change password I can type passwd in the terminal
 adding a user to sudoers
 
-    `ifconfig`  -linux
-    `iwconfig`  -wireless
-    `ipconfig`  -windows
+    `ifconfig` linux
+    `iwconfig`  wireless
+    `ipconfig`  windows
 
 - Network commands
    ` ping`
@@ -77,20 +77,20 @@ adding a user to sudoers
 `netstat -ano` list all the active connections running on the machine- Is the machine talking to someone else and which ports
 - route tells were the traffic exit
 ifconfig alternative is ip:
-- ip a
-- ip n
-- ipr
+- `ip a`
+- `ip n`
+- `ipr`
 
 - Updating softwares
--apt update && apt updrage
--apt install python3-pip
+-   apt update && apt upgrade
+-  ` apt install python3-pip`
 
 - install pimp upgrate from cloning a github repository in the 
 - cd /opt
 - git clone https://github.com/Dewalt-arch/pimpmykali.git
 - ./pimpmykali.sh
 
-ig gedit gives an error then use.
+if gedit gives an error then use.
 `xhost local:` or `xhost +SI:localuser:root` , the later only fixes the issue for a root user
 
 `ping 192.168.13.2 -c 1 > ip.txt ` - pings one time and then stores in a file
@@ -106,19 +106,19 @@ ig gedit gives an error then use.
 ```
 ## Information gathering
 
-www.bugcrowd.com - finding websites to hack who would pay you
-hunter.io gives insights regarding the email password
+`www.bugcrowd.com` - finding websites to hack who would pay you
+`hunter.io` gives insights regarding the email password
 Heath adams searching the company for datadump from dark web of usernames
-The harvester - its built into the Kali linux - It searches information in google
-sublist3r app that can be installed: Aids with Searching the subdomains: It is similar to the harvester, but more comprehensive and it is not a built in program. It has to be harvested, for example if i type `sublist3r -d tesla.com -t 100` threadng
+`The harvester` - its built into the Kali linux - It searches information in google
+`sublist3r` app that can be installed: Aids with Searching the subdomains: It is similar to the harvester, but more comprehensive and it is not a built in program. It has to be harvested, for example if i type `sublist3r -d tesla.com -t 100` threadng
 Certificate fingerprinting - This also provides information regaring the domains- It can also provide information regaring the sub-sub-domains
-owasp amass - can be downloaded using a github repository
+`owasp amass` - can be downloaded using a github repository
 tomnomnom httpprobe
-biltwith.com info regarding the web technoligies related to the website 
-wapalyzer very neat tool gives a nice overview about a website
-whatweb - built in Kali linux tools. www.tesla.com
-Burp suite - has capability of intercepting web traffic anoher tool foxy proxy, we can change the request parameters and then examin the response
-goole fu, site:tesla.com -www filetype:pdf
+`biltwith.com` info regarding the web technoligies related to the website 
+`wapalyzer` very neat tool gives a nice overview about a website
+`whatweb` - built in Kali linux tools. www.tesla.com
+`Burp suite` - has capability of intercepting web traffic anoher tool foxy proxy, we can change the request parameters and then examin the response
+goole fu, `site:tesla.com -www filetype:pdf`
 Utilizing social media
 
 ## Scanning and enumeration
@@ -138,9 +138,9 @@ nmap can be used for script scaning, OS detection - other options: version detec
 - Can start with investigating on ports 80, 443, 139
 - A tool nikto - It is a web vulnerability scanner - It can also backfire sometimes because if the company's website uses advance security features, it can autoblock
 - `nikto -h http://192.168.57.134`. When this scan is run, it will list out a bunch of vulnerabilities. Save the scan findings into a text file
-- dirbuster, gobuster - this has a list of directories and will scan to detect them. Some of these softwares are built in Kali linux. It can also scan the files. I can use this in conjunction with burp suite to intercept traffic. We are looking for what services are being run and what are the versions of the softwares installed. 
+- `dirbuster, gobuster` - this has a list of directories and will scan to detect them. Some of these softwares are built in Kali linux. It can also scan the files. I can use this in conjunction with` burp suite` to intercept traffic. We are looking for what services are being run and what are the versions of the softwares installed. 
 
-Response codes: 200 ok, 400 error, 500 server error, 300 is redirect
+Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 
 - SMB. SMB is a file share. Manages uploading, DL files or sharing files with co-workers. It is important to know what type of SMB version is 
 - Metasploit- run `msfconsole` in terminal- exploitation framework. Does exploits, auxillary stuff(exploitation and enumeration) - It is built into Kali linux
