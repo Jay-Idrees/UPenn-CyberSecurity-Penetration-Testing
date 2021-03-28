@@ -8,7 +8,7 @@
  **Engagement**
 - It is the act of hacking into a company's netework after obtaining permission. It has 5 stages
 
-1. Planning and Reconnaissance
+1. Planning and Reconnaissance /indformation gathering
 2. Scanning
 3. Exploitation
 4. Post Exploitation
@@ -36,12 +36,13 @@ It can be active (directly engaging with the target system) or passive (Gaining 
 - Web Application
 - Wireless - Evaluation of the wireless network
 - Physical (Go on site and try to break into the building)/Social/Phishing
-- SOC("Purple Teaming") Attacker is read, defender- Its red team vs blue team- called purple teaming assessments- The cant an mouse game
+- SOC("Purple Teaming") Attacker is read, defender- Its red team vs blue team- called purple teaming assessments- The cat an mouse game
 - Report writing
 
 ## Useful softwares
  - KeepNote to take notes
  - Green shot or flame shot
+ - cherry tree
 
  ## Networking background
 
@@ -59,37 +60,37 @@ It can be active (directly engaging with the target system) or passive (Gaining 
 - configure virtual machine- VM ware, assign 4GB ram and then select NAT as the network adapter
 
 shortcuts, double tab, ~/
-ls -la will reveal hidden folders
-ls -la /tmp/  for checking the permissions of the file inside the temp folder
-`chmod 777 filename.txt` or chmod +x filename.txt giving full read wrtie access
-- `cat /etc/passwd
+    `ls -la` will reveal hidden folders
+    `ls -la` /tmp/  for checking the permissions of the file inside the temp folder
+    `chmod 777 filename.txt` or chmod +x filename.txt giving full read wrtie access
+- `cat /etc/passwd`
 to change password I can type passwd in the terminal
 adding a user to sudoers
 
-ifconfig -linux
-iwconfig-wireless
-ipconfig-windows
+    `ifconfig` linux
+    `iwconfig`  wireless
+    `ipconfig`  windows
 
 - Network commands
-ping
-arp -a associating the ip addresses with mac addresses
-netstat -ano list all the active connections running on the machine- Is the machine talking to someone else and which ports
+   ` ping`
+   ` arp -a` associating the ip addresses with mac addresses
+`netstat -ano` list all the active connections running on the machine- Is the machine talking to someone else and which ports
 - route tells were the traffic exit
 ifconfig alternative is ip:
-- ip a
-- ip n
-- ipr
+- `ip a`
+- `ip n`
+- `ipr`
 
 - Updating softwares
--apt update && apt updrage
--apt install python3-pip
+-   apt update && apt upgrade
+-  ` apt install python3-pip`
 
 - install pimp upgrate from cloning a github repository in the 
 - cd /opt
 - git clone https://github.com/Dewalt-arch/pimpmykali.git
 - ./pimpmykali.sh
 
-ig gedit gives an error then use.
+if gedit gives an error then use.
 `xhost local:` or `xhost +SI:localuser:root` , the later only fixes the issue for a root user
 
 `ping 192.168.13.2 -c 1 > ip.txt ` - pings one time and then stores in a file
@@ -105,19 +106,19 @@ ig gedit gives an error then use.
 ```
 ## Information gathering
 
-www.bugcrowd.com - finding websites to hack who would pay you
-hunter.io gives insights regarding the email password
+`www.bugcrowd.com` - finding websites to hack who would pay you
+`hunter.io` gives insights regarding the email password
 Heath adams searching the company for datadump from dark web of usernames
-The harvester - its built into the Kali linux - It searches information in google
-sublist3r app that can be installed: Aids with Searching the subdomains: It is similar to the harvester, but more comprehensive and it is not a built in program. It has to be harvested, for example if i type `sublist3r -d tesla.com -t 100` threadng
+`The harvester` - its built into the Kali linux - It searches information in google
+`sublist3r` app that can be installed: Aids with Searching the subdomains: It is similar to the harvester, but more comprehensive and it is not a built in program. It has to be harvested, for example if i type `sublist3r -d tesla.com -t 100` threadng
 Certificate fingerprinting - This also provides information regaring the domains- It can also provide information regaring the sub-sub-domains
-owasp amass - can be downloaded using a github repository
+`owasp amass` - can be downloaded using a github repository
 tomnomnom httpprobe
-biltwith.com info regarding the web technoligies related to the website 
-wapalyzer very neat tool gives a nice overview about a website
-whatweb - built in Kali linux tools. www.tesla.com
-Burp suite - has capability of intercepting web traffic anoher tool foxy proxy, we can change the request parameters and then examin the response
-goole fu, site:tesla.com -www filetype:pdf
+`biltwith.com` info regarding the web technoligies related to the website 
+`wapalyzer` very neat tool gives a nice overview about a website
+`whatweb` - built in Kali linux tools. www.tesla.com
+`Burp suite` - has capability of intercepting web traffic anoher tool foxy proxy, we can change the request parameters and then examin the response
+goole fu, `site:tesla.com -www filetype:pdf`
 Utilizing social media
 
 ## Scanning and enumeration
@@ -125,9 +126,9 @@ Utilizing social media
 www.vulnhub.com. VULNHUB - you can download a vulnerable virtual machine and then load it into VMware and then practice attacking - has various levels of vulnerable machines
 kioptrix- level 1 This is a first level machine, login john and pw TwoCows2
 - Finding actively running machines and their ip addresses. `ifconfig`  then `netdiscover -r <ip address with subnet>`
-`SYN SYNACK ACK nmap sS` - stelth scanning (used to be undectable, but these days the scanning is detectable)
+`SYN SYNACK ACK nmap sS` - stelth scanning (used to be undectable, but these days the scanning is detectable) the stealthiness is the trick of faking a connection, but then not establishing one. 
 - Modification: SYN SYNACK RST - this specification is a trick to reveal port, but not establishing a connection. 
-`nmap -T4 -p- -A <ipaddress>` T4 is speed -p- means scanning all ports, but if you leave this out then it means that it will scan top 1000 ports I can also specify certain ports if I like for example -p 80,443. -A tell me everything. 
+`nmap -T4 -p- -A <ipaddress>` T4 is speed (max 5- might miss some things) -p- means scanning all ports, but if you leave this out then it means that it will scan top 1000 ports I can also specify certain ports if I like for example -p 80,443. -A tell me everything (OS detection, version detection, script scanning and trace route). Not that even if its not typed in the command `-sS`  (stelth scan for TCP) is automatically included
 `nmap -sU -T4 -p- -A <ipaddress>`  - sU is for scanning UDP
 nmap can be used for script scaning, OS detection - other options: version detection, script scanning and trace route if I select -A - it will do all these functions, but is slow. We can also specify the ports. 
 - We want to look at what ports are open and whats running on these open ports
@@ -137,9 +138,9 @@ nmap can be used for script scaning, OS detection - other options: version detec
 - Can start with investigating on ports 80, 443, 139
 - A tool nikto - It is a web vulnerability scanner - It can also backfire sometimes because if the company's website uses advance security features, it can autoblock
 - `nikto -h http://192.168.57.134`. When this scan is run, it will list out a bunch of vulnerabilities. Save the scan findings into a text file
-- dirbuster, gobuster - this has a list of directories and will scan to detect them. Some of these softwares are built in Kali linux. It can also scan the files. I can use this in conjunction with burp suite to intercept traffic. We are looking for what services are being run and what are the versions of the softwares installed. 
+- `dirbuster, gobuster` - this has a list of directories and will scan to detect them. Some of these softwares are built in Kali linux. It can also scan the files. I can use this in conjunction with` burp suite` to intercept traffic. We are looking for what services are being run and what are the versions of the softwares installed. 
 
-Response codes: 200 ok, 400 error, 500 server error, 300 is redirect
+Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 
 - SMB. SMB is a file share. Manages uploading, DL files or sharing files with co-workers. It is important to know what type of SMB version is 
 - Metasploit- run `msfconsole` in terminal- exploitation framework. Does exploits, auxillary stuff(exploitation and enumeration) - It is built into Kali linux
@@ -184,3 +185,17 @@ Response codes: 200 ok, 400 error, 500 server error, 300 is redirect
 
 **Brute force attack**
 - using metasploit : `set pass_file /usr/share/wordlists/metasploit/unix_passwords.txt` and then `set rhosts <ip address>` - this is for setting up rhost we can also `set threads 10` `set verbose true` 
+- One purpose of a brute force attack is to determine whether the blue team at 
+
+**Credential stuffing**
+
+- foxy proxy - install to firefox
+
+
+## Hack the box
+
+- **Machine Legacy**
+
+- `nmap -T4 -p- -A <ipaddress>`
+    Gives back open ports - basically file sharing, OS version, hostname, Mac address,  smb_version?
+- `search smb_version`
