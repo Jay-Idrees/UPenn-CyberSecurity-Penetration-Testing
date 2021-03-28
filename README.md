@@ -142,13 +142,13 @@ nmap can be used for script scaning, OS detection - other options: version detec
 
 Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 
-- SMB. SMB is a file share. Manages uploading, DL files or sharing files with co-workers. It is important to know what type of SMB version is 
-- Metasploit- run `msfconsole` in terminal- exploitation framework. Does exploits, auxillary stuff(exploitation and enumeration) - It is built into Kali linux
-    Rhosts - target address, `set RHOSTS 192.168.57.139`and then `run` This refers fo remote hosts
+- SMB. SMB is a file share. Manages uploading, DL files or sharing files with co-workers. It is important to know what type of SMB version is being used
+- Metasploit- run `msfconsole` in terminal- exploitation framework. Does exploits, **auxillary stuff(exploitation and enumeration)** - It is built into Kali linux
+    Rhosts - target address, `set RHOSTS 192.168.57.139`and then `run` This refers fo remote hosts, hosts are the individual machines in the network
     Lhosts
 - Smbclient - it attempts to connect with file sharing using anonymous access `smbclient -L \\\\<ip address>\\` Once it shows the folders that can be connected to then you can connect to them, and it will be like connecting using anomalous ip and then using terminal
 
-- connecting to ssh `ssh <ipaddress> -oKexAlgorithms. We will attempt to connect- goal is to see if there is a banner that can have some information
+- connecting to ssh `ssh <ipaddress>` -oKexAlgorithms. We will attempt to connect- goal is to see if there is a banner that can have some information
 
 - Once you identify the vulnerabilities then you should who it can be exploited by searching in google. Basically what you will find is the code
 
