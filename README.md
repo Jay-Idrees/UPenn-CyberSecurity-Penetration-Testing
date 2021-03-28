@@ -8,7 +8,7 @@
  **Engagement**
 - It is the act of hacking into a company's netework after obtaining permission. It has 5 stages
 
-1. Planning and Reconnaissance
+1. Planning and Reconnaissance /indformation gathering
 2. Scanning
 3. Exploitation
 4. Post Exploitation
@@ -36,12 +36,13 @@ It can be active (directly engaging with the target system) or passive (Gaining 
 - Web Application
 - Wireless - Evaluation of the wireless network
 - Physical (Go on site and try to break into the building)/Social/Phishing
-- SOC("Purple Teaming") Attacker is read, defender- Its red team vs blue team- called purple teaming assessments- The cant an mouse game
+- SOC("Purple Teaming") Attacker is read, defender- Its red team vs blue team- called purple teaming assessments- The cat an mouse game
 - Report writing
 
 ## Useful softwares
  - KeepNote to take notes
  - Green shot or flame shot
+ - cherry tree
 
  ## Networking background
 
@@ -59,21 +60,21 @@ It can be active (directly engaging with the target system) or passive (Gaining 
 - configure virtual machine- VM ware, assign 4GB ram and then select NAT as the network adapter
 
 shortcuts, double tab, ~/
-ls -la will reveal hidden folders
-ls -la /tmp/  for checking the permissions of the file inside the temp folder
-`chmod 777 filename.txt` or chmod +x filename.txt giving full read wrtie access
-- `cat /etc/passwd
+    `ls -la` will reveal hidden folders
+    `ls -la` /tmp/  for checking the permissions of the file inside the temp folder
+    `chmod 777 filename.txt` or chmod +x filename.txt giving full read wrtie access
+- `cat /etc/passwd`
 to change password I can type passwd in the terminal
 adding a user to sudoers
 
-ifconfig -linux
-iwconfig-wireless
-ipconfig-windows
+    `ifconfig`  -linux
+    `iwconfig`  -wireless
+    `ipconfig`  -windows
 
 - Network commands
-ping
-arp -a associating the ip addresses with mac addresses
-netstat -ano list all the active connections running on the machine- Is the machine talking to someone else and which ports
+   ` ping`
+   ` arp -a` associating the ip addresses with mac addresses
+`netstat -ano` list all the active connections running on the machine- Is the machine talking to someone else and which ports
 - route tells were the traffic exit
 ifconfig alternative is ip:
 - ip a
@@ -125,9 +126,9 @@ Utilizing social media
 www.vulnhub.com. VULNHUB - you can download a vulnerable virtual machine and then load it into VMware and then practice attacking - has various levels of vulnerable machines
 kioptrix- level 1 This is a first level machine, login john and pw TwoCows2
 - Finding actively running machines and their ip addresses. `ifconfig`  then `netdiscover -r <ip address with subnet>`
-`SYN SYNACK ACK nmap sS` - stelth scanning (used to be undectable, but these days the scanning is detectable)
+`SYN SYNACK ACK nmap sS` - stelth scanning (used to be undectable, but these days the scanning is detectable) the stealthiness is the trick of faking a connection, but then not establishing one. 
 - Modification: SYN SYNACK RST - this specification is a trick to reveal port, but not establishing a connection. 
-`nmap -T4 -p- -A <ipaddress>` T4 is speed -p- means scanning all ports, but if you leave this out then it means that it will scan top 1000 ports I can also specify certain ports if I like for example -p 80,443. -A tell me everything. 
+`nmap -T4 -p- -A <ipaddress>` T4 is speed (max 5- might miss some things) -p- means scanning all ports, but if you leave this out then it means that it will scan top 1000 ports I can also specify certain ports if I like for example -p 80,443. -A tell me everything (OS detection, version detection, script scanning and trace route). Not that even if its not typed in the command `-sS`  (stelth scan for TCP) is automatically included
 `nmap -sU -T4 -p- -A <ipaddress>`  - sU is for scanning UDP
 nmap can be used for script scaning, OS detection - other options: version detection, script scanning and trace route if I select -A - it will do all these functions, but is slow. We can also specify the ports. 
 - We want to look at what ports are open and whats running on these open ports
@@ -184,3 +185,17 @@ Response codes: 200 ok, 400 error, 500 server error, 300 is redirect
 
 **Brute force attack**
 - using metasploit : `set pass_file /usr/share/wordlists/metasploit/unix_passwords.txt` and then `set rhosts <ip address>` - this is for setting up rhost we can also `set threads 10` `set verbose true` 
+- One purpose of a brute force attack is to determine whether the blue team at 
+
+**Credential stuffing**
+
+- foxy proxy - install to firefox
+
+
+## Hack the box
+
+- **Machine Legacy**
+
+- `nmap -T4 -p- -A <ipaddress>`
+    Gives back open ports - basically file sharing, OS version, hostname, Mac address,  smb_version?
+- `search smb_version`
