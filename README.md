@@ -8,7 +8,7 @@
  **Engagement**
 - It is the act of hacking into a company's netework after obtaining permission. It has 5 stages
 
-1. Planning and Reconnaissance /indformation gathering
+1. Planning and Reconnaissance /information gathering
 2. Scanning
 3. Exploitation
 4. Post Exploitation
