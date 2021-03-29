@@ -145,6 +145,7 @@ nmap can be used for script scaning, OS detection - other options: version detec
 - versions for exploitation such as SAMBA - SMB is a network protocol that lets remote computers to connect with servers
 - If SSH is open then if you attack it then the company should be able to detect it, attacking SSH makes you noisy. If the blue team of the company is unable to detect then their defences are likely very weak
 - OS guesses, may not be accurate initially- you can confirm this after you are able to gain access
+- There can be some default webpages for sub-domins- these indicate an opening for a hidden directory maybe for a sub-domain that could be exploited with `drbuster`, `gobuster` etc
 
 **After inspecting the scan findings**
 
@@ -185,6 +186,9 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 - `set rhosts <ip address of victim>`
 - `show targets`
 - `run`
+
+- Once you are able to connect. The next step is sending the malware script 
+
 
 - `set payload windows/x64/meterpreter` see if the options for the staged show up. The goal is to just try an alternative with staged approach if the non-staged approach does not work
 - `set payload windows/x64/meterpreter/reverse_tcp` - Note that this is at the exploit level and before you have established the connection
