@@ -142,9 +142,13 @@ nmap can be used for script scaning, OS detection - other options: version detec
 - **Things to look for when you have run the scan**
 - Look for open ports
 - anonymous FTP allowed?
-- versions for exploitation such as SAMBA
+- versions for exploitation such as SAMBA - SMB is a network protocol that lets remote computers to connect with servers
 - If SSH is open then if you attack it then the company should be able to detect it, attacking SSH makes you noisy. If the blue team of the company is unable to detect then their defences are likely very weak
 - OS guesses, may not be accurate initially- you can confirm this after you are able to gain access
+- There can be some default webpages for sub-domins- these indicate an opening for a hidden directory maybe for a sub-domain that could be exploited with `drbuster`, `gobuster` etc
+
+**Drbuster**
+- `http://<ipaddress>:80`, then you supply the wordlist. You are trying to brute force the directories. Then you specify extensions like (asm, asmx, asp, aspx, txt, zip, rar, php-if apache webserver)
 
 **After inspecting the scan findings**
 
@@ -158,8 +162,8 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 
 - SMB. SMB is a file share. Manages uploading, DL files or sharing files with co-workers. It is important to know what type of SMB version is being used
 - **Metasploit**- run `msfconsole` in terminal- exploitation framework. Does exploits, **auxillary stuff(exploitation and enumeration)** - It is built into Kali linux
-    Rhosts - target address, `set RHOSTS 192.168.57.139`and then `run` This refers fo remote hosts, hosts are the individual machines in the network
-    Lhosts
+   ` Rhosts `- target address, `set RHOSTS 192.168.57.139`and then `run` This refers fo remote hosts, hosts are the individual machines in the network
+    `Lhosts` - this is the listening host
 - **Smbclient** - it attempts to connect with file sharing using anonymous access `smbclient -L \\\\<ip address>\\` Once it shows the folders that can be connected to then you can connect to them, and it will be like connecting using anomalous ip and then using terminal
 
 - connecting to ssh `ssh <ipaddress>` -oKexAlgorithms. We will attempt to connect- goal is to see if there is a banner that can have some information
@@ -186,9 +190,22 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 - `show targets`
 - `run`
 
-- Then once you have gained access, you can type `whoami` to see if you got root access, then you can explore further with:
+- Once you are able to connect. The next step is sending the malware script 
+
+
+- `set payload windows/x64/meterpreter` see if the options for the staged show up. The goal is to just try an alternative with staged approach if the non-staged approach does not work
+- `set payload windows/x64/meterpreter/reverse_tcp` - Note that this is at the exploit level and before you have established the connection
+
+- eternal blue was one of the exploites for the microsoft SMBA version that was exploited by **wannacry** It was developed by NSA. The exploit python code can be found at github (MS17-010-eternal blue)
+- 
+
+
+- Then once you have gained access, you can type `whoami` or `getuid` to see if you got root access "NT authority/system" is usually root access, then you can explore further with:
     `ls`, `pwd`, `updatedb`, ` locate root.txt`, `locate user.txt`, `cat etc/passwd`, `cat etc/shadow`, `gedit passwd`, `gedit shadow` to copy the contents of your file into text files so you can **unshadow** them using `unshadow passwd shadow` these are the names of the files as you saved using gedit
-    What this does is replaces the 'x' in the passwd file with the hash and then you can crack the hashes using **hashcat**
+- What this does is replaces the 'x' in the passwd file with the hash and then you can crack the hashes using **hashcat**
+- You can also use `hashdump` after gaining access. What this does is, it will take all the hashes in the accounts on the machine that was exploited with metasploit and then dumps itinto the terminal for you to see and use
+- `ftp <ipaddress>` I can attempt connecting to the file server and obtain access to files
+- Other commands `shell`, `route print`, `arp -a`, `netstat -ano` these provide additional infromation regarding active connections and ports. `load incognito`
 
 - There are a bunch of commands that we can run with metasploit like after typing gaining access with metasploit I can type 'help" and under the networking section there will be commands that you can run. 
 
