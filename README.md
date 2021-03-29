@@ -134,10 +134,12 @@ kioptrix- level 1 This is a first level machine, login john and pw TwoCows2
 nmap can be used for script scaning, OS detection - other options: version detection, script scanning and trace route if I select -A - it will do all these functions, but is slow. We can also specify the ports. 
 - We want to look at what ports are open and whats running on these open ports
 
+- **Things to look for when you have run the scan**
 - Look for open ports
 - anonymous FTP allowed?
-- versions for exploitation
+- versions for exploitation such as SAMBA
 - If SSH is open then if you attack it then the company should be able to detect it, attacking SSH makes you noisy. If the blue team of the company is unable to detect then their defences are likely very weak
+- OS guesses, may not be accurate initially- you can confirm this after you are able to gain access
 
 **Other methods of scanning**
 - One method is shown above
