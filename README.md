@@ -198,6 +198,7 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 - What this does is replaces the 'x' in the passwd file with the hash and then you can crack the hashes using **hashcat**
 - You can also use `hashdump` after gaining access. What this does is, it will take all the hashes in the accounts on the machine that was exploited with metasploit and then dumps itinto the terminal for you to see and use
 - `ftp <ipaddress>` I can attempt connecting to the file server and obtain access to files
+- Other commands `shell`, `route print`, `arp -a`, `netstat -ano` these provide additional infromation regarding active connections and ports
 
 - There are a bunch of commands that we can run with metasploit like after typing gaining access with metasploit I can type 'help" and under the networking section there will be commands that you can run. 
 
