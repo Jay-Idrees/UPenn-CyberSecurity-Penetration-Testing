@@ -177,6 +177,16 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 - `msfconsole`
 - `getuid` if yout type this after establishing a session then you will be able to se whether what level of access we were able to obtain. if its **NT AUthorization** then its the highest level
 - `sysinfo` This will tell us about the system that we have hacked into
+- `systemctl postgresql enable` This will have postgresql running which metasploit needs to run, Even if I do not do it it is fine, as the program will load it anyway, but will be faster otherwise if I do. 
+
+- Typically after running the `nmap` scan you will have info regarding the version of filesystem such as samba- then you google for that version to find code for exploitation. 
+- Then you paste that code into metasploit command terminal
+- you can then type `options`
+- `set rhosts <ip address of victim>`
+- `show targets`
+- `run`
+
+- Then once you have gained access, you can type `whoami` to see if you got root access, then you can explore further with `ls`, `pwd`, `updatedb`, ` locate root.txt`, `locate user.txt`, `cat etc/passwd`, `cat etc/shadow`
 
 - There are a bunch of commands that we can run with metasploit like after typing gaining access with metasploit I can type 'help" and under the networking section there will be commands that you can run. 
 
