@@ -196,6 +196,7 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 - Then once you have gained access, you can type `whoami` or `getuid` to see if you got root access "NT authority/system" is usually root access, then you can explore further with:
     `ls`, `pwd`, `updatedb`, ` locate root.txt`, `locate user.txt`, `cat etc/passwd`, `cat etc/shadow`, `gedit passwd`, `gedit shadow` to copy the contents of your file into text files so you can **unshadow** them using `unshadow passwd shadow` these are the names of the files as you saved using gedit
 - What this does is replaces the 'x' in the passwd file with the hash and then you can crack the hashes using **hashcat**
+- You can also use `hashdump` after gaining access. What this does is, it will take all the hashes in the accounts on the machine that was exploited with metasploit and then dumps itinto the terminal for you to see and use
 - `ftp <ipaddress>` I can attempt connecting to the file server and obtain access to files
 
 - There are a bunch of commands that we can run with metasploit like after typing gaining access with metasploit I can type 'help" and under the networking section there will be commands that you can run. 
