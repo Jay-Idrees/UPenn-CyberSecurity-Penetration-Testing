@@ -137,9 +137,11 @@ nmap can be used for script scaning, OS detection - other options: version detec
 - **Things to look for when you have run the scan**
 - Look for open ports
 - anonymous FTP allowed?
-- versions for exploitation such as SAMBA
+- versions for exploitation such as SMBA
 - If SSH is open then if you attack it then the company should be able to detect it, attacking SSH makes you noisy. If the blue team of the company is unable to detect then their defences are likely very weak
 - OS guesses, may not be accurate initially- you can confirm this after you are able to gain access
+
+**After inspecting the scan findings**
 
 **Other methods of scanning**
 - One method is shown above
