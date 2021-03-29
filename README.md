@@ -142,7 +142,7 @@ nmap can be used for script scaning, OS detection - other options: version detec
 - **Things to look for when you have run the scan**
 - Look for open ports
 - anonymous FTP allowed?
-- versions for exploitation such as SAMBA
+- versions for exploitation such as SAMBA - SMB is a network protocol that lets remote computers to connect with servers
 - If SSH is open then if you attack it then the company should be able to detect it, attacking SSH makes you noisy. If the blue team of the company is unable to detect then their defences are likely very weak
 - OS guesses, may not be accurate initially- you can confirm this after you are able to gain access
 
@@ -189,7 +189,7 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 - Then once you have gained access, you can type `whoami` to see if you got root access, then you can explore further with:
     `ls`, `pwd`, `updatedb`, ` locate root.txt`, `locate user.txt`, `cat etc/passwd`, `cat etc/shadow`, `gedit passwd`, `gedit shadow` to copy the contents of your file into text files so you can **unshadow** them using `unshadow passwd shadow` these are the names of the files as you saved using gedit
 - What this does is replaces the 'x' in the passwd file with the hash and then you can crack the hashes using **hashcat**
-- 
+- `ftp <ipaddress>` I can attempt connecting to the file server and obtain access to files
 
 - There are a bunch of commands that we can run with metasploit like after typing gaining access with metasploit I can type 'help" and under the networking section there will be commands that you can run. 
 
