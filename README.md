@@ -158,8 +158,8 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 
 - SMB. SMB is a file share. Manages uploading, DL files or sharing files with co-workers. It is important to know what type of SMB version is being used
 - **Metasploit**- run `msfconsole` in terminal- exploitation framework. Does exploits, **auxillary stuff(exploitation and enumeration)** - It is built into Kali linux
-    Rhosts - target address, `set RHOSTS 192.168.57.139`and then `run` This refers fo remote hosts, hosts are the individual machines in the network
-    Lhosts
+   ` Rhosts `- target address, `set RHOSTS 192.168.57.139`and then `run` This refers fo remote hosts, hosts are the individual machines in the network
+    `Lhosts` - this is the listening host
 - **Smbclient** - it attempts to connect with file sharing using anonymous access `smbclient -L \\\\<ip address>\\` Once it shows the folders that can be connected to then you can connect to them, and it will be like connecting using anomalous ip and then using terminal
 
 - connecting to ssh `ssh <ipaddress>` -oKexAlgorithms. We will attempt to connect- goal is to see if there is a banner that can have some information
@@ -198,7 +198,7 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 - What this does is replaces the 'x' in the passwd file with the hash and then you can crack the hashes using **hashcat**
 - You can also use `hashdump` after gaining access. What this does is, it will take all the hashes in the accounts on the machine that was exploited with metasploit and then dumps itinto the terminal for you to see and use
 - `ftp <ipaddress>` I can attempt connecting to the file server and obtain access to files
-- Other commands `shell`, `route print`, `arp -a`, `netstat -ano` these provide additional infromation regarding active connections and ports
+- Other commands `shell`, `route print`, `arp -a`, `netstat -ano` these provide additional infromation regarding active connections and ports. `load incognito`
 
 - There are a bunch of commands that we can run with metasploit like after typing gaining access with metasploit I can type 'help" and under the networking section there will be commands that you can run. 
 
