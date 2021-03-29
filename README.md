@@ -134,22 +134,22 @@ kioptrix- level 1 This is a first level machine, login john and pw TwoCows2
 nmap can be used for script scaning, OS detection - other options: version detection, script scanning and trace route if I select -A - it will do all these functions, but is slow. We can also specify the ports. 
 - We want to look at what ports are open and whats running on these open ports
 
+**Other methods of scanning**
+- One method is shown above
+- massscan
+- Masscan - scan theentire internet quickly. It is built in. We can also scan specific ports: `massscan -p1-65535 <ip address>`
+
 - **Things to look for when you have run the scan**
 - Look for open ports
 - anonymous FTP allowed?
-- versions for exploitation such as SMBA
+- versions for exploitation such as SAMBA
 - If SSH is open then if you attack it then the company should be able to detect it, attacking SSH makes you noisy. If the blue team of the company is unable to detect then their defences are likely very weak
 - OS guesses, may not be accurate initially- you can confirm this after you are able to gain access
 
 **After inspecting the scan findings**
 
-**Other methods of scanning**
-- One method is shown above
-- massscan
-
-
-**Enumerating ports**
-- Can start with investigating on ports 80, 443, 139
+- **Enumerating ports**
+- Can start with investigating on ports 80, 443, 139 or the ones that are open
 - A tool nikto - It is a web vulnerability scanner - It can also backfire sometimes because if the company's website uses advance security features, it can autoblock
 - `nikto -h http://192.168.57.134`. When this scan is run, it will list out a bunch of vulnerabilities. Save the scan findings into a text file
 - `dirbuster, gobuster` - this has a list of directories and will scan to detect them. Some of these softwares are built in Kali linux. It can also scan the files. I can use this in conjunction with` burp suite` to intercept traffic. We are looking for what services are being run and what are the versions of the softwares installed. 
@@ -168,8 +168,8 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 
 - Another terminal command `searchsploit` What this does is search for the scripts and then downloads. It should not be very specific. This is an additional tool in addition to google
 
-**Additional scanning tools**
-- Masscan - scan theentire internet quickly. It is built in. We can also scan specific ports: `massscan -p1-65535 <ip address>`
+
+
 
 ## Exploitation
 
