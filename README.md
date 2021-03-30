@@ -252,7 +252,9 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 - We can also gain sudo level terminal access by running the file that has code to run an interactive bash terminal
 - `echo "bash -i" > monitor.sh`
 - `ls`
-- `
+- `cat monitor.sh`
+- `ls -la`
+- `chmod +x monitor.sh`
 
 
 ## Hack the box
