@@ -170,7 +170,7 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 
 - Once you identify the vulnerabilities then these can be exploited by searching in google. Basically what you will find is the code on the web that is written to exploit a particular vulnerability
 
-- Another terminal command `searchsploit` What this does is search for the scripts and then downloads. It should not be very specific. This is an additional tool in addition to google
+- Another terminal command `searchsploit` What this does is search for the scripts and then downloads. It should not be very specific. This is an additional tool in addition to google- tells about what exploits are available for a given version of OS. For example if I run an nmap scan. It will give me some information about what versions of the software are available on the internet and then I can use type `searchsploit apache 2.18` for example and it will list out all the exploits that are available. 
 
 
 
@@ -197,7 +197,7 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 - `set payload windows/x64/meterpreter/reverse_tcp` - Note that this is at the exploit level and before you have established the connection
 
 - eternal blue was one of the exploites for the microsoft SMBA version that was exploited by **wannacry** It was developed by NSA. The exploit python code can be found at github (MS17-010-eternal blue)
-- 
+- msfvenom is another type of payload that can exploit the ftp
 
 
 - Then once you have gained access, you can type `whoami` or `getuid` to see if you got root access "NT authority/system" is usually root access, then you can explore further with:
