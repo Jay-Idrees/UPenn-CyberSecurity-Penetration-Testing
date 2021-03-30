@@ -253,8 +253,15 @@ General steps:
 - type the ip of the victim in the terminal to see if there is a webpage available externally, if there is then it maybe an opening for `drbuster` you can analyze this webpage with a `wapalyzer` and review the source code. There might be hidden comments in the source code. 
 - Then you can repeat `searchsploit` again if there is any extra information you found from reading the source code
 - If you find exploits available. If its a .rb file then it suggests that there is likely a metasploitmodule available. The initial goal is to obtain a reverse powershell- any exploit module that allows remote code execution is money. 
-- You can also lookout for any explot module that can let you upload a file. That way you can upload a file with malacious code that can help you gain access to powershell. For example the code can open a port and then you can tell it to connect to an ip address which is the ip address of your hacking machine and at the same time you can open a listening port on your hacking machine and that way you can connect via a reverse powershell fashion.
-- Once you are in then you can run metasploit for hashdup and do all kinds of things
+- You can also lookout for any exploit module that can let you upload a file. That way you can upload a file with malacious code that can help you gain access to powershell. For example the code can open a port and then you can tell it to connect to an ip address which is the ip address of your hacking machine and at the same time you can open a listening port on your hacking machine and that way you can connect via a reverse powershell fashion.
+- Once you are in then you can run metasploit `msfconsole` for hashdup and do all kinds of things
+- It also tells you the limitations of the exploits. For example, it may require authenticated access- then we might have to crack the admin account. Once you figure out the password then you can run the following commands in metasploit.
+
+- `set password <password>`
+- `set username <admin>`
+- `set rhosts <ip address>`
+- `set targeturi /admin.php`
+
 
 
 
