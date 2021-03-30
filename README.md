@@ -266,7 +266,7 @@ General steps:
 - Note that once you gain access then you should thoroughly explore the webpage- especially look for openings where a file maybe uploaded
 - Once you get shell access. you can type `sysinfo`. Look for OS vrsion esp for privilige escalation purposes. `geuid` will tell you what level of user access do you have. 
 - Then you can type `shell` to get into the terminal on that host and then type `pwd` to locate where you are at
-- Then you can type `whoami` it will tell you the user name then type `cd /home` and then `cd <username>` to get into the user dierectory
+- Then you can type `whoami` it will tell you the user name then type `cd /home` and then `cd <username>` to get into the user dierectory. Then `ls -la`
 
 
 
