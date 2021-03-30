@@ -117,7 +117,7 @@ tomnomnom httpprobe
 `biltwith.com` info regarding the web technoligies related to the website 
 `wapalyzer` very neat tool gives a nice overview about a website
 `whatweb` - built in Kali linux tools. www.tesla.com
-`Burp suite` - has capability of intercepting web traffic anoher tool foxy proxy, we can change the request parameters and then examin the response
+`Burp suite` - has capability of intercepting web traffic, checkout anoher similar tool `foxy proxy`, we can change the request parameters and then examin the response
 goole fu, `site:tesla.com -www filetype:pdf`
 Utilizing social media
 
@@ -170,7 +170,7 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 
 - Once you identify the vulnerabilities then these can be exploited by searching in google. Basically what you will find is the code on the web that is written to exploit a particular vulnerability
 
-- Another terminal command `searchsploit` What this does is search for the scripts and then downloads. It should not be very specific. This is an additional tool in addition to google
+- Another terminal command `searchsploit` What this does is search for the scripts and then downloads. It should not be very specific. This is an additional tool in addition to google- tells about what exploits are available for a given version of OS. For example if I run an nmap scan. It will give me some information about what versions of the software are available on the internet and then I can use type `searchsploit apache 2.18` for example and it will list out all the exploits that are available. 
 
 
 
@@ -197,7 +197,7 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 - `set payload windows/x64/meterpreter/reverse_tcp` - Note that this is at the exploit level and before you have established the connection
 
 - eternal blue was one of the exploites for the microsoft SMBA version that was exploited by **wannacry** It was developed by NSA. The exploit python code can be found at github (MS17-010-eternal blue)
-- 
+- msfvenom is another type of payload that can exploit the ftp
 
 
 - Then once you have gained access, you can type `whoami` or `getuid` to see if you got root access "NT authority/system" is usually root access, then you can explore further with:
@@ -245,6 +245,26 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 
 
 ## Hack the box
+
+General steps:
+
+- Run   `nmap` scan. It can give some estimate of what type of machine are we after, windows/linux and what type of servers maybe running apache. 
+- Then you can run `searchsploit` based on the versions that you learnt about
+- type the ip of the victim in the terminal to see if there is a webpage available externally, if there is then it maybe an opening for `drbuster` you can analyze this webpage with a `wapalyzer` and review the source code. There might be hidden comments in the source code. 
+- Then you can repeat `searchsploit` again if there is any extra information you found from reading the source code
+- If you find exploits available. If its a .rb file then it suggests that there is likely a metasploitmodule available. The initial goal is to obtain a reverse powershell- any exploit module that allows remote code execution is money. 
+- You can also lookout for any exploit module that can let you upload a file. That way you can upload a file with malacious code that can help you gain access to powershell. For example the code can open a port and then you can tell it to connect to an ip address which is the ip address of your hacking machine and at the same time you can open a listening port on your hacking machine and that way you can connect via a reverse powershell fashion.
+- Once you are in then you can run metasploit `msfconsole` for hashdup and do all kinds of things
+- It also tells you the limitations of the exploits. For example, it may require authenticated access- then we might have to crack the admin account. Once you figure out the password then you can run the following commands in metasploit.
+
+- `set password <password>` you are telling metasploit what password to use during the exploit if the exploite will depend on authenticated access and you have already figured out the usernam and password
+- `set username <admin>` you are specifying what username to use
+- `set rhosts <ip address>`
+- `set targeturi /admin.php`
+- `options` This will show the targets
+
+
+
 
 - **Machine Legacy**
 
