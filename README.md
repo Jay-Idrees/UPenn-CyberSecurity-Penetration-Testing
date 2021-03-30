@@ -260,7 +260,7 @@ General steps:
 - `set password <password>` you are telling metasploit what password to use during the exploit if the exploite will depend on authenticated access and you have already figured out the usernam and password
 - `set username <admin>` you are specifying what username to use
 - `set rhosts <ip address>`
-- `set targeturi /admin.php`
+- `set targeturi </nibbleblog>` this is the path to the 'directory page' where you can run the exploit. For instance <ip address>/<admin page> as in www.goolge.com/admin
 - `options` This will show the targets
 
 
