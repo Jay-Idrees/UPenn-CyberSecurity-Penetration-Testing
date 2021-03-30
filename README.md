@@ -252,6 +252,7 @@ General steps:
 - Then you can run `searchsploit` based on the versions that you learnt about
 - type the ip of the victim in the terminal to see if there is a webpage available externally, if there is then it maybe an opening for `drbuster` you can analyze this webpage with a `wapalyzer` and review the source code. There might be hidden comments in the source code. 
 - Then you can repeat `searchsploit` again if there is any extra information you found from reading the source code
+- If you find exploits available. If its a .rb file then it suggests that there is likely a metasploitmodule available. The initial goal is to obtain a reverse powershell- any exploit module that allows remote code execution is money. 
 
 
 
