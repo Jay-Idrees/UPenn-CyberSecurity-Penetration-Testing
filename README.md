@@ -117,7 +117,7 @@ tomnomnom httpprobe
 `biltwith.com` info regarding the web technoligies related to the website 
 `wapalyzer` very neat tool gives a nice overview about a website
 `whatweb` - built in Kali linux tools. www.tesla.com
-`Burp suite` - has capability of intercepting web traffic anoher tool foxy proxy, we can change the request parameters and then examin the response
+`Burp suite` - has capability of intercepting web traffic, checkout anoher similar tool `foxy proxy`, we can change the request parameters and then examin the response
 goole fu, `site:tesla.com -www filetype:pdf`
 Utilizing social media
 
@@ -245,6 +245,15 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 
 
 ## Hack the box
+
+General steps:
+
+- Run   `nmap` scan. It can give some estimate of what type of machine are we after, windows/linux and what type of servers maybe running apache. 
+- Then you can run `searchsploit` based on the versions that you learnt about
+- type the ip of the victim in the terminal to see if there is a webpage available externally, if there is then it maybe an opening for `drbuster` you can analyze this webpage with a `wapalyzer` and review the source code. There might be hidden comments in the source code. 
+- Then you can repeat `searchsploit` again if there is any extra information you found from reading the source code
+
+
 
 - **Machine Legacy**
 
