@@ -257,10 +257,11 @@ General steps:
 - Once you are in then you can run metasploit `msfconsole` for hashdup and do all kinds of things
 - It also tells you the limitations of the exploits. For example, it may require authenticated access- then we might have to crack the admin account. Once you figure out the password then you can run the following commands in metasploit.
 
-- `set password <password>`
-- `set username <admin>`
+- `set password <password>` you are telling metasploit what password to use during the exploit if the exploite will depend on authenticated access and you have already figured out the usernam and password
+- `set username <admin>` you are specifying what username to use
 - `set rhosts <ip address>`
 - `set targeturi /admin.php`
+- `options` This will show the targets
 
 
 
