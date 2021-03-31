@@ -128,7 +128,10 @@ Utilizing social media
 
 [osintframework.com](osintframework.com) contains freely available public information- and is legal. **port scans**, **bruteforce attacks** and **social engineering** are active and ilegal wo permission
 
-- On this site framework-domain name-whois records-
+- On this site `framework-domain name-whois records-Domain Dossier` will lead you to the domain information
+- If you check DNS records- it will also give you information regarding the sub-domain
+
+[Google fu](https://www.sans.org/security-resources/GoogleCheatSheet.pdf)
 
 
 
