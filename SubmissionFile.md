@@ -9,7 +9,7 @@
 
 - How can this information be helpful to an attacker:
 
-> He can be the target to obtain sensitive information regardin the company
+> He can be the target to obtain sensitive information regarding the company
 
 
 #### Step 2: DNS and Domain Discovery
