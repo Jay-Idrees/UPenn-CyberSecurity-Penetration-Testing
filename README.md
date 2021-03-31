@@ -26,7 +26,9 @@
 
 3. `partial view` or `grey box`  testing in house system of network administrator
 
-- **Attack Prep or Reconnaissance**
+- Note that understanding the scope is important - you have to clarify with the company which machines and networks are out of scope and must not be attacked. Also ask for the time frame and emergency contacts
+
+- **Info gathering or Reconnaissance**
 
 It can be active (directly engaging with the target system) or passive (Gaining information w/o actively engaging with the system) 
 
@@ -120,6 +122,18 @@ tomnomnom httpprobe
 `Burp suite` - has capability of intercepting web traffic, checkout anoher similar tool `foxy proxy`, we can change the request parameters and then examin the response
 goole fu, `site:tesla.com -www filetype:pdf`
 Utilizing social media
+
+
+**OSINT-Open Source Intelligence**
+
+[osintframework.com](osintframework.com) contains freely available public information- and is legal. **port scans**, **bruteforce attacks** and **social engineering** are active and ilegal wo permission
+
+- On this site `framework-domain name-whois records-Domain Dossier` will lead you to the domain information
+- If you check DNS records- it will also give you information regarding the sub-domain
+
+[Google fu](https://www.sans.org/security-resources/GoogleCheatSheet.pdf)
+
+
 
 ## Scanning and enumeration
 
@@ -263,7 +277,7 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 General steps:
 
 - Run   `nmap` scan. It can give some estimate of what type of machine are we after, windows/linux and what type of servers maybe running apache. 
-- Then you can run `searchsploit` based on the versions that you learnt about
+- Then you can run `searchsploit` based on the versions that you learnt about. When you look at the version you will have to also decide whether you will be using a 32 bit or 64bit payload
 - type the ip of the victim in the terminal to see if there is a webpage available externally, if there is then it maybe an opening for `drbuster` you can analyze this webpage with a `wapalyzer` and review the source code. There might be hidden comments in the source code. 
 - Then you can repeat `searchsploit` again if there is any extra information you found from reading the source code
 - If you find exploits available. If its a .rb file then it suggests that there is likely a metasploitmodule available. The initial goal is to obtain a reverse powershell- any exploit module that allows remote code execution is money. 
