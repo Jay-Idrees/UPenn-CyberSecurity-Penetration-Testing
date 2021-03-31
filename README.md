@@ -126,7 +126,7 @@ Utilizing social media
 
 **OSINT-Open Source Intelligence**
 
-[osintframework.com](osintframework.com) contains freely available public information- and is legal
+[osintframework.com](osintframework.com) contains freely available public information- and is legal. **port scans**, **bruteforce attacks** and **social engineering** are active and ilegal wo permission
 
 - On this site framework-domain name-whois records-
 
