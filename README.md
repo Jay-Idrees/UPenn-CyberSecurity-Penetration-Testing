@@ -26,9 +26,9 @@
 
 3. `partial view` or `grey box`  testing in house system of network administrator
 
-- Note that understanding the scope is important - you have to clarify with the company which machines and networks are out of scope and must not be attacked
+- Note that understanding the scope is important - you have to clarify with the company which machines and networks are out of scope and must not be attacked. Also ask for the time frame and emergency contacts
 
-- **Attack Prep or Reconnaissance**
+- **Info gathering or Reconnaissance**
 
 It can be active (directly engaging with the target system) or passive (Gaining information w/o actively engaging with the system) 
 
@@ -122,6 +122,15 @@ tomnomnom httpprobe
 `Burp suite` - has capability of intercepting web traffic, checkout anoher similar tool `foxy proxy`, we can change the request parameters and then examin the response
 goole fu, `site:tesla.com -www filetype:pdf`
 Utilizing social media
+
+
+**OSINT-Open Source Intelligence**
+
+[osintframework.com](osintframework.com) contains freely available public information- and is legal
+
+- On this site framework-domain name-whois records-
+
+
 
 ## Scanning and enumeration
 
