@@ -106,7 +106,7 @@ if gedit gives an error then use.
 
 
 ```
-## Information gathering
+## Information gathering - also the same if you call it OSNIT
 
 `www.bugcrowd.com` - finding websites to hack who would pay you
 `hunter.io` gives insights regarding the email password
@@ -130,8 +130,17 @@ Utilizing social media
 
 - On this site `framework-domain name-whois records-Domain Dossier` will lead you to the domain information
 - If you check DNS records- it will also give you information regarding the sub-domain
+- The **network whois record** provides info regarding the network ip ranges and CIDR
+- **DNS records** provides information regarding the domains where the traffic can be redirected as a cover channel
 
 [Google fu](https://www.sans.org/security-resources/GoogleCheatSheet.pdf)
+
+**Google Hacking/Dorking, Shodan and Certificate Transparency**
+
+**Google hacking**
+- Alows the user to find event the webpages that are normally hidden from the user- giving access to sensitive information
+- `site:example.com` - its essentially a sub-domain enumeration task. It can also reveal the file system and assets of the website
+- 
 
 
 
