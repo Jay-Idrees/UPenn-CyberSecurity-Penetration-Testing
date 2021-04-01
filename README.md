@@ -160,6 +160,10 @@ Utilizing social media
 - Commands:
 
 - `run` it comes preinstalled in Kali linux
+- `help` will show all the commands
+- `keys add shodan_api <key>` Go to shodan.io, register with an account and then check with `key list`
+-`marketplace install all` Intalls all the modules
+- `marketplace search` Displays all the currently installed modules
 
 
 
