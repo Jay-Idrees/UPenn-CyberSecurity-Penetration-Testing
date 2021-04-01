@@ -196,11 +196,23 @@ kioptrix- level 1 This is a first level machine, login john and pw TwoCows2
 - Finding actively running machines and their ip addresses. `ifconfig`  then `netdiscover -r <ip address with subnet>`
 `SYN SYNACK ACK nmap sS` - stelth scanning (used to be undectable, but these days the scanning is detectable) the stealthiness is the trick of faking a connection, but then not establishing one. 
 - Modification: SYN SYNACK RST - this specification is a trick to reveal port, but not establishing a connection. 
+**nmap** Simply typing nmap in kali will tell you about the various commands you can use along with it
 `nmap -T4 -p- -A <ipaddress>` T4 is speed (max 5- might miss some things) -p- means scanning all ports, but if you leave this out then it means that it will scan top 1000 ports I can also specify certain ports if I like for example -p 80,443. -A tell me everything (OS detection, version detection, script scanning and trace route). Not that even if its not typed in the command `-sS`  (stelth scan for TCP) is automatically included
-    Note that -A is the real speed killer here as it is checking for all the versions
+- Note that -A is the real speed killer here as it is checking for all the versions
 `nmap -sU -T4 -p- -A <ipaddress>`  - sU is for scanning UDP
 nmap can be used for script scaning, OS detection - other options: version detection, script scanning and trace route if I select -A - it will do all these functions, but is slow. We can also specify the ports. 
 - We want to look at what ports are open and whats running on these open ports
+
+- Other useful options include 
+-`-pn` will not ping- making the scan faster, 
+-`-sT` allows TCP full connect scan whcih is noisy and detectable- most hackers do not use it
+- `-sV` will probe for open ports to determine service and version info.
+- `-sC` returns the default scripted 
+- `-oN` outputs results in a text file
+- For example `nmap -sV -sC -oN version.txt 192.168.0.10` This will store the results into a text file called version.txt
+
+
+- We can scan specific ports for example `5900` for remote desktop, `667` for IRC (Internet Relay Chat) service- a backdoor communicatio channel for botnets and trojan downloaders
 
 **Other methods of scanning**
 - One method is shown above
