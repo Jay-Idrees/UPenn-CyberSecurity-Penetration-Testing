@@ -153,7 +153,13 @@ Utilizing social media
 - It can then provide information about the ports
 
 **Certificate transparency/crt.sh** [crt.sh](crt.sh)
-- This provides a lot of top quality information regarding the 
+- This provides a lot of top quality information regarding the sub-domains
+
+**Recon-Ng**
+- It is a Kali linux tool written in Python that combines individual sources including search engines, plugins and APIs to create a report for information gathering
+- Commands:
+
+- `run` it comes preinstalled in Kali linux
 
 
 
