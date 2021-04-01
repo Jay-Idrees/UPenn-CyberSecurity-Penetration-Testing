@@ -195,12 +195,32 @@ www.vulnhub.com. VULNHUB - you can download a vulnerable virtual machine and the
 kioptrix- level 1 This is a first level machine, login john and pw TwoCows2
 - Finding actively running machines and their ip addresses. `ifconfig`  then `netdiscover -r <ip address with subnet>`
 `SYN SYNACK ACK nmap sS` - stelth scanning (used to be undectable, but these days the scanning is detectable) the stealthiness is the trick of faking a connection, but then not establishing one. 
-- Modification: SYN SYNACK RST - this specification is a trick to reveal port, but not establishing a connection. 
+- Modification: SYN SYNACK RST - this specification is a trick to reveal port, but not establishing a connection. This is also called a `half-connect scan`
+**nmap** Simply typing nmap in kali will tell you about the various commands you can use along with it
 `nmap -T4 -p- -A <ipaddress>` T4 is speed (max 5- might miss some things) -p- means scanning all ports, but if you leave this out then it means that it will scan top 1000 ports I can also specify certain ports if I like for example -p 80,443. -A tell me everything (OS detection, version detection, script scanning and trace route). Not that even if its not typed in the command `-sS`  (stelth scan for TCP) is automatically included
-    Note that -A is the real speed killer here as it is checking for all the versions
+- Note that -A is the real speed killer here as it is checking for all the versions
 `nmap -sU -T4 -p- -A <ipaddress>`  - sU is for scanning UDP
 nmap can be used for script scaning, OS detection - other options: version detection, script scanning and trace route if I select -A - it will do all these functions, but is slow. We can also specify the ports. 
 - We want to look at what ports are open and whats running on these open ports
+
+- Other useful options include 
+-`-pn` will not ping- making the scan faster, 
+-`-sT` allows TCP full connect scan whcih is noisy and detectable- most hackers do not use it
+- `-sV` probes for service and version info.
+- `-sC` returns the default scripted scan- more results
+- `-oN` outputs results in a text file
+- For example `nmap -sV -sC -oN version.txt 192.168.0.10` This will store the results into a text file called version.txt
+
+- Scanning port for SQL services on port `3306`
+- `nmap -sV -sC -p 3306 <ip address>` 
+
+- Scanning for IRC (relay chat ) services on port `6667`
+- `nmap -sV -sC -p 6667 <ip address>`
+
+- Scannng for REMOTE DESKTOP servives on port `5900`
+- `nmap -sV -sC -p 5900 <ip address>`
+
+- We can scan specific ports for example `5900` for remote desktop, `6667` for IRC (Internet Relay Chat) service- a backdoor communicatio channel for botnets and trojan downloaders. If these ports show up as open on the scan its a significant vulnerability
 
 **Other methods of scanning**
 - One method is shown above
@@ -208,12 +228,28 @@ nmap can be used for script scaning, OS detection - other options: version detec
 - Masscan - scan theentire internet quickly. It is built in. We can also scan specific ports: `massscan -p1-65535 <ip address>`
 
 - **Things to look for when you have run the scan**
+  - Ping scans
+   - Port scans
+   - Host scans
+   - OS fingerprinting
+   - Top port scans
+   - Outputting scan results to files
 - Look for open ports
 - anonymous FTP allowed?
 - versions for exploitation such as SAMBA - SMB is a network protocol that lets remote computers to connect with servers
 - If SSH is open then if you attack it then the company should be able to detect it, attacking SSH makes you noisy. If the blue team of the company is unable to detect then their defences are likely very weak
 - OS guesses, may not be accurate initially- you can confirm this after you are able to gain access
 - There can be some default webpages for sub-domins- these indicate an opening for a hidden directory maybe for a sub-domain that could be exploited with `drbuster`, `gobuster` etc
+
+
+
+**Nmap Scripting Engine NSE**
+
+- These are scripts that are run on the results of the initial scan to search the web for what exploits are available
+
+
+
+
 
 **Drbuster**
 - `http://<ipaddress>:80`, then you supply the wordlist. You are trying to brute force the directories. Then you specify extensions like (asm, asmx, asp, aspx, txt, zip, rar, php-if apache webserver)
