@@ -162,7 +162,7 @@ Utilizing social media
 - `run` it comes preinstalled in Kali linux
 - `help` will show all the commands
 - `keys add shodan_api <key>` Go to shodan.io, register with an account and then check with `key list` and  you can remove keys with `keys remove`
-- `marketplace install all` Intalls all the modules
+- `marketplace install all` Intalls all the modules. You can also install a specific module by specifying the module name instead of 'all'
 - `marketplace search` Displays all the currently installed modules. You can also search repos with `marketplace search repos`
 - `marketplace info <modulename>` will give specific info regarding that particular module
 
@@ -174,6 +174,16 @@ Running a module to gather info regarding a specific website- or in other words 
 
 - Likewise you can load another module called Hackertarget: `modules load recon/domains-hosts/hackertarget` and then set source (every module is independent) and set the source `options set SOURCE <website name>`
 - Then `run`
+
+- Generating a report using **reporting/html**
+- `marketplace install reporting/html` - Not that you should be in the default directory of recon-ng whcih you can get to by typing `back` first.
+- `marketplace search reporting/html` to check if this has been installed
+- `modules load reporting/html` to load and `info` to look at the details. Note that you must set the creator and attacker
+- `options set CREATOR attacker`
+- `options set CUSTOMER Darkweb` and type `info`
+- `run` will create the report
+- 
+
 
 
 
