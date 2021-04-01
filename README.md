@@ -106,7 +106,7 @@ if gedit gives an error then use.
 
 
 ```
-## Information gathering - also the same if you call it OSNIT
+## Open Source Information gathering - also the same if you call it OSNIT
 
 `www.bugcrowd.com` - finding websites to hack who would pay you
 `hunter.io` gives insights regarding the email password
@@ -155,16 +155,19 @@ Utilizing social media
 **Certificate transparency/crt.sh** [crt.sh](crt.sh)
 - This provides a lot of top quality information regarding the sub-domains
 
-**Recon-Ng**
+**Recon-Ng - Very important tool**
 - It is a Kali linux tool written in Python that combines individual sources including search engines, plugins and APIs to create a report for information gathering
 - Commands:
 
 - `run` it comes preinstalled in Kali linux
 - `help` will show all the commands
-- `keys add shodan_api <key>` Go to shodan.io, register with an account and then check with `key list`
--`marketplace install all` Intalls all the modules
-- `marketplace search` Displays all the currently installed modules
+- `keys add shodan_api <key>` Go to shodan.io, register with an account and then check with `key list` and  you can remove keys with `keys remove`
+- `marketplace install all` Intalls all the modules
+- `marketplace search` Displays all the currently installed modules. You can also search repos with `marketplace search repos`
+- `marketplace info <modulename>` will give specific info regarding that particular module
 
+- Loading a module
+- `modules load recon/hosts-ports/shodan_ip ` - you can find the exact path of a module by typing `marketplace info <modulename>`
 
 
 
