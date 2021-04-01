@@ -181,8 +181,8 @@ Running a module to gather info regarding a specific website- or in other words 
 - `modules load reporting/html` to load and `info` to look at the details. Note that you must set the creator and attacker
 - `options set CREATOR attacker`
 - `options set CUSTOMER Darkweb` and type `info`
-- `run` will create the report
-- 
+- `run` will create the report. It will print the address where the report is located- you just have to copy it after `xdg-open`
+- `xdg-open /root/.recon-ng/workspaces/default/results.html` to open the report - note that this is a normal linux command to open file. You will have to `exit` and then type this command for it to work
 
 
 
