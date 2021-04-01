@@ -241,6 +241,16 @@ nmap can be used for script scaning, OS detection - other options: version detec
 - OS guesses, may not be accurate initially- you can confirm this after you are able to gain access
 - There can be some default webpages for sub-domins- these indicate an opening for a hidden directory maybe for a sub-domain that could be exploited with `drbuster`, `gobuster` etc
 
+
+
+**Nmap Scripting Engine NSE**
+
+- These are scripts that are run on the results of the initial scan to search the web for what exploits are available
+
+
+
+
+
 **Drbuster**
 - `http://<ipaddress>:80`, then you supply the wordlist. You are trying to brute force the directories. Then you specify extensions like (asm, asmx, asp, aspx, txt, zip, rar, php-if apache webserver)
 
