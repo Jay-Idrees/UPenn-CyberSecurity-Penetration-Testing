@@ -208,6 +208,12 @@ nmap can be used for script scaning, OS detection - other options: version detec
 - Masscan - scan theentire internet quickly. It is built in. We can also scan specific ports: `massscan -p1-65535 <ip address>`
 
 - **Things to look for when you have run the scan**
+  - Ping scans
+   - Port scans
+   - Host scans
+   - OS fingerprinting
+   - Top port scans
+   - Outputting scan results to files
 - Look for open ports
 - anonymous FTP allowed?
 - versions for exploitation such as SAMBA - SMB is a network protocol that lets remote computers to connect with servers
