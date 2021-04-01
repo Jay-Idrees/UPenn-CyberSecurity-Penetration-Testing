@@ -106,7 +106,7 @@ if gedit gives an error then use.
 
 
 ```
-## Information gathering - also the same if you call it OSNIT
+## Open Source Information gathering - also the same if you call it OSNIT
 
 `www.bugcrowd.com` - finding websites to hack who would pay you
 `hunter.io` gives insights regarding the email password
@@ -131,16 +131,61 @@ Utilizing social media
 - On this site `framework-domain name-whois records-Domain Dossier` will lead you to the domain information
 - If you check DNS records- it will also give you information regarding the sub-domain
 - The **network whois record** provides info regarding the network ip ranges and CIDR
-- **DNS records** provides information regarding the domains where the traffic can be redirected as a cover channel
+- **DNS records** 
 
 [Google fu](https://www.sans.org/security-resources/GoogleCheatSheet.pdf)
 
 **Google Hacking/Dorking, Shodan and Certificate Transparency**
 
-**Google hacking**
+**Google hacking/dorking**
 - Alows the user to find event the webpages that are normally hidden from the user- giving access to sensitive information
 - `site:example.com` - its essentially a sub-domain enumeration task. It can also reveal the file system and assets of the website
-- 
+
+**Shodan/ shodan.io** [shodan.io](shodan.io) - Looks up only the machines that are connected to the internet- scans the entire web
+- Looking up DNS (domain naming system) vs DNSSEC
+- This can lead to methods of hacking including:
+- After you are able to find the 
+
+> **Domain hijacking:** redirecting traffic from DNS server to another domain
+> **DNS flooding** overewhelming server with malicious requests to prevent legitimate request processing
+> **DRDoS** - So the attacker sends many requests to the victim with a spoofed server address resulting in denial of service type of situation
+
+- It can then provide information about the ports
+
+**Certificate transparency/crt.sh** [crt.sh](www.crt.sh)
+- This provides a lot of top quality information regarding the sub-domains
+
+**Recon-Ng - Very important tool**
+- It is a Kali linux tool written in Python that combines individual sources including search engines, plugins and APIs to create a report for information gathering
+- Commands:
+
+- `run` it comes preinstalled in Kali linux
+- `help` will show all the commands
+- `keys add shodan_api <key>` Go to shodan.io, register with an account and then check with `key list` and  you can remove keys with `keys remove`
+- `marketplace install all` Intalls all the modules. You can also install a specific module by specifying the module name instead of 'all'
+- `marketplace search` Displays all the currently installed modules. You can also search repos with `marketplace search repos`
+- `marketplace info <modulename>` will give specific info regarding that particular module
+
+Loading a module
+- `modules load recon/hosts-ports/shodan_ip ` - you can find the exact path for this command of a module by typing `marketplace info <modulename>`. Once the module is loaded it will show in the terminal and if you simply type `info` then, it will provide more information
+
+Running a module to gather info regarding a specific website- or in other words setting 'SOURCE" of data for recon-ng
+`options set SOURCE example.com` then type `info` to confirm. To get out of this module type `back`
+
+- Likewise you can load another module called Hackertarget: `modules load recon/domains-hosts/hackertarget` and then set source (every module is independent) and set the source `options set SOURCE <website name>`
+- Then `run`
+
+- Generating a report using **reporting/html**
+- `marketplace install reporting/html` - Not that you should be in the default directory of recon-ng whcih you can get to by typing `back` first.
+- `marketplace search reporting/html` to check if this has been installed
+- `modules load reporting/html` to load and `info` to look at the details. Note that you must set the creator and attacker
+- `options set CREATOR attacker`
+- `options set CUSTOMER Darkweb` and type `info`
+- `run` will create the report. It will print the address where the report is located- you just have to copy it after `xdg-open`
+- `xdg-open /root/.recon-ng/workspaces/default/results.html` to open the report - note that this is a normal linux command to open file. You will have to `exit` and then type this command for it to work
+
+
+
 
 
 
