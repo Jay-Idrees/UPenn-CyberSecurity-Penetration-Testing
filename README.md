@@ -152,7 +152,7 @@ Utilizing social media
 
 - It can then provide information about the ports
 
-**Certificate transparency/crt.sh** [crt.sh](crt.sh)
+**Certificate transparency/crt.sh** [crt.sh](www.crt.sh)
 - This provides a lot of top quality information regarding the sub-domains
 
 **Recon-Ng - Very important tool**
@@ -166,8 +166,15 @@ Utilizing social media
 - `marketplace search` Displays all the currently installed modules. You can also search repos with `marketplace search repos`
 - `marketplace info <modulename>` will give specific info regarding that particular module
 
-- Loading a module
-- `modules load recon/hosts-ports/shodan_ip ` - you can find the exact path of a module by typing `marketplace info <modulename>`
+Loading a module
+- `modules load recon/hosts-ports/shodan_ip ` - you can find the exact path for this command of a module by typing `marketplace info <modulename>`. Once the module is loaded it will show in the terminal and if you simply type `info` then, it will provide more information
+
+Running a module to gather info regarding a specific website- or in other words setting 'SOURCE" of data for recon-ng
+`options set SOURCE example.com` then type `info` to confirm. To get out of this module type `back`
+
+- Likewise you can load another module called Hackertarget: `modules load recon/domains-hosts/hackertarget` and then set source (every module is independent) and set the source `options set SOURCE <website name>`
+- Then `run`
+
 
 
 
