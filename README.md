@@ -222,6 +222,8 @@ nmap can be used for script scaning, OS detection - other options: version detec
 
 - We can scan specific ports for example `5900` for remote desktop, `6667` for IRC (Internet Relay Chat) service- a backdoor communicatio channel for botnets and trojan downloaders. If these ports show up as open on the scan its a significant vulnerability
 
+- `zenmap` is a software that makes it easy to examine results of the nmap scan with a user interface
+
 **Other methods of scanning**
 - One method is shown above
 - massscan
@@ -246,10 +248,23 @@ nmap can be used for script scaning, OS detection - other options: version detec
 **Nmap Scripting Engine NSE**
 
 - These are scripts that are run on the results of the initial scan to search the web for what exploits are available
-- This is a preinatalled collection of scripts that come with Nmap
+- This is a preinatalled collection of scripts that come with Nmap, about 600
+- `ls /usr/share/nmap/scripts` to display the current scripts
+- Most scripts are for infomation gathering, but some can be used for automating networking tasks
+ - DNS enumeration
+   - Brute force attack
+   - OS fingerprinting
+   - Banner grabbing
+   - Vulnerability detection
+   - Vulnerability exploitation
+   - Backdoor identification
+   - Malware discovery
 
+**Zenmap**
 
-
+- ` apt-get update` to update Kali
+-  `sudo apt-get install alien` to install zenmap
+- `alien zenmap-7.80-1.noarch.rpm` convert to deb file from rpm befor it can be used
 
 
 **Drbuster**
