@@ -260,6 +260,22 @@ nmap can be used for script scaning, OS detection - other options: version detec
    - Backdoor identification
    - Malware discovery
 
+
+- It is mostly useful for perfoming single host scans and basic information gathering or enumeration
+- It does not detect all vulnerabilities and it cannot run multiple scans simultaneously
+
+
+**Nessus/ Vulnerability scans**
+- NSE scan is weaker than a vulnerability scan. An example of vulnerability scan includes Nessus
+
+- these scan the network using a known database of vulnerabilities **National Vulnerability Databse (NBV)** [NVB](nvd.nist.gov), whcih are rated based on the severity and are assigned a common vulnerability score (CVSS) and catwgory (low, medium, high, critical) of severity based on the score
+
+- In contrast with penetration testing there is no exploitation of weaknesses
+
+- Other vulnerability scans include `Nexpose`-developed by  Rapid7, fully integerted with metasploit, and can be deployed with cloud, 
+
+
+
 **Zenmap**
 
 - Its an official Nmap Security GUI (graphical user interface). Update- ok its cool to know that this software exists
@@ -271,7 +287,7 @@ but its such a hassal to install- not worth trying- so I am going to pass. The b
 - `dpkg -i zenmap_7.80-2_all.deb` this will install zenmap after download
 
 - apt list --installed | grep alien to check if it is installed
-
+- 
 
 **Drbuster**
 - `http://<ipaddress>:80`, then you supply the wordlist. You are trying to brute force the directories. Then you specify extensions like (asm, asmx, asp, aspx, txt, zip, rar, php-if apache webserver)
