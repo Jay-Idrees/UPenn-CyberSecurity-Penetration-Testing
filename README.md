@@ -268,7 +268,13 @@ nmap can be used for script scaning, OS detection - other options: version detec
 **Nessus/ Vulnerability scans**
 - NSE scan is weaker than a vulnerability scan. An example of vulnerability scan includes Nessus
 
-- these scan the network using a known database of vulnerabilities **National Vulnerability Databse (NBV)** [NVB](nvd.nist.gov), whcih are rated based on the severity and are assigned a common vulnerability score (CVSS) and catwgory (low, medium, high, critical) of severity based on the score
+- these scan the network using a known database of vulnerabilities **National Vulnerability Databse (NBV)** [NVB](nvd.nist.gov), whcih are rated based on the severity and are assigned a common vulnerability score (CVSS) and catwgory (low, medium, high, critical) of severity based on the score. 
+
+Critical: 10.0.
+High: 7.0 - 9.9.
+Medium: 4.0 - 6.9.
+Low: 0.1 - 3.9.
+Info: 0
 
 - In contrast with penetration testing there is no exploitation of weaknesses
 
@@ -318,6 +324,20 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 
 
 ## Exploitation
+
+**Remote code execution (RCE)**
+-  This is the process of runing a bash code during exploitation
+
+**Shell shock**
+- Shell shock is a software that allows you to execute bash script code on a remote server. This is done by exploiting **common gateway interface** which is a protocol that handles requests for running scripts on the server. 
+
+- Why this becomes problematic is because it gives a hacker the power to load malacious bash scripts as environment variables into the HTTP header- which can potentially elevate priviliges and allow:
+
+    - Download of sensitive data
+    - Send and receive shells to and from the target
+    - Backdoor the victim
+
+
 
 - **Metasploit COmmands**
 - `msfconsole`
