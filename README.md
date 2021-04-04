@@ -262,9 +262,15 @@ nmap can be used for script scaning, OS detection - other options: version detec
 
 **Zenmap**
 
+- Its an official Nmap Security GUI (graphical user interface). Update- ok its cool to know that this software exists
+but its such a hassal to install- not worth trying- so I am going to pass. The below commands dont work anymore
+
 - ` apt-get update` to update Kali
--  `sudo apt-get install alien` to install zenmap
-- `alien zenmap-7.80-1.noarch.rpm` convert to deb file from rpm befor it can be used
+-  `apt-get install alien` to download zenmap - Note that this is not installation this is just download
+- `alien zenmap-7.80-1.noarch.rpm` convert to deb file from rpm before it can be used
+- `dpkg -i zenmap_7.80-2_all.deb` this will install zenmap after download
+
+- apt list --installed | grep alien to check if it is installed
 
 
 **Drbuster**
