@@ -337,6 +337,25 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
     - Send and receive shells to and from the target
     - Backdoor the victim
 
+- you can alter the script using shell shock. For example:
+
+
+ ```bash
+  GET /index.html HTTP/1.1
+  Host: example.com
+  User-Agent: curl
+  Connection: keep-alive
+  ```
+
+
+  ```bash
+  GET /index.html HTTP/1.1
+  Host: example.com
+  User-Agent: () { :;};
+  Connection: keep-alive
+  ```
+
+
 
 
 - **Metasploit COmmands**
