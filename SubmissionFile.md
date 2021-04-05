@@ -68,7 +68,7 @@ Your client has asked that you help identify any vulnerabilities with their file
   > Extrnal users can connect annonymously to the company's server
 
   2. Why is it dangerous:
-
+nn
   > The attackes can run malacious code and transfer files containing sensitive information
 
   3. What mitigation strategies can you recommendations for the client to protect their server:

