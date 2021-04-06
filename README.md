@@ -278,7 +278,7 @@ Info: 0
 
 - In contrast with penetration testing there is no exploitation of weaknesses
 
-- Other vulnerability scans include `Nexpose`-developed by  Rapid7, fully integerted with metasploit, and can be deployed with cloud, 
+- Other vulnerability scans include `Nexpose`-developed by  Rapid7, fully integerted with metasploit, and can be deployed with cloud, and **openVAS**
 
 
 
@@ -412,12 +412,16 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 
 
 **Payload**
-- A payload is an exploit script
+- A payload is an exploit script example is below
 - `python /usr/share/exploitdb/exploits/linux/remote/34900.py payload=bind rhost=192.168.0.21 rport=80 pages=/cgi-bin/vulnerable`
 
-- Here `bind` specifies that the victim machine opens up the port for connection with the hacker machine, where `rhost` is the ip address of the victim same for `rport`
+- In the above command /usr/share/exploitdb/ is the path displayed in the searchsploit display screen and then the remainder of the path is the part that is next to 
+
+- Here `bind` is used when the ip address of the victim is known. specifies that the victim machine opens up the port for connection with the hacker machine, where `rhost` is the ip address of the victim, same for `rport`
 
 - If you are unsure of the victim's listening port. you can alsouse `nmap -sV <victim ip address>` to determine it
+
+
 
 - **Metasploit COmmands**
 - `msfconsole`
