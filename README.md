@@ -209,6 +209,8 @@ nmap can be used for script scaning, OS detection - other options: version detec
 - `-sV` probes for service and version info.
 - `-sC` returns the default scripted scan- more results
 - `-oN` outputs results in a text file
+- `-O` passive OS detection on victim's machine, no data packets are sent
+- `-A` active OS detection on victim's machine, it is based on the packets sent
 - For example `nmap -sV -sC -oN version.txt 192.168.0.10` This will store the results into a text file called version.txt
 
 - Scanning port for SQL services on port `3306`
