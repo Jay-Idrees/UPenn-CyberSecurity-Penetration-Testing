@@ -209,16 +209,31 @@ nmap can be used for script scaning, OS detection - other options: version detec
 - `-sV` probes for service and version info.
 - `-sC` returns the default scripted scan- more results
 - `-oN` outputs results in a text file
+- `-O` passive OS detection on victim's machine, no data packets are sent
+- `-A` active OS detection on victim's machine, it is based on the packets sent
 - For example `nmap -sV -sC -oN version.txt 192.168.0.10` This will store the results into a text file called version.txt
 
 - Scanning port for SQL services on port `3306`
-- `nmap -sV -sC -p 3306 <ip address>` 
+- `nmap -sV -sC -p 3306 <victim ip address>` 
 
 - Scanning for IRC (relay chat ) services on port `6667`
-- `nmap -sV -sC -p 6667 <ip address>`
+- `nmap -sV -sC -p 6667 <victim ip address>`
 
 - Scannng for REMOTE DESKTOP servives on port `5900`
-- `nmap -sV -sC -p 5900 <ip address>`
+- `nmap -sV -sC -p 5900 <victim ip address>`
+
+- TCP scan of port `445`
+- `nmap -sT -p 445 <victim ip address>`
+
+- Syn scan of port `445`
+- `nmap -sS -p <victim ip address>`
+
+- UDP scan of port `53`
+- `nmap -sU -p 53 <victim ip address>`
+
+- Scans at multiple ports at once: UDP 53, TCP 53, Syn: 53 on the tcp scan
+- `nmap -sS -p U:53,T:53 <victim ip address>` 
+
 
 - We can scan specific ports for example `5900` for remote desktop, `6667` for IRC (Internet Relay Chat) service- a backdoor communicatio channel for botnets and trojan downloaders. If these ports show up as open on the scan its a significant vulnerability
 
@@ -278,7 +293,7 @@ Info: 0
 
 - In contrast with penetration testing there is no exploitation of weaknesses
 
-- Other vulnerability scans include `Nexpose`-developed by  Rapid7, fully integerted with metasploit, and can be deployed with cloud, 
+- Other vulnerability scans include `Nexpose`-developed by  Rapid7, fully integerted with metasploit, and can be deployed with cloud, and **openVAS**
 
 
 
@@ -328,7 +343,10 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 **Remote code execution (RCE)**
 -  This is the process of runing a bash code during exploitation
 
-**Shell shock**
+**Shell shock Vulnerability**
+
+- Note that this is a vulnerability in the database Exploit-DB, that can be searched using searchsploit
+
 - Shell shock is a software that allows you to execute bash script code on a remote server. This is done by exploiting **common gateway interface** which is a protocol that handles requests for running scripts on the server. 
 
 - Why this becomes problematic is because it gives a hacker the power to load malacious bash scripts as environment variables into the HTTP header- which can potentially elevate priviliges and allow:
@@ -375,6 +393,9 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
      -O downloads and saves the file with url name
 ```
 
+- `searchsploit shellshock` will show all the shellshock scripts
+
+
 - We can also use this to open a listening port using the ncat command from the victim machine. This is also called opening a reverse shell script. 
 
 
@@ -392,7 +413,7 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 - It relies on a database called Exploit-Db
 - Exploit-Db is a built-in repository inside Kali-Linux that contains information regarding the publically disclosed exploits based on their `common vulnerability exposure identifier (CVE)`
 
-- `searchsploit` in kali linux queries this database. Kali linux or the searchsploit by typing `searchsploit -u`. This is important because it gives you the ability to run it offline. Other useful command adjuncts: `-c`(case sensitive), `-e`(exact match), `j`(JSON format), `p`(full path to a file), `t`( search in title), `w`(will provide website in the results)
+- `searchsploit` in kali linux queries this database. Kali linux or the searchsploit by typing `searchsploit -u`. This is important because it gives you the ability to run it offline and perform searches offline. Other useful command adjuncts: `-c`(case sensitive), `-e`(exact match), `j`(JSON format), `p`(full path to a file), `t`( search in title), `w`(will provide website in the results)
 
 - `searchsploit ftp remote file | wc -l` this will search the database for the words ftp, remote and file
 
@@ -400,7 +421,7 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 
 - `searchsploit mysql 6.0 -w`
 
-- Exploit scripts
+- Exploit scripts or **payload scripts**
     - .rb are scripts written in Ruby.
     - .py in Python.
     - .sh in Bash.
@@ -408,7 +429,23 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
     - .txt in a text editor.
 
 
+- `searchsploit shellshock` will show all the shellshock scripts
 
+
+**Payload**
+- A payload is an exploit script example is below
+- `python /usr/share/exploitdb/exploits/linux/remote/34900.py payload=bind rhost=192.168.0.21 rport=80 pages=/cgi-bin/vulnerable`
+
+- In the above command /usr/share/exploitdb/ is the path displayed in the searchsploit display screen and then the remainder of the path is the part that is next to 
+
+- Here `bind` is used when the ip address of the victim is known. specifies that the victim machine opens up the port for connection with the hacker machine, where `rhost` is the ip address of the victim, same for `rport`
+
+- If you are unsure of the victim's listening port. you can alsouse `nmap -sV <victim ip address>` to determine it
+
+
+
+**Heartbleed Vulnerability**
+-  Unlike shellshock, heartbleed does not allow remote code execution (RCE)
 
 
 
