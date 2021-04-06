@@ -212,13 +212,26 @@ nmap can be used for script scaning, OS detection - other options: version detec
 - For example `nmap -sV -sC -oN version.txt 192.168.0.10` This will store the results into a text file called version.txt
 
 - Scanning port for SQL services on port `3306`
-- `nmap -sV -sC -p 3306 <ip address>` 
+- `nmap -sV -sC -p 3306 <victim ip address>` 
 
 - Scanning for IRC (relay chat ) services on port `6667`
-- `nmap -sV -sC -p 6667 <ip address>`
+- `nmap -sV -sC -p 6667 <victim ip address>`
 
 - Scannng for REMOTE DESKTOP servives on port `5900`
-- `nmap -sV -sC -p 5900 <ip address>`
+- `nmap -sV -sC -p 5900 <victim ip address>`
+
+- TCP scan of port `445`
+- `nmap -sT -p 445 <victim ip address>`
+
+- Syn scan of port `445`
+- `nmap -sS -p <victim ip address>`
+
+- UDP scan of port `53`
+- `nmap -sU -p 53 <victim ip address>`
+
+- Scans at multiple ports at once: UDP 53, TCP 53, Syn: 53 on the tcp scan
+- `nmap -sS -p U:53,T:53 <victim ip address>` 
+
 
 - We can scan specific ports for example `5900` for remote desktop, `6667` for IRC (Internet Relay Chat) service- a backdoor communicatio channel for botnets and trojan downloaders. If these ports show up as open on the scan its a significant vulnerability
 
