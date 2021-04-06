@@ -392,11 +392,20 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 - It relies on a database called Exploit-Db
 - Exploit-Db is a built-in repository inside Kali-Linux that contains information regarding the publically disclosed exploits based on their `common vulnerability exposure identifier (CVE)`
 
-- `searchsploit` in kali linux queries this database. Kali linux or the searchsploit by typing `searchsploit -u`. This is important because it gives you the ability to run it offline. Other useful command adjuncts: `-c`(case sensitive), `-e`(exact match), `j`(JSON format), `p`(full path to a file), `t`( search in title)
+- `searchsploit` in kali linux queries this database. Kali linux or the searchsploit by typing `searchsploit -u`. This is important because it gives you the ability to run it offline. Other useful command adjuncts: `-c`(case sensitive), `-e`(exact match), `j`(JSON format), `p`(full path to a file), `t`( search in title), `w`(will provide website in the results)
 
-- `searchsploit ftp remote file` this will search the database for the words ftp, remote and file
+- `searchsploit ftp remote file | wc -l` this will search the database for the words ftp, remote and file
 
+- `searchsploit linux kernel 4.4 --exclude="(PoC)|/DCCP/"` - can also use to exclude whaever is in ""
 
+- `searchsploit mysql 6.0 -w`
+
+- Exploit scripts
+    - .rb are scripts written in Ruby.
+    - .py in Python.
+    - .sh in Bash.
+    - .html in HTML.
+    - .txt in a text editor.
 
 
 
