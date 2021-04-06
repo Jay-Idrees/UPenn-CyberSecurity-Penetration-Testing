@@ -343,7 +343,10 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 **Remote code execution (RCE)**
 -  This is the process of runing a bash code during exploitation
 
-**Shell shock**
+**Shell shock Vulnerability**
+
+- Note that this is a vulnerability in the database Exploit-DB, that can be searched using searchsploit
+
 - Shell shock is a software that allows you to execute bash script code on a remote server. This is done by exploiting **common gateway interface** which is a protocol that handles requests for running scripts on the server. 
 
 - Why this becomes problematic is because it gives a hacker the power to load malacious bash scripts as environment variables into the HTTP header- which can potentially elevate priviliges and allow:
@@ -390,6 +393,9 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
      -O downloads and saves the file with url name
 ```
 
+- `searchsploit shellshock` will show all the shellshock scripts
+
+
 - We can also use this to open a listening port using the ncat command from the victim machine. This is also called opening a reverse shell script. 
 
 
@@ -435,6 +441,13 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 - Here `bind` is used when the ip address of the victim is known. specifies that the victim machine opens up the port for connection with the hacker machine, where `rhost` is the ip address of the victim, same for `rport`
 
 - If you are unsure of the victim's listening port. you can alsouse `nmap -sV <victim ip address>` to determine it
+
+
+
+
+
+
+
 
 
 
