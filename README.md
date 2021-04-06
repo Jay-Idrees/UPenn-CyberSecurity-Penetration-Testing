@@ -444,10 +444,8 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 
 
 
-
-
-
-
+**Heartbleed Vulnerability**
+-  Unlike shellshock, heartbleed does not allow remote code execution (RCE)
 
 
 
