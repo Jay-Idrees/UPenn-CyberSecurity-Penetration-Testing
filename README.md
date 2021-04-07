@@ -444,9 +444,14 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 
 
 
-**Heartbleed Vulnerability**
--  Unlike shellshock, heartbleed does not allow remote code execution (RCE)
+**Heartbleed Vulnerability** CVE-2014-0160
+- Its a sensitive data exposure vulnerability - dumps confidential data from RAM- recently used data
+- Bleeds memory content from the victim server to the hacker
+- Unlike shellshock, heartbleed does not allow remote code execution (RCE)
+- Example of bleeds include: encryption keys, user credentials
+- Its a bug in the OpenSSL (provides cyptogenic services such as SSL/TLS to clients and servers) hearbeat extention
 
+- When researching about a new vulnerability, questions to ask: What does it do. Which OS versions does it effect, which company was a target. Any pertinent details OpenSSL 
 
 
 - **Metasploit COmmands**
