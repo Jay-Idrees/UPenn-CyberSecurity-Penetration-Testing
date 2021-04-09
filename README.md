@@ -505,7 +505,7 @@ You can search by the name of the modules for example after metasploit is loaded
 
 ## Post-Exploitation
 
-- Once you are able to break into a machine you can run **Meterpreter** on the target or transfer `payloads`. The goal of the paylod is to establish a shell which intern can be **bind shells** - hacker (port) connects to victim or **reverse shells** - victim(port) connects to hacker
+- Once you are able to break into a machine you can run **Meterpreter** on the target or transfer `payloads`. The goal of the paylod is to establish a shell which intern can be **bind shells** - hacker (port) connects to victim or **reverse shells** - victim(port) connects to hacker- these port openings are called **backdoor**
 
 - Payloads are **staged** (the payload is assembled in multiple parts) or **stageless** (all sent at once). A large size payload is likely to fail
 
