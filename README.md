@@ -463,6 +463,16 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 
 - **Metasploit**
 
+You can search by the name of the modules for example after metasploit is loaded (with `search java`)
+
+ - `exploit/windows/browser/java_cmm` is an exploit module, which delivers the exploit to the target system.
+    
+ - `auxiliary/scanner/misc/java_jmx_server` is an auxiliary module, used for tasks such as information gathering, enumeration, and port scanning.
+    
+ - `payload/firefox/gather/cookies` is a payload module.
+
+
+
 - `msfconsole`
 - `getuid` if yout type this after establishing a session then you will be able to se whether what level of access we were able to obtain. if its **NT AUthorization** then its the highest level
 - `sysinfo` This will tell us about the system that we have hacked into
