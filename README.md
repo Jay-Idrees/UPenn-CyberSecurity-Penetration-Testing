@@ -505,7 +505,19 @@ You can search by the name of the modules for example after metasploit is loaded
 
 ## Post-Exploitation
 
-- Once you are able to break into a machine you can run **Meterpreter** on the target or transfer `payloads`. The goal of the paylod is to establish a shell which intern can be **bind shells** - hacker (port) connects to victim or **reverse shells** - victim(port) connects to hacker- these port openings are called **backdoor**
+- Once you are able to break into a victim machine (with exploits you found with search sploit) you can run **Meterpreter** on the target or transfer `payloads`. The goal of the paylod is to establish a shell which intern can be **bind shell** - hacker (port) connects to victim (listener) or **reverse shell** - victim(port) connects to hacker (listener- these port openings are called **backdoor**. This step can be done without metasploit if we use `Ncat`
+
+After the exploit is successful, 
+- **bind sgell**
+ -  `nc -lnvp 4444 -e /bin/bash` This command is run on the hacker's computer
+
+       - `-l`: Tells Ncat to listen for incoming connection.
+          - `-n`: Indicates that we are listening for numeric IP addresses.
+         - `-v`: Means verbose, which will print more information about the connection.
+         - `-p <port number>`: Specifies which port to listen on. 
+         - `-e`: Executes a bash shell, specifically, `/bin/bash`.
+
+
 
 - Payloads are **staged** (the payload is assembled in multiple parts) or **stageless** (all sent at once). A large size payload is likely to fail
 
