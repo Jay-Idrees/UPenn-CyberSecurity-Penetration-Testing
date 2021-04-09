@@ -191,6 +191,8 @@ Running a module to gather info regarding a specific website- or in other words 
 
 ## Scanning and enumeration
 
+- Note that Metasploit also has some modules for enumeration and they are called **Auxiliary modules** i-e if I choose to use metasploit
+
 www.vulnhub.com. VULNHUB - you can download a vulnerable virtual machine and then load it into VMware and then practice attacking - has various levels of vulnerable machines
 kioptrix- level 1 This is a first level machine, login john and pw TwoCows2
 - Finding actively running machines and their ip addresses. `ifconfig`  then `netdiscover -r <ip address with subnet>`
@@ -229,7 +231,7 @@ nmap can be used for script scaning, OS detection - other options: version detec
 - `nmap -sS -p <victim ip address>`
 
 - UDP scan of port `53`
-- `nmap -sU -p 53 <victim ip address>`
+- `nmap -sU -p 53 < victim ip address>`
 
 - Scans at multiple ports at once: UDP 53, TCP 53, Syn: 53 on the tcp scan
 - `nmap -sS -p U:53,T:53 <victim ip address>` 
@@ -339,6 +341,11 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 
 
 ## Exploitation
+- The goal of exploitation is to establish a session- Once the session is established then everything after that is considered post-exploitation (done with meterpreter- a linux style shell that metasploit launches to break into target)
+
+- Note the difference: Metasploit is run on the hacker's machine, and Meterpreter is run on the victim machine after exploitation is successful. An alternative to Meterpreter are the various payloads available for specific vulnerabilities. I can also create custom payload modules in metasploit
+
+- Tools of exploitation are payload scripts: Shell shock, heart bleed vulnerability ; or Metasploit
 
 **Remote code execution (RCE)**
 -  This is the process of runing a bash code during exploitation
@@ -454,7 +461,8 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 - When researching about a new vulnerability, questions to ask: What does it do. Which OS versions does it effect, which company was a target. Any pertinent details OpenSSL 
 
 
-- **Metasploit COmmands**
+- **Metasploit**
+
 - `msfconsole`
 - `getuid` if yout type this after establishing a session then you will be able to se whether what level of access we were able to obtain. if its **NT AUthorization** then its the highest level
 - `sysinfo` This will tell us about the system that we have hacked into
