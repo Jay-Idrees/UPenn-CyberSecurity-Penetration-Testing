@@ -463,13 +463,17 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 
 - **Metasploit**
 
-You can search by the name of the modules for example after metasploit is loaded (with `search java`)
+You can search by the name of the modules for example after metasploit is loaded (with `search java`, search `shellshock`)
 
  - `exploit/windows/browser/java_cmm` is an exploit module, which delivers the exploit to the target system.
     
  - `auxiliary/scanner/misc/java_jmx_server` is an auxiliary module, used for tasks such as information gathering, enumeration, and port scanning.
     
  - `payload/firefox/gather/cookies` is a payload module.
+
+ If i want to use a particular module then I can type the `use` command and then the path to whatever module I want to run
+
+ - `auxiliary/scanner/http/apache_mod_cgi_bash_env`
 
 
 
