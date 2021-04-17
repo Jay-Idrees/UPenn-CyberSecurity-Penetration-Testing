@@ -48,7 +48,7 @@ It can be active (directly engaging with the target system) or passive (Gaining 
 
  ## Networking background
 
-- `ipconfig` for windows `ifconfig`
+- `ipconfig` for windows `ifconfig` for kali
 - NAT
 - Media access control (MAC) is the physical address of a device and is in layer 2/ and with switches. 
 - The IP addresses are in layer 3. Anythig using a network interface will have a MAC address
