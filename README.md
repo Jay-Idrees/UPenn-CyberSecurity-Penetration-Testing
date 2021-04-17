@@ -64,7 +64,7 @@ It can be active (directly engaging with the target system) or passive (Gaining 
 shortcuts, double tab, ~/
     `ls -la` will reveal hidden folders
     `ls -la` /tmp/  for checking the permissions of the file inside the temp folder
-    `chmod 777 filename.txt` or chmod +x filename.txt giving full read wrtie access
+    `chmod 777 filename.txt` or `chmod +x filename.txt` giving full read wrtie access
 - `cat /etc/passwd`
 to change password I can type passwd in the terminal
 adding a user to sudoers
