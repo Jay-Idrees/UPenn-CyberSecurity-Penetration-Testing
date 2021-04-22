@@ -161,6 +161,27 @@ Utilizing social media
 - If not using Kali, you can install it on Ubuntu with `get update && apt-get install recon-ng`
 - On Kali linux, first switch to the root user with `sudo su`
 - Then type `recon-ng` that will lead to 
+
+```
+back            Exits the current context
+dashboard       Displays a summary of activity
+db              Interfaces with the workspace's database
+exit            Exits the framework
+help            Displays this menu
+index           Creates a module index (dev only)
+keys            Manages third party resource credentials
+marketplace     Interfaces with the module marketplace
+modules         Interfaces with installed modules
+options         Manages the current context options
+pdb             Starts a Python Debugger session (dev only)
+script          Records and executes command scripts
+shell           Executes shell commands
+show            Shows various framework items
+snapshots       Manages workspace snapshots
+spool           Spools output to a file
+workspaces      Manages workspaces
+```
+
 - `run` it comes preinstalled in Kali linux
 - `help` will show all the commands
 - `keys add shodan_api <key>` Go to shodan.io, register with an account to obtain an account specific key
