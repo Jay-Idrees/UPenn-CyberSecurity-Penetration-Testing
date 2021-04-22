@@ -155,13 +155,16 @@ Utilizing social media
 **Certificate transparency/crt.sh** [www.crt.sh](www.crt.sh)
 - This provides a lot of top quality information regarding the sub-domains which are associated with certifications
 
-**Recon-Ng - Very important tool**
+**Recon-Ng - Very important tool** - Combines many OSNIT tools
 - It is a Kali linux tool written in Python that combines individual sources including search engines, plugins and APIs to create a report for information gathering
 - Commands:
 
+- On Kali linux, first switch to the root user with `sudo su`
+- Then type `recon-ng` that will lead to 
 - `run` it comes preinstalled in Kali linux
 - `help` will show all the commands
-- `keys add shodan_api <key>` Go to shodan.io, register with an account and then check with `key list` and  you can remove keys with `keys remove`
+- `keys add shodan_api <key>` Go to shodan.io, register with an account to obtain an account specific key
+- then check by typing`key list` and  you can remove keys with `keys remove`
 - `marketplace install all` Intalls all the modules. You can also install a specific module by specifying the module name instead of 'all'
 - `marketplace search` Displays all the currently installed modules. You can also search repos with `marketplace search repos`
 - `marketplace info <modulename>` will give specific info regarding that particular module
