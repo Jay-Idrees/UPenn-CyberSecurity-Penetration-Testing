@@ -186,7 +186,7 @@ workspaces      Manages workspaces
 - `help` will show all the commands
 - `keys add shodan_api <key>` Go to shodan.io, register with an account to obtain an account specific key
 - then check by typing`key list` and  you can remove keys with `keys remove`
-- `marketplace install all` Intalls all the modules. You can also install a specific module by specifying the module name instead of 'all' for example: `marketplace install hackertarget`
+- `marketplace install all` Intalls all the modules. You can also install a specific module by specifying the module name instead of 'all' for example: `marketplace install hackertarget` - This module gathers information about 
 - `marketplace search` Displays all the currently installed modules. You can also search repos with `marketplace search repos`
 - `marketplace info <modulename>` will give specific info regarding that particular module. It also gives the path of the module. For example 
 
@@ -209,6 +209,8 @@ workspaces      Manages workspaces
 
 Loading a module
 - `modules load recon/hosts-ports/shodan_ip ` - you can find the exact path for this command of a module by typing `marketplace info <modulename>`. Once the module is loaded it will show in the terminal and if you simply type `info` then, it will provide more information
+
+- Alternatively if you know the name of the module you can load it by running `modules load hackertarget`
 
 Running a module to gather info regarding a specific website- or in other words setting 'SOURCE" of data for recon-ng
 `options set SOURCE example.com` then type `info` to confirm. To get out of this module type `back`
