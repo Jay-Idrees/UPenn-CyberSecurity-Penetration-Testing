@@ -142,7 +142,7 @@ Utilizing social media
 - `site:example.com` If you type this in google search - its essentially a sub-domain enumeration task. It can also reveal the file system and assets of the website
 
 **Shodan/ shodan.io** [shodan.io](shodan.io) - Looks up only the machines that are connected to the internet- scans the entire web. You can type in the name of the website in OSINT and then get the ip address an then paste that ip address into the shodan.io
-- Looking up DNS (domain naming system) vs DNSSEC
+- Looking up DNS (domain naming system) vs DNSSEC (Domain name system security extension - offers more security against DNS information)
 - This can lead to methods of hacking including:
 - After you are able to find the 
 
@@ -152,22 +152,65 @@ Utilizing social media
 
 - It can then provide information about the ports
 
-**Certificate transparency/crt.sh** [crt.sh](www.crt.sh)
-- This provides a lot of top quality information regarding the sub-domains
+**Certificate transparency/crt.sh** [www.crt.sh](www.crt.sh)
+- This provides a lot of top quality information regarding the sub-domains which are associated with certifications
 
-**Recon-Ng - Very important tool**
+**Recon-Ng - Very important tool** - Combines many OSNIT tools
 - It is a Kali linux tool written in Python that combines individual sources including search engines, plugins and APIs to create a report for information gathering
 - Commands:
+- If not using Kali, you can install it on Ubuntu with `get update && apt-get install recon-ng`
+- On Kali linux, first switch to the root user with `sudo su`
+- Then type `recon-ng` that will lead to 
+
+```
+back            Exits the current context
+dashboard       Displays a summary of activity
+db              Interfaces with the workspace's database
+exit            Exits the framework
+help            Displays this menu
+index           Creates a module index (dev only)
+keys            Manages third party resource credentials
+marketplace     Interfaces with the module marketplace
+modules         Interfaces with installed modules
+options         Manages the current context options
+pdb             Starts a Python Debugger session (dev only)
+script          Records and executes command scripts
+shell           Executes shell commands
+show            Shows various framework items
+snapshots       Manages workspace snapshots
+spool           Spools output to a file
+workspaces      Manages workspaces
+```
 
 - `run` it comes preinstalled in Kali linux
 - `help` will show all the commands
-- `keys add shodan_api <key>` Go to shodan.io, register with an account and then check with `key list` and  you can remove keys with `keys remove`
-- `marketplace install all` Intalls all the modules. You can also install a specific module by specifying the module name instead of 'all'
+- `keys add shodan_api <key>` Go to shodan.io, register with an account to obtain an account specific key
+- then check by typing`key list` and  you can remove keys with `keys remove`
+- `marketplace install all` Intalls all the modules. You can also install a specific module by specifying the module name instead of 'all' for example: `marketplace install hackertarget` - This module gathers information about 
 - `marketplace search` Displays all the currently installed modules. You can also search repos with `marketplace search repos`
-- `marketplace info <modulename>` will give specific info regarding that particular module
+- `marketplace info <modulename>` will give specific info regarding that particular module. It also gives the path of the module. For example 
+
+```
+[recon-ng][default] > marketplace info hackertarget
+
+  +---------------------------------------------------------------------------------------------------------------+
+  | path          | recon/domains-hosts/hackertarget                                                              |
+  | name          | HackerTarget Lookup                                                                           |
+  | author        | Michael Henriksen (@michenriksen)                                                             |
+  | version       | 1.1                                                                                           |
+  | last_updated  | 2020-05-17                                                                                    |
+  | description   | Uses the HackerTarget.com API to find host names. Updates the 'hosts' table with the results. |
+  | required_keys | []                                                                                            |
+  | dependencies  | []                                                                                            |
+  | files         | []                                                                                            |
+  | status        | installed                                                                                     |
+  +---------------------------------------------------------------------------------------------------------------+
+```
 
 Loading a module
 - `modules load recon/hosts-ports/shodan_ip ` - you can find the exact path for this command of a module by typing `marketplace info <modulename>`. Once the module is loaded it will show in the terminal and if you simply type `info` then, it will provide more information
+
+- Alternatively if you know the name of the module you can load it by running `modules load hackertarget`
 
 Running a module to gather info regarding a specific website- or in other words setting 'SOURCE" of data for recon-ng
 `options set SOURCE example.com` then type `info` to confirm. To get out of this module type `back`
@@ -175,8 +218,22 @@ Running a module to gather info regarding a specific website- or in other words 
 - Likewise you can load another module called Hackertarget: `modules load recon/domains-hosts/hackertarget` and then set source (every module is independent) and set the source `options set SOURCE <website name>`
 - Then `run`
 
+> Example of all the commands to gather info on tesla.com using **hackertarget**
+
+After switching to root and then running `recon-ng` and once you see [recon-ng][default] at the terminal, run the following commands in sequence
+
+-`modules load hackertarget`
+- `show options` to see if any website has been set as source already
+- `options set SOURCE tesla.com` this should change the terminal to [recon-ng][default][hackertarget]
+- `info` It shows that the source has now been set to tesla
+- `input` to list the websites that were input
+- `run` This gives all the domains and their ip addresses for the website
+- `show hosts` will give a summary table of all the info gathered
+
+
+
 - Generating a report using **reporting/html**
-- `marketplace install reporting/html` - Not that you should be in the default directory of recon-ng which you can get to by typing `back` first.
+- `marketplace install reporting/html` - Note that you should be in the default directory of recon-ng which you can get to by typing `back` first.
 - `marketplace search reporting/html` to check if this has been installed
 - `modules load reporting/html` to load and `info` to look at the details. Note that you must set the creator and attacker
 - `options set CREATOR attacker`
