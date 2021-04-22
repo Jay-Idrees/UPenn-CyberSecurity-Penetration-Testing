@@ -222,7 +222,7 @@ Running a module to gather info regarding a specific website- or in other words 
 
 After switching to root and then running `recon-ng` and once you see [recon-ng][default] at the terminal, run the following commands in sequence
 
--`modules load hackertarget`
+- `modules load hackertarget`
 - `show options` to see if any website has been set as source already
 - `options set SOURCE tesla.com` this should change the terminal to [recon-ng][default][hackertarget]
 - `info` It shows that the source has now been set to tesla
@@ -233,7 +233,7 @@ After switching to root and then running `recon-ng` and once you see [recon-ng][
 
 
 - Generating a report using **reporting/html**
-- `marketplace install reporting/html` - Note that you should be in the default directory of recon-ng which you can get to by typing `back` first.
+- `marketplace install reporting/html` or `marketplace search html` - Note that you should be in the default directory of recon-ng which you can get to by typing `back` first.
 - `marketplace search reporting/html` to check if this has been installed
 - `modules load reporting/html` to load and `info` to look at the details. Note that you must set the creator and attacker
 - `options set CREATOR attacker`
