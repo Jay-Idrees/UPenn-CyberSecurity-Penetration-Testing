@@ -222,7 +222,13 @@ Running a module to gather info regarding a specific website- or in other words 
 
 After switching to root and then running `recon-ng` and once you see [recon-ng][default] at the terminal, run the following commands in sequence
 
-`
+-`modules load hackertarget`
+- `show options` to see if any website has been set as source already
+- `options set SOURCE tesla.com` this should change the terminal to [recon-ng][default][hackertarget]
+- `info` It shows that the source has now been set to tesla
+- `input` to list the websites that were input
+- `run` This gives all the domains and their ip addresses for the website
+- `
 
 
 
