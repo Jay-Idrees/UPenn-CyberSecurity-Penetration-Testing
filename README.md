@@ -158,7 +158,7 @@ Utilizing social media
 **Recon-Ng - Very important tool** - Combines many OSNIT tools
 - It is a Kali linux tool written in Python that combines individual sources including search engines, plugins and APIs to create a report for information gathering
 - Commands:
-
+- If not using Kali, you can install it on Ubuntu with `get update && apt-get install recon-ng`
 - On Kali linux, first switch to the root user with `sudo su`
 - Then type `recon-ng` that will lead to 
 - `run` it comes preinstalled in Kali linux
