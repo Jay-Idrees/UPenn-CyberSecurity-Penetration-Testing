@@ -62,16 +62,16 @@ It can be active (directly engaging with the target system) or passive (Gaining 
 - configure virtual machine- VM ware, assign 4GB ram and then select NAT as the network adapter
 
 shortcuts, double tab, ~/
-    `ls -la` will reveal hidden folders
-    `ls -la` /tmp/  for checking the permissions of the file inside the temp folder
-    `chmod 777 filename.txt` or `chmod +x filename.txt` giving full read wrtie access
+  -  `ls -la` will reveal hidden folders
+  -  `ls -la` /tmp/  for checking the permissions of the file inside the temp folder
+  -  `chmod 777 filename.txt` or `chmod +x filename.txt` giving full read wrtie execute access
 - `cat /etc/passwd`
 to change password I can type passwd in the terminal
 adding a user to sudoers
 
-    `ifconfig` linux
-    `iwconfig`  wireless
-    `ipconfig`  windows
+ `ifconfig` linux
+ `iwconfig`  wireless
+ `ipconfig`  windows
 
 - Network commands
    ` ping`
@@ -81,15 +81,15 @@ adding a user to sudoers
 ifconfig alternative is ip:
 - `ip a`
 - `ip n`
-- `ipr`
+- `ip r`
 
 - Updating softwares
--   apt update && apt upgrade
+-   `apt update && apt upgrade`
 -  ` apt install python3-pip`
 
 - install pimp upgrate from cloning a github repository in the 
 - cd /opt
-- git clone https://github.com/Dewalt-arch/pimpmykali.git
+- `git clone https://github.com/Dewalt-arch/pimpmykali.git`
 - ./pimpmykali.sh
 
 if gedit gives an error then use.
@@ -97,7 +97,7 @@ if gedit gives an error then use.
 
 `ping 192.168.13.2 -c 1 > ip.txt ` - pings one time and then stores in a file
 `cat ip.txt | grep "64 bytes"` - This will tell me that the data is being able to be received after ping- so those ip addresses maybe active or accible. 
-`cat ip.txt | grep "64 bytes" | cut -d " " -f 4 | tr -d ":"` here tr trauncates at the level of first :, d is delimiter whch in this case is the space and then we are selecting the 4th time his delimiter is used
+`cat ip.txt | grep "64 bytes" | cut -d " " -f 4 | tr -d ":"` here tr trauncates at the level of first :, d is delimiter which in this case is the space and then we are selecting the 4th time this delimiter is used
 
 
 ## Phyton3
@@ -126,7 +126,7 @@ Utilizing social media
 
 **OSINT-Open Source Intelligence**
 
-[osintframework.com](osintframework.com) contains freely available public information- and is legal. **port scans**, **bruteforce attacks** and **social engineering** are active and ilegal wo permission
+[osintframework.com](osintframework.com) contains freely available public information- and is legal. **port scans**, **bruteforce attacks** and **social engineering** are active and ilegal w/o permission
 
 - On this site `framework-domain name-whois records-Domain Dossier` will lead you to the domain information
 - If you check DNS records- it will also give you information regarding the sub-domain
@@ -141,7 +141,7 @@ Utilizing social media
 - Alows the user to find event the webpages that are normally hidden from the user- giving access to sensitive information
 - `site:example.com` - its essentially a sub-domain enumeration task. It can also reveal the file system and assets of the website
 
-**Shodan/ shodan.io** [shodan.io](shodan.io) - Looks up only the machines that are connected to the internet- scans the entire web
+**Shodan/ shodan.io** [shodan.io](shodan.io) - Looks up only the machines that are connected to the internet- scans the entire web. You can type in the name of the website in OSINT and then get the ip address an then paste that ip address into the shodan.io
 - Looking up DNS (domain naming system) vs DNSSEC
 - This can lead to methods of hacking including:
 - After you are able to find the 
@@ -176,7 +176,7 @@ Running a module to gather info regarding a specific website- or in other words 
 - Then `run`
 
 - Generating a report using **reporting/html**
-- `marketplace install reporting/html` - Not that you should be in the default directory of recon-ng whcih you can get to by typing `back` first.
+- `marketplace install reporting/html` - Not that you should be in the default directory of recon-ng which you can get to by typing `back` first.
 - `marketplace search reporting/html` to check if this has been installed
 - `modules load reporting/html` to load and `info` to look at the details. Note that you must set the creator and attacker
 - `options set CREATOR attacker`
