@@ -108,18 +108,18 @@ if gedit gives an error then use.
 ```
 ## Open Source Information gathering - also the same if you call it OSNIT
 
-`www.bugcrowd.com` - finding websites to hack who would pay you
-`hunter.io` gives insights regarding the email password
-Heath adams searching the company for datadump from dark web of usernames
-`The harvester` - its built into the Kali linux - It searches information in google
-`sublist3r` app that can be installed: Aids with Searching the subdomains: It is similar to the harvester, but more comprehensive and it is not a built in program. It has to be harvested, for example if i type `sublist3r -d tesla.com -t 100` threadng
+- `www.bugcrowd.com` - finding websites to hack who would pay you
+- `hunter.io` gives insights regarding the email password
+- Heath adams searching the company for datadump from dark web of usernames
+- `The harvester` - its built into the Kali linux - It searches information in google
+- `sublist3r` app that can be installed: Aids with Searching the subdomains: It is similar to the harvester, but more comprehensive and it is not a built in program. It has to be harvested, for example if i type `sublist3r -d tesla.com -t 100` threadng
 Certificate fingerprinting - This also provides information regaring the domains- It can also provide information regaring the sub-sub-domains
-`owasp amass` - can be downloaded using a github repository
+- `owasp amass` - can be downloaded using a github repository
 tomnomnom httpprobe
-`biltwith.com` info regarding the web technoligies related to the website 
-`wapalyzer` very neat tool gives a nice overview about a website
-`whatweb` - built in Kali linux tools. www.tesla.com
-`Burp suite` - has capability of intercepting web traffic, checkout anoher similar tool `foxy proxy`, we can change the request parameters and then examin the response
+- `biltwith.com` info regarding the web technoligies related to the website 
+- `wapalyzer` very neat tool gives a nice overview about a website
+- `whatweb` - built in Kali linux tools. www.tesla.com
+- `Burp suite` - has capability of intercepting web traffic, checkout anoher similar tool `foxy proxy`, we can change the request parameters and then examin the response
 goole fu, `site:tesla.com -www filetype:pdf`
 Utilizing social media
 
