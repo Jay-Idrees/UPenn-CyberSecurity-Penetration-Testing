@@ -186,9 +186,26 @@ workspaces      Manages workspaces
 - `help` will show all the commands
 - `keys add shodan_api <key>` Go to shodan.io, register with an account to obtain an account specific key
 - then check by typing`key list` and  you can remove keys with `keys remove`
-- `marketplace install all` Intalls all the modules. You can also install a specific module by specifying the module name instead of 'all'
+- `marketplace install all` Intalls all the modules. You can also install a specific module by specifying the module name instead of 'all' for example: `marketplace install hackertarget`
 - `marketplace search` Displays all the currently installed modules. You can also search repos with `marketplace search repos`
-- `marketplace info <modulename>` will give specific info regarding that particular module
+- `marketplace info <modulename>` will give specific info regarding that particular module. It also gives the path of the module. For example 
+
+```
+[recon-ng][default] > marketplace info hackertarget
+
+  +---------------------------------------------------------------------------------------------------------------+
+  | path          | recon/domains-hosts/hackertarget                                                              |
+  | name          | HackerTarget Lookup                                                                           |
+  | author        | Michael Henriksen (@michenriksen)                                                             |
+  | version       | 1.1                                                                                           |
+  | last_updated  | 2020-05-17                                                                                    |
+  | description   | Uses the HackerTarget.com API to find host names. Updates the 'hosts' table with the results. |
+  | required_keys | []                                                                                            |
+  | dependencies  | []                                                                                            |
+  | files         | []                                                                                            |
+  | status        | installed                                                                                     |
+  +---------------------------------------------------------------------------------------------------------------+
+```
 
 Loading a module
 - `modules load recon/hosts-ports/shodan_ip ` - you can find the exact path for this command of a module by typing `marketplace info <modulename>`. Once the module is loaded it will show in the terminal and if you simply type `info` then, it will provide more information
