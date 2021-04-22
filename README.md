@@ -324,10 +324,11 @@ nmap can be used for script scaning, OS detection - other options: version detec
 **Nmap Scripting Engine NSE** - Comes after an initial scan has been successfully run
 - NSE allows creation of custom Nmap scripts for individual needs
 
-- It cannot perform a large number of scans simultaneously
+- It cannot perform a large number of scans simultaneously and it is not very comprehensive - can miss vulnerabilities
 
 - These are scripts that are run on the results of the initial scan to search the web for what exploits are available
-- This is a preinatalled collection of scripts that come with Nmap, about 600
+
+- This is a preinstalled collection of scripts that come with Nmap, about 600
 - `ls /usr/share/nmap/scripts` to display the current scripts
 - Most scripts are for infomation gathering, but some can be used for automating networking tasks
  - DNS enumeration
@@ -388,8 +389,14 @@ but its such a hassal to install- not worth trying- so I am going to pass. The b
 Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 
 - SMB. SMB is a file share. Manages uploading, DL files or sharing files with co-workers. It is important to know what type of SMB version is being used
-- **Metasploit**- run `msfconsole` in terminal- exploitation framework. Does exploits, **auxillary stuff(exploitation and enumeration)** - It is built into Kali linux
-   ` Rhosts `- target address, `set RHOSTS 192.168.57.139`and then `run` This refers fo remote hosts, hosts are the individual machines in the network
+
+
+- **Metasploit**
+
+- run `msfconsole` in terminal- exploitation framework. Does exploits, **auxillary stuff(exploitation and enumeration)** - It is built into Kali linux
+
+   ` Rhosts `- target address, `set RHOSTS 192.168.57.139`and then `run` This refers to remote hosts, hosts are the individual machines in the network
+
     `Lhosts` - this is the listening host
 - **Smbclient** - it attempts to connect with file sharing using anonymous access `smbclient -L \\\\<ip address>\\` Once it shows the folders that can be connected to then you can connect to them, and it will be like connecting using anomalous ip and then using terminal
 
@@ -403,6 +410,9 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 
 
 ## Exploitation
+
+- So far I have only run scans. Gathered Ips and related info on vulnerabilities. Once I have this info now is the time to search for the exploits for these vulnerabilities
+
 - The goal of exploitation is to establish a session- Once the session is established then everything after that is considered post-exploitation (done with meterpreter- a linux style shell that metasploit launches to break into target)
 
 - Note the difference: Metasploit is run on the hacker's machine, and Meterpreter is run on the victim machine after exploitation is successful. An alternative to Meterpreter are the various payloads available for specific vulnerabilities. I can also create custom payload modules in metasploit
