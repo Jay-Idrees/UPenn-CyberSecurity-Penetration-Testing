@@ -142,7 +142,7 @@ Utilizing social media
 - `site:example.com` If you type this in google search - its essentially a sub-domain enumeration task. It can also reveal the file system and assets of the website
 
 **Shodan/ shodan.io** [shodan.io](shodan.io) - Looks up only the machines that are connected to the internet- scans the entire web. You can type in the name of the website in OSINT and then get the ip address an then paste that ip address into the shodan.io
-- Looking up DNS (domain naming system) vs DNSSEC
+- Looking up DNS (domain naming system) vs DNSSEC (Domain name system security extension - offers more security against DNS information)
 - This can lead to methods of hacking including:
 - After you are able to find the 
 
