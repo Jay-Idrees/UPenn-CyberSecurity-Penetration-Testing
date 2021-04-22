@@ -232,7 +232,7 @@ After switching to root and then running `recon-ng` and once you see [recon-ng][
 
 
 
-- Generating a report using **reporting/html**
+- Generating a report using **reporting/html** Note that  this report will be based on whatever information was gathered for website previously set in source
 - `marketplace install reporting/html` or `marketplace search html` - Note that you should be in the default directory of recon-ng which you can get to by typing `back` first.
 - `marketplace search reporting/html` to check if this has been installed
 - `modules load reporting/html` to load and `info` to look at the details. Note that you must set the creator and attacker
@@ -246,17 +246,19 @@ After switching to root and then running `recon-ng` and once you see [recon-ng][
 
 
 
-## Scanning and enumeration
+## Scanning and enumeration - Gathering info about open ports etc
 
 - Note that Metasploit also has some modules for enumeration and they are called **Auxiliary modules** i-e if I choose to use metasploit
 
 www.vulnhub.com. VULNHUB - you can download a vulnerable virtual machine and then load it into VMware and then practice attacking - has various levels of vulnerable machines
 kioptrix- level 1 This is a first level machine, login john and pw TwoCows2
 - Finding actively running machines and their ip addresses. `ifconfig`  then `netdiscover -r <ip address with subnet>`
-`SYN SYNACK ACK nmap sS` - stelth scanning (used to be undectable, but these days the scanning is detectable) the stealthiness is the trick of faking a connection, but then not establishing one. 
-- Modification: SYN SYNACK RST - this specification is a trick to reveal port, but not establishing a connection. This is also called a `half-connect scan`
-**nmap** Simply typing nmap in kali will tell you about the various commands you can use along with it
-`nmap -T4 -p- -A <ipaddress>` T4 is speed (max 5- might miss some things) -p- means scanning all ports, but if you leave this out then it means that it will scan top 1000 ports I can also specify certain ports if I like for example -p 80,443. -A tell me everything (OS detection, version detection, script scanning and trace route). Not that even if its not typed in the command `-sS`  (stelth scan for TCP) is automatically included
+`SYN SYNACK ACK nmap sS` - stelth scanning (used to be undectable, but these days the scanning is detectable) the stealthiness is the trick of faking a connection by sending RST in the packet instead of ACK, this gathers info w/o establishing a connection. 
+- Modification: `SYN SYNACK RST` - this specification is a trick to reveal port, but not establishing a connection. This is also called a `half-connect scan`
+
+- **nmap** Simply typing nmap in kali will tell you about the various commands you can use along with it
+
+`nmap -T4 -p- -A <ipaddress>` T4 is speed (max 5- might miss some things) -p- means scanning all ports- i-e it will run to check all possible ports to see which one is open, but if you leave this out then it means that it will scan top 1000 ports I can also specify certain ports if I like for example `-p 80,443`. `-A` tell me everything (**OS detection, version detection, script scanning and trace route**). Not that even if its not typed in the command `-sS`  (stelth scan for TCP) is automatically included
 - Note that -A is the real speed killer here as it is checking for all the versions
 `nmap -sU -T4 -p- -A <ipaddress>`  - sU is for scanning UDP
 nmap can be used for script scaning, OS detection - other options: version detection, script scanning and trace route if I select -A - it will do all these functions, but is slow. We can also specify the ports. 
@@ -301,7 +303,7 @@ nmap can be used for script scaning, OS detection - other options: version detec
 **Other methods of scanning**
 - One method is shown above
 - massscan
-- Masscan - scan theentire internet quickly. It is built in. We can also scan specific ports: `massscan -p1-65535 <ip address>`
+- Masscan - scan theentire internet quickly. It is built in. We can also scan specific ports: `massscan -p1 -65535 <ip address>`
 
 - **Things to look for when you have run the scan**
   - Ping scans
@@ -312,7 +314,7 @@ nmap can be used for script scaning, OS detection - other options: version detec
    - Outputting scan results to files
 - Look for open ports
 - anonymous FTP allowed?
-- versions for exploitation such as SAMBA - SMB is a network protocol that lets remote computers to connect with servers
+- versions for exploitation such as `SAMBA - SMB` is a network protocol that lets remote computers to connect with servers
 - If SSH is open then if you attack it then the company should be able to detect it, attacking SSH makes you noisy. If the blue team of the company is unable to detect then their defences are likely very weak
 - OS guesses, may not be accurate initially- you can confirm this after you are able to gain access
 - There can be some default webpages for sub-domins- these indicate an opening for a hidden directory maybe for a sub-domain that could be exploited with `drbuster`, `gobuster` etc
