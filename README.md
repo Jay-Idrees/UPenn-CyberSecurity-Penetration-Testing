@@ -152,7 +152,7 @@ Utilizing social media
 
 - It can then provide information about the ports
 
-**Certificate transparency/crt.sh** [crt.sh](www.crt.sh)
+**Certificate transparency/crt.sh** [www.crt.sh](www.crt.sh)
 - This provides a lot of top quality information regarding the sub-domains
 
 **Recon-Ng - Very important tool**
