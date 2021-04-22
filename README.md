@@ -266,7 +266,7 @@ nmap can be used for script scaning, OS detection - other options: version detec
 
 - Other useful options include 
 -`-pn` will not ping- making the scan faster, 
--`-sT` allows TCP full connect scan whcih is noisy and detectable- most hackers do not use it
+-`-sT` allows TCP full connect scan which is noisy and detectable- most hackers do not use it
 - `-sV` probes for service and version info.
 - `-sC` returns the default scripted scan- more results
 - `-oN` outputs results in a text file
@@ -322,6 +322,9 @@ nmap can be used for script scaning, OS detection - other options: version detec
 
 
 **Nmap Scripting Engine NSE** - Comes after an initial scan has been successfully run
+- NSE allows creation of custom Nmap scripts for individual needs
+
+- It cannot perform a large number of scans simultaneously
 
 - These are scripts that are run on the results of the initial scan to search the web for what exploits are available
 - This is a preinatalled collection of scripts that come with Nmap, about 600
@@ -344,7 +347,7 @@ nmap can be used for script scaning, OS detection - other options: version detec
 **Nessus/ Vulnerability scans**
 - NSE scan is weaker than a vulnerability scan. An example of vulnerability scan includes Nessus
 
-- these scan the network using a known database of vulnerabilities **National Vulnerability Databse (NBV)** [NVB](nvd.nist.gov), whcih are rated based on the severity and are assigned a common vulnerability score (CVSS) and catwgory (low, medium, high, critical) of severity based on the score. 
+- these scan the network using a known database of vulnerabilities **National Vulnerability Databse (NBV)** [NVB](nvd.nist.gov), which are rated based on the severity to vulnerability and are assigned a common vulnerability score (CVSS) and category (low, medium, high, critical) of severity based on the score. 
 
 Critical: 10.0.
 High: 7.0 - 9.9.
@@ -368,7 +371,7 @@ but its such a hassal to install- not worth trying- so I am going to pass. The b
 - `alien zenmap-7.80-1.noarch.rpm` convert to deb file from rpm before it can be used
 - `dpkg -i zenmap_7.80-2_all.deb` this will install zenmap after download
 
-- apt list --installed | grep alien to check if it is installed
+- `apt list --installed | grep alien` to check if it is installed
 - 
 
 **Drbuster**
