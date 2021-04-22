@@ -130,7 +130,7 @@ Utilizing social media
 
 - On this site `framework-domain name-whois records-Domain Dossier` will lead you to the domain information
 - If you check DNS records- it will also give you information regarding the sub-domain
-- The **network whois record** provides info regarding the network ip ranges and CIDR
+- The **network whois record** provides info regarding the network ip ranges and CIDR (Classless interdomain routing) for network ip ranges
 - **DNS records** 
 
 [Google fu](https://www.sans.org/security-resources/GoogleCheatSheet.pdf)
