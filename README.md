@@ -321,7 +321,7 @@ nmap can be used for script scaning, OS detection - other options: version detec
 
 
 
-**Nmap Scripting Engine NSE**
+**Nmap Scripting Engine NSE** - Comes after an initial scan has been successfully run
 
 - These are scripts that are run on the results of the initial scan to search the web for what exploits are available
 - This is a preinatalled collection of scripts that come with Nmap, about 600
