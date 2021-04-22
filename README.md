@@ -239,7 +239,7 @@ After switching to root and then running `recon-ng` and once you see [recon-ng][
 - `options set CREATOR attacker`
 - `options set CUSTOMER Darkweb` and type `info`
 - `run` will create the report. It will print the address where the report is located- you just have to copy it after `xdg-open`
-- `xdg-open /root/.recon-ng/workspaces/default/results.html` to open the report - note that this is a normal linux command to open file. You will have to `exit` and then type this command for it to work
+- `xdg-open /root/.recon-ng/workspaces/default/results.html` to open the report - note that this is a normal linux command to open file. You will have to `exit` to get out of `reporting/html` program and then type this command for it to work
 
 
 
