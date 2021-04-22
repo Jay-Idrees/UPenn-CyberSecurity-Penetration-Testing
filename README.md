@@ -218,7 +218,7 @@ Running a module to gather info regarding a specific website- or in other words 
 - Likewise you can load another module called Hackertarget: `modules load recon/domains-hosts/hackertarget` and then set source (every module is independent) and set the source `options set SOURCE <website name>`
 - Then `run`
 
-> Example of all the commands to gather info on tesla.com using hacker target
+> Example of all the commands to gather info on tesla.com using **hackertarget**
 
 After switching to root and then running `recon-ng` and once you see [recon-ng][default] at the terminal, run the following commands in sequence
 
@@ -228,12 +228,12 @@ After switching to root and then running `recon-ng` and once you see [recon-ng][
 - `info` It shows that the source has now been set to tesla
 - `input` to list the websites that were input
 - `run` This gives all the domains and their ip addresses for the website
-- `
+- `show hosts` will give a summary table of all the info gathered
 
 
 
 - Generating a report using **reporting/html**
-- `marketplace install reporting/html` - Not that you should be in the default directory of recon-ng which you can get to by typing `back` first.
+- `marketplace install reporting/html` - Note that you should be in the default directory of recon-ng which you can get to by typing `back` first.
 - `marketplace search reporting/html` to check if this has been installed
 - `modules load reporting/html` to load and `info` to look at the details. Note that you must set the creator and attacker
 - `options set CREATOR attacker`
