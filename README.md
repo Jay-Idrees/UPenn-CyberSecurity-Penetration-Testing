@@ -423,7 +423,7 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 
 - In kali linux this repository is already installed, so you can use it even if you are not connected to the internet. But this repository should be updated weeky
 
-- `searchsploit -u` to update the repository
+- `searchsploit -u` to update the repository, do this weekly
 
 - `searchsploit` in kali linux queries this database. Kali linux or the searchsploit by typing `searchsploit -u`. This is important because it gives you the ability to run it offline and perform searches offline- it syncs the local repo with the remote repo. Other useful command adjuncts: `-c`(case sensitive), `-e`(exact match), `j`(JSON format), `p`(full path to a file), `t`( search in title), `w`(will provide website in the results), `-x` opens the code file - functions similar to the `less` command
 
@@ -437,9 +437,39 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 
  - `searchsploit apache | head` head shows only the top 10 results
 
- - Each of the results will have a path to where the exploit code file is located. For example for the above command the path is `php/remote/29316.py` the path can vary with upgrades
+ - Each of the results will have a path to where the exploit code file is located. For example for the above command the path is `php/remote/29316.py` the path can vary with upgrades. Note that this path shown asumes that you are inside the exploits folder 
 
- - `searchsploit -x php/remote/29316.py` opens the exploit file. You can type `q` for quite to get out of the file and back to the terminal
+ - `searchsploit -x php/remote/29316.py` opens the exploit file. You can type `q` for quit to get out of the file and back to the terminal
+
+ - once the file opens, the exact complete path is displayed at the bottom- copy that. In order to run the exploit you need the complete path, the path mentioned above wont work
+
+ - `python /usr/share/exploitdb/exploits/php/remote/29316.py` This will now run the script and display options
+
+ ```
+ python /usr/share/exploitdb/exploits/php/remote/29316.py
+--==[ ap-unlock-v1337.py by noptrix@nullsecurity.net ]==--
+usage: 
+
+  ./ap-unlock-v1337.py -h <4rg> -s | -c <4rg> | -x <4rg> [0pt1ons]
+  ./ap-unlock-v1337.py -r <4rg> | -R <4rg> | -i <4rg> [0pt1ons]
+
+0pt1ons:
+
+  -h wh1t3h4tz.0rg     | t3st s1ngle h0st f0r vu1n
+  -p 80                | t4rg3t p0rt (d3fau1t: 80)
+  -S                   | c0nn3ct thr0ugh ss1
+  -c 'uname -a;id'     | s3nd c0mm4nds t0 h0st
+  -x 192.168.0.2:1337  | c0nn3ct b4ck h0st 4nd p0rt f0r sh3ll
+  -s                   | t3st s1ngl3 h0st f0r vu1n
+  -r 133.1.3-7.7-37    | sc4nz iP addr3ss r4ng3 f0r vu1n
+  -R 1337              | sc4nz num r4nd0m h0st5 f0r vu1n
+  -t 2                 | c0nn3ct t1me0ut in s3x (d3fau1t: 3)
+  -T 2                 | r3ad t1me0ut in s3x (d3fau1t: 3)
+  -f vu1n.lst          | wr1t3 vu1n h0sts t0 f1l3
+  -i sc4nz.lst         | sc4nz h0sts fr0m f1le f0r vu1n
+  -v                   | pr1nt m0ah 1nf0z wh1l3 sh1tt1ng
+```
+
 
 - So far I have only run scans. Gathered Ips and related info on vulnerabilities. Once I have this info now is the time to search for the exploits for these vulnerabilities. 
 
