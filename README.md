@@ -437,9 +437,9 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 
  - `searchsploit apache | head` head shows only the top 10 results
 
- - Each of the results will have a path to where the exploit code file is located. For example for the above command the path is `exploits/php/remote/29316.py`
+ - Each of the results will have a path to where the exploit code file is located. For example for the above command the path is `php/remote/29316.py` the path can vary with upgrades
 
- - `searchsploit -x exploits/php/remote/29316.py` opens the exploit file. 
+ - `searchsploit -x php/remote/29316.py` opens the exploit file. You can type `q` for quite to get out of the file and back to the terminal
 
 - So far I have only run scans. Gathered Ips and related info on vulnerabilities. Once I have this info now is the time to search for the exploits for these vulnerabilities. 
 
