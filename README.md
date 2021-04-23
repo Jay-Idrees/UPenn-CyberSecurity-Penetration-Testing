@@ -419,11 +419,13 @@ Exploitation is a multi-step process. You must:
 
   2. Identify specific exploits that correspond to that vulnerability. Done with `searchsploit`
 
-  3. Prepare and test the exploit payload.
+  3. Prepare and test the exploit payload. Done with `Metasploit:  MSFconsole and Meterpreter` MsFconsole is the main metasploit program that is run on the hacker's compututer. Using Metasploit from the hacker's computer you can then run Meterpreter on the victim's computer after gaining access 
+
+ -  You will use MSFconsole to find vulnerable machines and gain access to them. After you've exploited them, you'll use Meterpreter on the compromised machine. 
 
 - Initial scan can lead to identification of open ports and then it also determins which OS versions are available or which services are being run, in particular file sharing, server applications etc. Then once this information is available I can use search sploit to search for vulnerabilities to exploit. 
 
-**Search Sploit** This is outside metasploit
+**Search Sploit** This is outside metasploit - The metasploitc alternative to searchsploit are **auxillary modules**
 - It is a query to find the scripts or payloads available for a given vulnerability
 - `Exploit-DB`
 - It relies on a database called Exploit-Db
@@ -579,7 +581,7 @@ usage:
 
 
 **Payload**
-- A payload is an exploit script example is below
+- A payload is an exploit script example is below - This is without using metasploit and doing it manually
 - `python /usr/share/exploitdb/exploits/linux/remote/34900.py payload=bind rhost=192.168.0.21 rport=80 pages=/cgi-bin/vulnerable`
 
 - In the above command /usr/share/exploitdb/ is the path displayed in the searchsploit display screen and then the remainder of the path is the part that is next to 
@@ -601,6 +603,15 @@ usage:
 
 
 - **Metasploit** - The commands are not case sensitive
+
+ - **Auxiliary modules**: Used for information gathering, enumeration, and port scanning. Can also be used for things like connecting to SQL databases and performing man-in-the-middle attacks.
+
+  - **Exploit modules**: Generally used to deliver exploit code to a target system.
+
+  - **Post modules**: Offers post-exploitation tools such as the ability to extract password hashes and access tokens. Provides modules for taking a screenshot, key-logging, and downloading files. You'll explore these during the next class. 
+
+  - **Payload modules**: Used to create malicious payloads to use with an exploit. If possible, the aim is to upload a copy of Meterpreter, which is the default payload of Metasploit.
+
 
 You can search by the name of the modules for example after metasploit is loaded (with `search java`, search `shellshock`)
 
