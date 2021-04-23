@@ -678,6 +678,8 @@ Module options (auxiliary/scanner/http/apache_mod_cgi_bash_env):
 
 - Thus in a similar way you can run the exploit instead of auxillary, specify the victim ip, and when you run it it will establish a connection 
 
+- When an exploitation is successful with metasploit, it automatically opens a `meterpreter` sesstion with the victim. Meterpreter is short for Meta-Interpreter, it sets up `reverse shells` automatically or you can do that manually using `ncat`
+
 ---------------------------------------------------------------------------------------------------------
 
 > below is some repition of above
@@ -759,6 +761,58 @@ After the exploit is successful,
 - `whoami`
 - `ifconfig`
 - `pwd`
+
+
+
+**Meterpreter**
+
+- Runs in memory-does not create files
+- encrypts all communication to and from victim machine
+
+Opening a Meterpreter session on a target host consists of four main steps:
+
+1. Exploiting the target. Done with runing exploits on rhost ip address, this also opens a meterpreter session
+
+2. Uploading a Meterpreter payload on the target. 
+
+3. Starting a TCP listener.
+
+4. Executing the Meterpreter payload.
+
+The easiest way to open a Meterpreter shell is to select an exploit and set a Meterpreter payload. 
+  - A common payload is `windows/meterpreter/reverse_tcp`.
+
+  - **Note:** You can have multiple Meterpreter sessions open on multiple machines.
+
+The following commands are needed to connect to a Meterpreter session:
+
+- `sessions`: Lists all open Meterpreter sessions.
+
+- `sessions -i <Session ID>`: Connects to a designated session.
+
+- `sessions -i 1`: Brings our session to the foreground, meaning any command we run on our host machine will be run on the Meterpreter shell on the target. 
+
+Once we've connected to a Meterpreter session, we can run many other commands to get information on the target:
+
+  - `?`: Prints Meterpreter's help page, which lists all possible commands.
+
+  - `getuid`: Prints user ID.
+
+  - `getwd`: Prints current working directory.
+
+  - `ifconfig`: Prints the victim's network information.
+
+  - `sysinfo`: Gathers system information (OS, architecture, kernel version). 
+
+  - `upload`: Uploads a file to the target.
+
+  - `download`: Downloads a file from the target.
+
+  - `search`: Searches for resources, similar to the `find` command in Linux.
+
+  - `run win_privs`: Provides more detailed Windows privilege information.
+
+  - `run win_enum`: Runs a comprehensive suite of Windows enumerations and stores the results on the attacking machine.
 
 
 **Payload types**
