@@ -258,6 +258,8 @@ kioptrix- level 1 This is a first level machine, login john and pw TwoCows2
 
 - **nmap** Simply typing nmap in kali will tell you about the various commands you can use along with it
 
+- The main goal of nmap is to determine which ports are open and which OS and services are running on those open ports
+
 `nmap -T4 -p- -A <ipaddress>` T4 is speed (max 5- might miss some things) -p- means scanning all ports- i-e it will run to check all possible ports to see which one is open, but if you leave this out then it means that it will scan top 1000 ports I can also specify certain ports if I like for example `-p 80,443`. `-A` tell me everything (**OS detection, version detection, script scanning and trace route**). Not that even if its not typed in the command `-sS`  (stelth scan for TCP) is automatically included
 - Note that -A is the real speed killer here as it is checking for all the versions
 `nmap -sU -T4 -p- -A <ipaddress>`  - sU is for scanning UDP
@@ -411,8 +413,9 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 
 ## Exploitation
 
+Initial scan can lead to identification of open ports and then it also determins which OS versions are available or which services are being run, in particular file sharing, server applications etc. Then once this information is available I can use search sploit to search for vulnerabilities to exploit. 
 
-**Search Sploit**
+**Search Sploit** This is outside metasploit
 - It is a query to find the scripts or payloads available for a given vulnerability
 - `Exploit-DB`
 - It relies on a database called Exploit-Db
