@@ -604,6 +604,8 @@ usage:
 
 - **Metasploit** - The commands are not case sensitive
 
+- It is preinstalled in Kali linux, to initiate it type `msfconsole`
+
  - **Auxiliary modules**: Used for information gathering, enumeration, and port scanning. Can also be used for things like connecting to SQL databases and performing man-in-the-middle attacks.
 
   - **Exploit modules**: Generally used to deliver exploit code to a target system.
@@ -612,8 +614,10 @@ usage:
 
   - **Payload modules**: Used to create malicious payloads to use with an exploit. If possible, the aim is to upload a copy of Meterpreter, which is the default payload of Metasploit.
 
+- The metasploit alternative of searchsploit is the word `search`. Whatever you type after search, metasploit will search for exploits available for it
 
-You can search by the name of the modules for example after metasploit is loaded (with `search java`, search `shellshock`)
+
+You can search by the name of the modules for example after metasploit is loaded (with `search java`, `search shellshock`)
 
  - `exploit/windows/browser/java_cmm` is an exploit module, which delivers the exploit to the target system.
     
