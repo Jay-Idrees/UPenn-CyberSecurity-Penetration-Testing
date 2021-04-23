@@ -616,6 +616,41 @@ usage:
 
 - The metasploit alternative of searchsploit is the word `search`. Whatever you type after search, metasploit will search for exploits available for it
 
+> **Sequence of commands with Metasploit**
+
+- `msfconsole`
+- `search shellshock`
+```
+msf6 > search shellshock
+
+Matching Modules
+================
+
+   #   Name                                               Disclosure Date  Rank       Check  Description
+   -   ----                                               ---------------  ----       -----  -----------
+   0   auxiliary/scanner/http/apache_mod_cgi_bash_env     2014-09-24       normal     Yes    Apache mod_cgi Bash Environment Variable Injection (Shellshock) Scanner
+   1   auxiliary/server/dhclient_bash_env                 2014-09-24       normal     No     DHCP Client Bash Environment Variable Code Injection (Shellshock)
+   2   exploit/linux/http/advantech_switch_bash_env_exec  2015-12-01       excellent  Yes    Advantech Switch Bash Environment Variable Code Injection (Shellshock)
+   3   exploit/linux/http/ipfire_bashbug_exec             2014-09-29       excellent  Yes    IPFire Bash Environment Variable Injection (Shellshock)                                                                                                                                          
+   4   exploit/multi/ftp/pureftpd_bash_env_exec           2014-09-24       excellent  Yes    Pure-FTPd External Authentication Bash Environment Variable Code Injection (Shellshock)
+   5   exploit/multi/http/apache_mod_cgi_bash_env_exec    2014-09-24       excellent  Yes    Apache mod_cgi Bash Environment Variable Code Injection (Shellshock)
+   6   exploit/multi/http/cups_bash_env_exec              2014-09-24       excellent  Yes    CUPS Filter Bash Environment Variable Code Injection (Shellshock)
+   7   exploit/multi/misc/legend_bot_exec                 2015-04-27       excellent  Yes    Legend Perl IRC Bot Remote Code Execution
+   8   exploit/multi/misc/xdh_x_exec                      2015-12-04       excellent  Yes    Xdh / LinuxNet Perlbot / fBot IRC Bot Remote Code Execution
+   9   exploit/osx/local/vmware_bash_function_root        2014-09-24       normal     Yes    OS X VMWare Fusion Privilege Escalation via Bash Environment Code Injection (Shellshock)
+   10  exploit/unix/dhcp/bash_environment                 2014-09-24       excellent  No     Dhclient Bash Environment Variable Injection (Shellshock)                                                                                                                                        
+   11  exploit/unix/smtp/qmail_bash_env_exec              2014-09-24       normal     No     Qmail SMTP Bash Environment Variable Injection (Shellshock)                                                                                                    
+   ```
+
+- `use auxiliary/scanner/http/apache_mod_cgi_bash_env`
+```
+msf6 > use auxiliary/scanner/http/apache_mod_cgi_bash_env
+msf6 auxiliary(scanner/http/apache_mod_cgi_bash_env) > 
+```
+
+
+
+
 
 You can search by the name of the modules for example after metasploit is loaded (with `search java`, `search shellshock`)
 
@@ -623,7 +658,7 @@ You can search by the name of the modules for example after metasploit is loaded
     
  - `auxiliary/scanner/misc/java_jmx_server` is an auxiliary module, used for tasks such as information gathering, enumeration, and port scanning.
     
- - `payload/firefox/gather/cookies` is a payload module.
+ - `payload/firefox/gather/cookies` is a payload module. It is the malacious script to be run
 
  If i want to use a particular module then I can type the `use` command and then the path to whatever module I want to load. This load will runn with the shell shock exploit
 
