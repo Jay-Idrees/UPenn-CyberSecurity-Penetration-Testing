@@ -473,7 +473,7 @@ usage:
 ```
 
 - I can also add an ip address at the end of the command to run it against that machine: 
-- `python /usr/share/exploitdb/exploits/php/remote/29316.py <victim ip address>` or `cd /usr/share/exploitdb/exploits/multiple/remote` then `python 32764.py <victim ip address>`
+- `python /usr/share/exploitdb/exploits/php/remote/29316.py <victim ip address>` or `cd /usr/share/exploitdb/exploits/multiple/remote` then `python 32764.py <victim ip address>` Note that this is 'manual' exploitation w/o using metasploit
 
 - So far I have only run scans. Gathered Ips and related info on vulnerabilities. Once I have this info now is the time to search for the exploits for these vulnerabilities. 
 
