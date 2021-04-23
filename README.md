@@ -642,12 +642,34 @@ Matching Modules
    11  exploit/unix/smtp/qmail_bash_env_exec              2014-09-24       normal     No     Qmail SMTP Bash Environment Variable Injection (Shellshock)                                                                                                    
    ```
 
-- `use auxiliary/scanner/http/apache_mod_cgi_bash_env`
+- `use auxiliary/scanner/http/apache_mod_cgi_bash_env` what use dose is the same as `load` in recon-ng
 ```
 msf6 > use auxiliary/scanner/http/apache_mod_cgi_bash_env
 msf6 auxiliary(scanner/http/apache_mod_cgi_bash_env) > 
 ```
+- `info` this provides information about what the module does - note that here we are using the auxillary module, its not an exploit module
+- `options` Typing this will inform us about what are the requirements to run this module successfully. The options that do not have the default settings already set and are required must be `set` Like you can see below that CMD, CVE, HEADER, METHOD,RPORT and SSL are already set with default settings but `rhosts` and `targeturi` are not. They are required and must be set
 
+```
+msf6 auxiliary(scanner/http/apache_mod_cgi_bash_env) > options
+
+Module options (auxiliary/scanner/http/apache_mod_cgi_bash_env):
+
+   Name       Current Setting  Required  Description
+   ----       ---------------  --------  -----------
+   CMD        /usr/bin/id      yes       Command to run (absolute paths required)
+   CVE        CVE-2014-6271    yes       CVE to check/exploit (Accepted: CVE-2014-6271, CVE-2014-6278)
+   HEADER     User-Agent       yes       HTTP header to use
+   METHOD     GET              yes       HTTP method to use
+   Proxies                     no        A proxy chain of format type:host:port[,type:host:port][...]
+   RHOSTS                      yes       The target host(s), range CIDR identifier, or hosts file with syntax 'file:<path>'
+   RPORT      80               yes       The target port (TCP)
+   SSL        false            no        Negotiate SSL/TLS for outgoing connections
+   TARGETURI                   yes       Path to CGI script
+   THREADS    1                yes       The number of concurrent threads (max one per host)
+   VHOST                       no        HTTP server virtual host
+
+```
 
 
 
