@@ -425,7 +425,7 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 
 - `searchsploit -u` to update the repository
 
-- `searchsploit` in kali linux queries this database. Kali linux or the searchsploit by typing `searchsploit -u`. This is important because it gives you the ability to run it offline and perform searches offline- it syncs the local repo with the remote repo. Other useful command adjuncts: `-c`(case sensitive), `-e`(exact match), `j`(JSON format), `p`(full path to a file), `t`( search in title), `w`(will provide website in the results)
+- `searchsploit` in kali linux queries this database. Kali linux or the searchsploit by typing `searchsploit -u`. This is important because it gives you the ability to run it offline and perform searches offline- it syncs the local repo with the remote repo. Other useful command adjuncts: `-c`(case sensitive), `-e`(exact match), `j`(JSON format), `p`(full path to a file), `t`( search in title), `w`(will provide website in the results), `-x` opens the code file - functions similar to the `less` command
 
 - `searchsploit ftp remote file | wc -l` this will search the database for the words ftp, remote and file. `| wc -l` returns the number of exploits in the search
 
@@ -433,17 +433,13 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 
 - `searchsploit mysql 6.0 -w` `-w` provides the website in results
 
-- Exploit scripts or **payload scripts**
-    - .rb are scripts written in Ruby.
-    - .py in Python.
-    - .sh in Bash.
-    - .html in HTML.
-    - .txt in a text editor.
-
-
 - `searchsploit shellshock` will show all the shellshock scripts
 
  - `searchsploit apache | head` head shows only the top 10 results
+
+ - Each of the results will have a path to where the exploit code file is located. For example for the above command the path is `exploits/php/remote/29316.py`
+
+ - `searchsploit -x exploits/php/remote/29316.py` opens the exploit file. 
 
 - So far I have only run scans. Gathered Ips and related info on vulnerabilities. Once I have this info now is the time to search for the exploits for these vulnerabilities. 
 
