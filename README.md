@@ -445,6 +445,8 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 
  - `python /usr/share/exploitdb/exploits/php/remote/29316.py` This will now run the script and display options
 
+All of this I am still running on my own Kali machine not the victim's machine
+
  ```
  python /usr/share/exploitdb/exploits/php/remote/29316.py
 --==[ ap-unlock-v1337.py by noptrix@nullsecurity.net ]==--
@@ -470,6 +472,8 @@ usage:
   -v                   | pr1nt m0ah 1nf0z wh1l3 sh1tt1ng
 ```
 
+- I can also add an ip address at the end of the command to run it against that machine: 
+- `python /usr/share/exploitdb/exploits/php/remote/29316.py <victim ip address>` or `cd /usr/share/exploitdb/exploits/multiple/remote` then `python 32764.py <victim ip address>`
 
 - So far I have only run scans. Gathered Ips and related info on vulnerabilities. Once I have this info now is the time to search for the exploits for these vulnerabilities. 
 
