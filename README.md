@@ -413,6 +413,14 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 
 ## Exploitation
 
+Exploitation is a multi-step process. You must:
+
+  1. Identify vulnerabilities. using `searchsploit`
+
+  2. Identify specific exploits that correspond to that vulnerability. Done with `searchsploit`
+
+  3. Prepare and test the exploit payload.
+
 - Initial scan can lead to identification of open ports and then it also determins which OS versions are available or which services are being run, in particular file sharing, server applications etc. Then once this information is available I can use search sploit to search for vulnerabilities to exploit. 
 
 **Search Sploit** This is outside metasploit
@@ -474,6 +482,8 @@ usage:
 
 - I can also add an ip address at the end of the command to run it against that machine: 
 - `python /usr/share/exploitdb/exploits/php/remote/29316.py <victim ip address>` or `cd /usr/share/exploitdb/exploits/multiple/remote` then `python 32764.py <victim ip address>` Note that this is 'manual' exploitation w/o using metasploit
+
+- Another example of running payload - `python /usr/share/exploitdb/exploits/linux/remote/34900.py payload=bind rhost=<victim ip address> rport=80 pages=/cgi-bin/vulnerable`
 
 - So far I have only run scans. Gathered Ips and related info on vulnerabilities. Once I have this info now is the time to search for the exploits for these vulnerabilities. 
 
