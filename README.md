@@ -413,7 +413,7 @@ Response codes: `200` ok, `400` error, `500` server error, `300` is redirect
 
 ## Exploitation
 
-Initial scan can lead to identification of open ports and then it also determins which OS versions are available or which services are being run, in particular file sharing, server applications etc. Then once this information is available I can use search sploit to search for vulnerabilities to exploit. 
+- Initial scan can lead to identification of open ports and then it also determins which OS versions are available or which services are being run, in particular file sharing, server applications etc. Then once this information is available I can use search sploit to search for vulnerabilities to exploit. 
 
 **Search Sploit** This is outside metasploit
 - It is a query to find the scripts or payloads available for a given vulnerability
@@ -422,6 +422,8 @@ Initial scan can lead to identification of open ports and then it also determins
 - Exploit-Db is a built-in repository inside Kali-Linux that contains information regarding the publically disclosed exploits based on their `common vulnerability exposure identifier (CVE)`
 
 - In kali linux this repository is already installed, so you can use it even if you are not connected to the internet. But this repository should be updated weeky
+
+- `searchsploit -u` to update the repository
 
 - `searchsploit` in kali linux queries this database. Kali linux or the searchsploit by typing `searchsploit -u`. This is important because it gives you the ability to run it offline and perform searches offline- it syncs the local repo with the remote repo. Other useful command adjuncts: `-c`(case sensitive), `-e`(exact match), `j`(JSON format), `p`(full path to a file), `t`( search in title), `w`(will provide website in the results)
 
@@ -441,6 +443,7 @@ Initial scan can lead to identification of open ports and then it also determins
 
 - `searchsploit shellshock` will show all the shellshock scripts
 
+ - `searchsploit apache | head` head shows only the top 10 results
 
 - So far I have only run scans. Gathered Ips and related info on vulnerabilities. Once I have this info now is the time to search for the exploits for these vulnerabilities. 
 
