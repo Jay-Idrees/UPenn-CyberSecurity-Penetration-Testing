@@ -762,11 +762,23 @@ After the exploit is successful,
 - `ifconfig`
 - `pwd`
 
-  **Creating a custom payload with Metasploit**
+  **Creating a custom payload with Metasploit using `msfvenom`**
 
   - You can deliver payloads by exploiting vulnerabilities in services/OS or by social engineering - with either method you have to deliver a payload
 
   - Goal of the payload is to have the victim call back to hacker's C2 server C2 server with SYN packets
+
+  - `msfvenom` is part of metasploit that can be used to create custom payloads. Its easy to create a payload, but the challenge is to **encode** it well enough so it is able to evade the IDS/AV solutions
+
+    - `-p` designates the Metasploit payload we want to use.
+    - `-e` designates the encoder we want to use.
+    - `-a` designates the architecture we want to use (the default is `x86`).
+    - `-s` designates the maximum size of the payload.
+    - `-i` designates the number of iterations with which to encode the payload.
+    - `-x` designates a custom executable file to use as a template.
+    - `-o` designates an output file to be created, specifying its name and location.
+
+
 
 **Meterpreter**
 
@@ -819,7 +831,9 @@ Once we've connected to a Meterpreter session, we can run many other commands to
   - `run win_enum`: Runs a comprehensive suite of Windows enumerations and stores the results on the attacking machine.
 
 
-
+- `msfvenom -l payloads` will show a list of all the available payloads in metasploit
+- `msfvenom -l encoders` These are algorithms that encodes the script so that is becomes less likely to be detected
+- `msfvenom -l formats` These list the various formats the code should be at like python, runy, bash etc
 
 
 
