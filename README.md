@@ -779,6 +779,19 @@ After the exploit is successful,
     - `-o` designates an output file to be created, specifying its name and location.
 
 
+- `msfvenom -l payloads` will show a list of all the available payloads in metasploit
+- `msfvenom -l encoders` These are algorithms that encodes the script so that is becomes less likely to be detected
+- `msfvenom -l formats` These list the various formats the code should be at like python, runy, bash etc
+
+- The purpose of the msfvenom command is to generate a payload script that when run on the victim machine will establish a retrograde connection with the hacker's machine
+
+Things to take into account when desiging a payload
+1. Staged vs stageless. Generally staged is preferred- Its the delivery mechanism, delivering large amount of script in a single instance (stageless) is more likely to fail and thus be error prone
+2. Architecture `-a x86` is common
+3. Encoder to use `-e x86/shikata_ga_nai` is common to use
+4. Defining the file type, typically exe `-f exe`
+5. Path where the file will be placed after creation could be in the `temp` folder, or `www` folder - is specified using the `-o` flag
+
 
 **Meterpreter**
 
@@ -829,11 +842,6 @@ Once we've connected to a Meterpreter session, we can run many other commands to
   - `run win_privs`: Provides more detailed Windows privilege information.
 
   - `run win_enum`: Runs a comprehensive suite of Windows enumerations and stores the results on the attacking machine.
-
-
-- `msfvenom -l payloads` will show a list of all the available payloads in metasploit
-- `msfvenom -l encoders` These are algorithms that encodes the script so that is becomes less likely to be detected
-- `msfvenom -l formats` These list the various formats the code should be at like python, runy, bash etc
 
 
 
